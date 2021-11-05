@@ -30,7 +30,7 @@ request.onload = function() {
     console.log(content)
     let presence;
     if (content.message.rows.length === 0) {
-        document.getElementById("content").innerHTML = `<article><h1>Incursions</h1><p>There are currently no Thargoid Incursions at this time, please check again later. 🙁</p></article>`;
+        document.getElementById("incursions").innerHTML = `<article><h1>Incursions</h1><p>There are currently no Thargoid Incursions at this time, please check again later. 🙁</p></article>`;
         return;
     }
     let inchtml = `<article><h1>Incursions</h1><p>Systems currently under attack by Thargoid Incursion</p></article>`
@@ -48,5 +48,5 @@ request.onload = function() {
         }
     }
     console.log(inchtml)
-    document.getElementById("content").innerHTML = inchtml;
+    document.getElementById("incursions").innerHTML = inchtml;
 }
