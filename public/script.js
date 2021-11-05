@@ -8,6 +8,8 @@ request.send();
 
 function getPresence(presence) {
     switch (presence) {
+        case 0:
+            return "cleared"
         case 1:
             return "marginal"
         case 2:
