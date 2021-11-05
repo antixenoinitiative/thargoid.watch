@@ -40,21 +40,33 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
     width: auto;
-    padding: 1rem;
+}
+
+#navbox {
+    padding: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+#navbox p {
+    margin-top: 0.7rem;
+    margin-bottom: 0rem
 }
 
 #navbar a {
     color: rgb(165, 165, 165);
     font-size: 1.2rem;
     text-decoration: none;
-    margin-left: 0.6rem;
+    margin-left: 1rem;
     transition: color 250ms;
 }
 
 #navbar a:hover {
     color: #ff7100;
+}
+
+#navbar-links {
+    margin-right: 1rem;
 }
 
 #title {
@@ -66,7 +78,7 @@ body {
 }
 
 #title:hover {
-    color: #ffffff;
+    color: #ff7100;
     cursor: default;
 }
  
