@@ -70,6 +70,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     gap: 0.6rem;
+    flex-wrap: wrap;
 }
 
 #navbar-title img {
