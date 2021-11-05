@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/antixenoinitiative/thargoid.watch#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1"
   }
 }

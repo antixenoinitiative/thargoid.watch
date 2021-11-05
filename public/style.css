@@ -1,0 +1,119 @@
+:root {
+    --main-bg-color: rgb(19, 19, 19);
+    --secondary-bg-color: rgb(27, 27, 27);
+    --main-border-color: rgb(56, 56, 56);
+    --main-border-hover: rgb(75, 75, 75)
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: var(--main-bg-color);
+    color: rgb(165, 165, 165);
+    font-family: 'Roboto', sans-serif;
+}
+
+#main {
+    margin-top: 1rem;
+    width: 100%;
+}
+  
+@media screen and (min-width: 400px) {
+    #main {
+        width: 100%;
+    }
+}
+  
+@media screen and (min-width: 800px) {
+    #main {
+        width: 85%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #main {
+        width: 65%;
+    }
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    width: auto;
+    height: 2.8rem;
+}
+
+#navbar a {
+    color: rgb(165, 165, 165);
+    font-size: 1rem;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    transition: color 250ms;
+}
+
+#navbar a:hover {
+    color: #ff7100;
+}
+
+#title {
+    font-weight: 200;
+    font-size: 1.8rem;
+    margin-left: 0.8rem;
+    transition: color 300ms;
+}
+
+#title:hover {
+    color: #000000;
+    cursor: default;
+}
+ 
+#content {
+    display: flex;
+    align-content: stretch;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: auto;
+    height: auto;
+    padding: 1.3rem;
+    margin: 0;
+}
+
+#content article {
+    width: auto;
+}
+
+#content h1 {
+    margin: inherit;
+    font-weight: 300;
+}
+
+.subsection {
+    background-color: var(--main-bg-color);
+    border: 1px solid var(--main-border-color);
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+    transition: border 400ms;
+    overflow: hidden;
+}
+
+.subsection p {
+    margin: inherit;
+}
+
+.subsection:hover {
+    border: 1px solid var(--main-border-hover);
+}
+
+.boxstyle {
+    background-color: var(--secondary-bg-color);
+    border: 1px solid var(--main-border-color);
+    border-radius: 0.5rem;
+    transition: border 400ms;
+}
+
+.boxstyle:hover {
+    border: 1px solid var(--main-border-hover);
+}
