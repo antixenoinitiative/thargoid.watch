@@ -41,6 +41,8 @@ body {
     align-items: center;
     justify-content: space-between;
     width: auto;
+    flex-wrap: wrap;
+    row-gap: 1rem;
 }
 
 #navbox {
@@ -49,7 +51,7 @@ body {
 }
 
 #navbox p {
-    margin-top: 0.7rem;
+    margin-top: 0rem;
     margin-bottom: 0rem
 }
 
@@ -69,7 +71,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 0.6rem;
+    column-gap: 0.6rem;
+    row-gap: 0.5rem;
     flex-wrap: wrap;
 }
 
@@ -155,6 +158,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .boxstyle {
