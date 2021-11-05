@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     background-color: var(--main-bg-color);
-    color: rgb(165, 165, 165);
+    color: rgb(224, 224, 224);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -39,17 +39,17 @@ body {
 #navbar {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin-bottom: 1rem;
     width: auto;
-    height: 2.8rem;
+    padding: 1rem;
 }
 
 #navbar a {
     color: rgb(165, 165, 165);
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-decoration: none;
-    margin-left: 1.5rem;
+    margin-left: 0.6rem;
     transition: color 250ms;
 }
 
@@ -58,14 +58,15 @@ body {
 }
 
 #title {
-    font-weight: 200;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    font-weight: normal;
     font-size: 1.8rem;
-    margin-left: 0.8rem;
     transition: color 300ms;
 }
 
 #title:hover {
-    color: #000000;
+    color: #ffffff;
     cursor: default;
 }
  
@@ -78,15 +79,27 @@ body {
     height: auto;
     padding: 1.3rem;
     margin: 0;
+    margin-bottom: 1rem;
 }
 
 #content article {
     width: auto;
 }
 
+#content article p {
+    margin-block-start: 0.7rem;
+    margin-block-end: 0.7rem;
+    width: auto;
+    line-height: 1.6rem;
+}
+
 #content h1 {
     margin: inherit;
-    font-weight: 300;
+    font-weight: normal;
+}
+
+#incstatus {
+    font-size: 1.2rem;
 }
 
 .subsection {
@@ -100,11 +113,23 @@ body {
 }
 
 .subsection p {
-    margin: inherit;
+    margin-top: 0.4rem;
+    margin-bottom: 0rem;
 }
 
 .subsection:hover {
     border: 1px solid var(--main-border-hover);
+}
+
+.subsection h1 {
+    margin: inherit;
+    font-size: 1.2rem;
+}
+
+.subsection-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .boxstyle {
@@ -112,6 +137,26 @@ body {
     border: 1px solid var(--main-border-color);
     border-radius: 0.5rem;
     transition: border 400ms;
+}
+
+.status-clear {
+    color: #15ff00;
+}
+
+.status-marginal {
+    color: #bbff00;
+}
+
+.status-moderate {
+    color: #ffbb00;
+}
+
+.status-significant {
+    color: #ff7300;
+}
+
+.status-massive {
+    color: #ff0000;
 }
 
 .boxstyle:hover {
