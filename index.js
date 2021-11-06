@@ -6,7 +6,7 @@ const MODE = process.env.MODE;
 
 function requireHTTPS(req, res, next) {
     if (req.headers["x-forwarded-proto"] == "http" && MODE != "DEV") {
-        return res.redirect(301, "https://" + req.host+req.url);
+        return res.redirect(301, "https://" + req.hostname+req.url);
     }
     next();
 }
