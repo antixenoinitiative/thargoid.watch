@@ -5,8 +5,8 @@ const PORT = process.env.PORT;
 const MODE = process.env.MODE;
 
 function requireHTTPS(req, res, next) {
-    if (!req.secure && MODE != "DEV") {
-      return res.redirect('https://www.thargoid.watch/');
+    if (req.headers["x-forwarded-proto"] == "http" && MODE != "DEV") {
+        return res.redirect(301, "https://" + req.host+req.url);
     }
     next();
 }
