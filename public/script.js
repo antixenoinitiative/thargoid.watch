@@ -6,6 +6,11 @@ request.open('GET', requestURL);
 request.responseType = 'json';
 request.send();
 
+function play() {
+    var audio = document.getElementById("audio");
+    audio.play();
+}
+
 function getPresence(presence) {
     switch (presence) {
         case 0:
