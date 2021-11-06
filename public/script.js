@@ -123,13 +123,15 @@ request.onload = function() {
             inchtml += `
             <div class="subsection">
                 <div class="subsection-heading-box">
-                    <h1>${system.name} <span class="regionname">${region}</span></h1>
-                    <div id="incstatus" class="status-${presence}">${capitalizeFirstLetter(presence)}</div>
+                    <div class="subsection-details-box">
+                        <h1>${system.name} <span class="regionname">${region}</span></h1>
+                        <p><span class="axiorange">Faction:</span> ${system.faction} - <span class="axiorange">Population:</span> ${system.population}</p>
+                    </div>
+                    <div class="subsection-status-box">
+                        <div id="incstatus" class="status-${presence}">${capitalizeFirstLetter(presence)}</div>
+                    </div>
                 </div>
-                <div class="subsection-details-box">
-                    <p><span class="axiorange">Faction:</span> ${system.faction}</p>
-                    <p><span class="axiorange">Population:</span> ${system.population}</p>
-                </div>
+                
             </div>`
         }
     }
