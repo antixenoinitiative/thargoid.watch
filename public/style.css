@@ -306,3 +306,9 @@ body {
 .status-massive {
     color: var(--presence-massive);
 }
+
+#footer {
+    font-size: 0.8rem;
+    text-align: right;
+    color: #444444;
+}
