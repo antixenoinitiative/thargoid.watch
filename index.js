@@ -6,7 +6,7 @@ const MODE = process.env.MODE;
 
 function requireHTTPS(req, res, next) {
     if (!req.secure && MODE != "DEV") {
-      return res.redirect('https://' + req.headers.host + req.url);
+      return res.redirect('https://www.thargoid.watch/');
     }
     next();
 }
