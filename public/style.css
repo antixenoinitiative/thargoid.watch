@@ -3,7 +3,12 @@
     --secondary-bg-color: rgb(27, 27, 27);
     --main-border-color: rgb(56, 56, 56);
     --main-border-hover: rgb(75, 75, 75);
-    --main-text-color: rgb(224, 224, 224)
+    --main-text-color: rgb(224, 224, 224);
+    --presence-cleared: #57fc41;
+    --presence-marginal: #c4fc41;
+    --presence-moderate: #fcef41;
+    --presence-significant: #fc8c41;
+    --presence-massive: #fc4141;
 }
 
 body {
@@ -146,6 +151,7 @@ body {
 #incstatus {
     font-size: 1.2rem;
     text-align: right;
+    font-family: 'Lexend', sans-serif;
 }
 
 #incstatus-progress {
@@ -153,23 +159,55 @@ body {
     appearance: none;
 }
 
-progress {
-    margin-top: 0.2rem;
+#incstatus-progress-box {
+    display: flex;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
-#incstatus-progress::-webkit-progress-bar {
-    background-color: var(--secondary-bg-color);
+#incstatus-progress-block {
+    width: 30px;
     border: 1px solid var(--main-border-color);
-    border-radius: 3px;
+    border-radius: 0.2rem;
 }
 
-progress::-webkit-progress-value {
-    background-color: #ff7100;
-    border-radius: 3px;
+.status-block-0 {
+    background-color: var(--secondary-bg-color);
+    
 }
 
-.progresscolor-2::-webkit-progress-value {
-    background-color: #00ff80;
+.status-block-1 {
+    background-color: var(--presence-marginal);
+}
+
+.status-block-2 {
+    background-color: var(--presence-moderate);
+}
+
+.status-block-3 {
+    background-color: var(--presence-significant);
+}
+
+.status-block-4 {
+    background-color: var(--presence-massive);
+}
+
+.blockheight-1 {
+    height: 10px;
+}
+
+.blockheight-2 {
+    height: 12px;
+}
+
+.blockheight-3 {
+    height: 14px;
+}
+
+.blockheight-4 {
+    height: 16px;
 }
 
 .subsection {
@@ -192,10 +230,15 @@ progress::-webkit-progress-value {
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
+    flex-grow: 1;
 }
 
 .subsection-details-box {
     display: block;
+}
+
+.subsection-status-box {
+    flex-grow: 1;
 }
 
 .subsection p {
@@ -245,21 +288,21 @@ progress::-webkit-progress-value {
 }
 
 .status-cleared {
-    color: #15ff00;
+    color: var(--presence-cleared);
 }
 
 .status-marginal {
-    color: #bbff00;
+    color: var(--presence-marginal);
 }
 
 .status-moderate {
-    color: #ffbb00;
+    color: var(--presence-moderate);
 }
 
 .status-significant {
-    color: #ff7300;
+    color: var(--presence-significant);
 }
 
 .status-massive {
-    color: #ff0000;
+    color: var(--presence-massive);
 }

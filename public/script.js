@@ -91,20 +91,25 @@ request.onload = function() {
         document.getElementById("incursions-section").innerHTML = `<article><h1>Incursions</h1><p>There are currently no Thargoid Incursions at this time, please check again later. 🙁</p></article>`;
         return;
     }
-    
-    content.message.rows.sort(dynamicSort("name"))
 
     for (let system of content.message.rows) {
         if (system.status === true) {
-            console.log(system)
-            presence = getPresence(system.presence)
-
             // Region
             if (system.coords == null) {
                 region = "Pending EDMC Data"
             } else {
                 region = `${getRegion(system.coords)}`
             }
+            system.region = region;
+        }
+    }
+
+    content.message.rows.sort(dynamicSort("region"))
+
+    for (let system of content.message.rows) {
+        if (system.status === true) {
+            console.log(system)
+            presence = getPresence(system.presence)
 
             // Population
             if (system.population == null) {
@@ -119,16 +124,28 @@ request.onload = function() {
             } else {
                 system.faction = JSON.parse(system.faction).Name
             }
+
+            let presenceBlocks = ["status-block-0", "status-block-0", "status-block-0", "status-block-0"]
+            if (system.presence >= 1) {presenceBlocks[0] = "status-block-1"}
+            if (system.presence >= 2) {presenceBlocks[1] = "status-block-2"}
+            if (system.presence >= 3) {presenceBlocks[2] = "status-block-3"}
+            if (system.presence >= 4) {presenceBlocks[3] = "status-block-4"}
             
             inchtml += `
             <div class="subsection">
                 <div class="subsection-heading-box">
                     <div class="subsection-details-box">
-                        <h1>${system.name} <span class="regionname">${region}</span></h1>
+                        <h1>${system.name} <span class="regionname">${system.region}</span></h1>
                         <p><span class="axiorange">Faction:</span> ${system.faction} - <span class="axiorange">Population:</span> ${system.population}</p>
                     </div>
                     <div class="subsection-status-box">
                         <div id="incstatus" class="status-${presence}">${capitalizeFirstLetter(presence)}</div>
+                        <div id="incstatus-progress-box">
+                            <div id="incstatus-progress-block" class="${presenceBlocks[0]} blockheight-1"></div>
+                            <div id="incstatus-progress-block" class="${presenceBlocks[1]} blockheight-2"></div>
+                            <div id="incstatus-progress-block" class="${presenceBlocks[2]} blockheight-3"></div>
+                            <div id="incstatus-progress-block" class="${presenceBlocks[3]} blockheight-4"></div>
+                        </div>
                     </div>
                 </div>
                 

@@ -1,3 +1,13 @@
+/**
+ * This is the webserver code for the Thargoid.Watch website. Live website can be found at https://www.thargoid.watch
+ * 
+ * IMPORTANT: If you are running this locally, ensure you create a .env file and include the following two variables.
+ * 
+ * PORT=<port number>
+ * MODE=DEV
+ * 
+ */
+
 require("dotenv").config();
 const express = require('express');
 const app = express();
