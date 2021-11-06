@@ -101,7 +101,7 @@ request.onload = function() {
 
             // Region
             if (system.coords == null) {
-                region = ""
+                region = "EDMC Data not gathered yet..."
             } else {
                 region = `${getRegion(system.coords)}`
             }
