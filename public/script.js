@@ -109,7 +109,7 @@ request.onload = function() {
         }
     }
 
-    content.message.rows.sort(dynamicSort("region"))
+    content.message.rows.sort(dynamicSort("name"))
 
     for (let system of content.message.rows) {
         if (system.status === true) {
