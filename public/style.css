@@ -131,7 +131,7 @@ body {
 
 .contenttext article p {
     margin-block-start: 0.7rem;
-    margin-block-end: 0.7rem;
+    margin-block-end: 0rem;
     width: auto;
     line-height: 1.6rem;
 }
