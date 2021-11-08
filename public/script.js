@@ -160,16 +160,14 @@ function updateInc(sorting) {
     document.getElementById("incursions").innerHTML = inchtml;
 }
 
-document.getElementById('sortByName').onclick = updateInc("name")
-document.getElementById('sortByRegion').onclick = updateInc("region")
-document.getElementById('sortByFaction').onclick = updateInc("faction")
-document.getElementById('sortByPresence').onclick = updateInc("presence")
-document.getElementById('sortByPopulation').onclick = updateInc("population")
 
 request.onload = function() {
     updateInc("name")
-
-    
+    document.getElementById('sortByName').onclick = updateInc("name")
+    document.getElementById('sortByRegion').onclick = updateInc("region")
+    document.getElementById('sortByFaction').onclick = updateInc("faction")
+    document.getElementById('sortByPresence').onclick = updateInc("presence")
+    document.getElementById('sortByPopulation').onclick = updateInc("population")
 }
 
 // Action Functions
