@@ -1,10 +1,10 @@
 let requestURL = 'https://sentry.antixenoinitiative.com/systems';
 let request = new XMLHttpRequest();
-let sortBy;
 
 request.open('GET', requestURL);
 request.responseType = 'json';
 request.send();
+
 
 function getPresence(presence) {
     switch (presence) {
@@ -66,6 +66,11 @@ function getRegion(coords) {
     }
 }
 
+// Toggle the opacity of an ID
+function toggleOpacity(id, toggle) {
+    document.getElementById(id).style.opacity = toggle;
+}
+
 function dynamicSort(property) {
     var sortOrder = 1;
     if(property[0] === "-") {
@@ -82,9 +87,6 @@ function dynamicSort(property) {
 }
 
 function updateInc(sorting) {
-    if (sorting != null) {
-        sortBy = sorting
-    }
 
     let content = request.response;
     let inchtml = ``
@@ -118,6 +120,16 @@ function updateInc(sorting) {
                 system.faction = "Unknown"
             }
 
+            // Timestamp
+            if (system.last_updated == null) {
+                system.timestamp = "No Data"
+            } else {
+                system.timestamp = new Date(system.last_updated * 1000).toISOString().slice(0, 16).replace('T', ' ')
+                let year = parseInt(system.timestamp.substring(0,4))
+                year += 1286
+                system.timestamp = year + system.timestamp.slice(4)
+            }
+
             system.presenceBlocks = ["status-block-0", "status-block-0", "status-block-0", "status-block-0"]
             if (system.presence >= 1) {system.presenceBlocks[0] = "status-block-1"}
             if (system.presence >= 2) {system.presenceBlocks[1] = "status-block-2"}
@@ -134,7 +146,7 @@ function updateInc(sorting) {
 
     for (let system of inclist) {
         inchtml += `
-        <div class="subsection">
+        <div class="subsection" onmouseover="toggleOpacity('HoverItem-${system.system_id}',1)" onmouseout="toggleOpacity('HoverItem-${system.system_id}',0)">
             <div class="subsection-start">
                 <div class="subsection-row">
                     <h1>${system.name}</h1>
@@ -144,11 +156,12 @@ function updateInc(sorting) {
                     <p class="mobile-hide"><span class="axiorange">Faction:</span> ${system.faction}</p>
                     <p class="mobile-hide"><span class="axiorange">Population:</span> ${numberWithCommas(system.population)}</p>
                 </div>
-                
-                
             </div>
             <div class="subsection-end">
-                <div id="incstatus-title" class="status-${system.presenceName}">${capitalizeFirstLetter(system.presenceName)}</div>
+                <div class="subsection-row-end">
+                    <div id="HoverItem-${system.system_id}" class="lastUpdated mobile-hide">Last Updated: ${system.timestamp}</div>
+                    <div id="incstatus-title" class="status-${system.presenceName} noselect">${capitalizeFirstLetter(system.presenceName)}</div>
+                </div>
                 <div id="incstatus-progress">
                     <div id="incstatus-progress-block" class="${system.presenceBlocks[0]} blockheight-1"></div>
                     <div id="incstatus-progress-block" class="${system.presenceBlocks[1]} blockheight-2"></div>
@@ -161,10 +174,8 @@ function updateInc(sorting) {
     document.getElementById("incursions").innerHTML = inchtml;
 }
 
-request.onload = function() {
+request.onload = async function() {
     updateInc("name")
-
-    
 }
 
 // Action Functions

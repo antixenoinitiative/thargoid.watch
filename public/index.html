@@ -15,6 +15,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,100&family=Share+Tech+Mono&display=swap');
     </style>
@@ -24,19 +25,20 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
     </style>
+    
     <script src="script.js"></script>
 </head>
 <body>
     <div id="main">
         <div class="boxstyle header">
             <img class="header-item" src="https://www.thargoid.watch/AXI_Insignia_Hypen_512.png" alt="">
-            <h1 class="header-item" href="./home.html">Thargoid.watch</h1>
-            <p class="header-item header-subtitle">by the Anti-Xeno Initiative</p>
+            <h1 class="header-item noselect" href="./home.html">Thargoid.watch</h1>
+            <p class="header-item header-subtitle noselect">by the Anti-Xeno Initiative</p>
             <div class="header-item header-links">
-                <a class="header-item button" href="https://www.antixenoinitiative.com">Home</a>
-                <a class="header-item button" href="https://wiki.antixenoinitiative.com">Wiki</a>
-                <a class="header-item button" href="https://discord.gg/bqmDxdm">Discord</a>
-                <a class="header-item button" href="https://sentry.antixenoinitiative.com/">API</a>
+                <a class="header-item button noselect" href="https://www.antixenoinitiative.com">Home</a>
+                <a class="header-item button noselect" href="https://wiki.antixenoinitiative.com">Wiki</a>
+                <a class="header-item button noselect" href="https://discord.gg/bqmDxdm">Discord</a>
+                <a class="header-item button noselect" href="https://sentry.antixenoinitiative.com/">API</a>
             </div>
         </div>
 
@@ -52,8 +54,6 @@
                 <button onclick="updateInc('faction')">Faction</button>
                 <button onclick="updateInc('presence')">Presence</button>
                 <button onclick="updateInc('population')">Population</button>
-                <button class="button-last" onclick="updateInc()">Refresh</button>
-
             </div>
             <div id="incursions">
             </div>
