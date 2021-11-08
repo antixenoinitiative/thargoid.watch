@@ -6,6 +6,8 @@
     --main-text-color: rgb(224, 224, 224);
     --secondary-text-color: rgb(94, 94, 94);
     --trinary-text-color: rgb(165, 165, 165);
+    --accent-color: #ff7100;
+    --footer-color: #444444;
     --presence-cleared: #57fc41;
     --presence-marginal: #c4fc41;
     --presence-moderate: #fcef41;
@@ -74,7 +76,7 @@ body {
 }
 
 .header h1:hover {
-    color: #ff7100;
+    color: var(--accent-color);
     cursor: default;
 }
 
@@ -173,18 +175,18 @@ body {
     width: 100%;
     text-align: center;
     background-color: var(--main-bg-color);
-    border: 1px solid #ff7100;
+    border: 1px solid var(--accent-color);
     border-radius: 0.5rem;
     padding: 0.6rem;
     font-size: 1.1rem;
-    color: #ff7100;
+    color: var(--accent-color);
     transition: color 400ms, border-color 400ms;
     text-decoration: none;
 }
 
 .subsection-link:hover {
     color: var(--main-text-color);
-    border-color: #ffffff;
+    border-color: var(--main-border-hover);
 }
 
 .button {
@@ -199,7 +201,7 @@ body {
 }
 
 .button:hover {
-    color: #ff7100;
+    color: var(--accent-color);
     border-color: var(--main-border-hover);
 }
 
@@ -226,7 +228,7 @@ button {
 }
 
 button:hover {
-    color: #ff7100;
+    color: var(--accent-color);
     border-color: var(--main-border-hover);
 }
 
@@ -235,7 +237,7 @@ button:active {
 }
 
 .axiorange {
-    color: #ff7100;
+    color: var(--accent-color);
 }
 
 .flex-wrap {
@@ -357,5 +359,5 @@ button:active {
 #footer {
     font-size: 0.8rem;
     text-align: right;
-    color: #444444;
+    color: var(--footer-color);
 }
