@@ -138,22 +138,27 @@ request.onload = function() {
             
             inchtml += `
             <div class="subsection">
-                <div class="subsection-heading-box">
-                    <div class="subsection-details-box">
-                        <h1>${system.name} <span class="regionname">${system.region}</span></h1>
-                        <p><span class="axiorange">Faction:</span> ${system.faction} - <span class="axiorange">Population:</span> ${system.population}</p>
+                <div class="subsection-start">
+                    <div class="subsection-row">
+                        <h1>${system.name}</h1>
+                        <h2>${system.region}</h2>
                     </div>
-                    <div class="subsection-status-box">
-                        <div id="incstatus" class="status-${presence}">${capitalizeFirstLetter(presence)}</div>
-                        <div id="incstatus-progress-box">
-                            <div id="incstatus-progress-block" class="${presenceBlocks[0]} blockheight-1"></div>
-                            <div id="incstatus-progress-block" class="${presenceBlocks[1]} blockheight-2"></div>
-                            <div id="incstatus-progress-block" class="${presenceBlocks[2]} blockheight-3"></div>
-                            <div id="incstatus-progress-block" class="${presenceBlocks[3]} blockheight-4"></div>
-                        </div>
+                    <div class="subsection-row flex-wrap">
+                        <p class="mobile-hide"><span class="axiorange">Faction:</span> ${system.faction}</p>
+                        <p class="mobile-hide"><span class="axiorange">Population:</span> ${system.population}</p>
                     </div>
+                    
+                    
                 </div>
-                
+                <div class="subsection-end">
+                    <div id="incstatus-title" class="status-${presence}">${capitalizeFirstLetter(presence)}</div>
+                    <div id="incstatus-progress">
+                        <div id="incstatus-progress-block" class="${presenceBlocks[0]} blockheight-1"></div>
+                        <div id="incstatus-progress-block" class="${presenceBlocks[1]} blockheight-2"></div>
+                        <div id="incstatus-progress-block" class="${presenceBlocks[2]} blockheight-3"></div>
+                        <div id="incstatus-progress-block" class="${presenceBlocks[3]} blockheight-4"></div>
+                    </div>
+                </div>   
             </div>`
         }
     }
