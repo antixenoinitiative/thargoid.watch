@@ -1,5 +1,7 @@
 let requestURL = 'https://sentry.antixenoinitiative.com/systems';
 let request = new XMLHttpRequest();
+let sortToggle = 1
+let lastSort;
 
 request.open('GET', requestURL);
 request.responseType = 'json';
@@ -87,7 +89,6 @@ function dynamicSort(property) {
 }
 
 function updateInc(sorting) {
-
     let content = request.response;
     let inchtml = ``
 
@@ -141,9 +142,21 @@ function updateInc(sorting) {
         }
     }
 
+    // Sorting
+    if (lastSort != sorting) {
+        sortToggle = 1
+    }
+    lastSort = sorting
     inclist.sort(dynamicSort(sorting))
-    if (sorting === "population") {inclist.reverse()}
 
+    if (sortToggle%2 == 0) {
+        inclist.reverse()
+    }
+    if (sorting == "population") {
+        inclist.reverse()
+    }
+
+    // Printing
     for (let system of inclist) {
         inchtml += `
         <div class="subsection" onmouseover="toggleOpacity('HoverItem-${system.system_id}',1)" onmouseout="toggleOpacity('HoverItem-${system.system_id}',0)">
@@ -172,6 +185,7 @@ function updateInc(sorting) {
         </div>`
     }
     document.getElementById("incursions").innerHTML = inchtml;
+    sortToggle += 1
 }
 
 request.onload = async function() {
