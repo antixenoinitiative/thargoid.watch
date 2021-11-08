@@ -161,6 +161,7 @@ function updateInc(sorting) {
 }
 
 request.onload = function() {
+    console.log(request.response)
     updateInc("name")
 
     
