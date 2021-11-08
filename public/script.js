@@ -1,5 +1,6 @@
 let requestURL = 'https://sentry.antixenoinitiative.com/systems';
 let request = new XMLHttpRequest();
+let sortBy;
 
 request.open('GET', requestURL);
 request.responseType = 'json';
@@ -81,8 +82,11 @@ function dynamicSort(property) {
 }
 
 function updateInc(sorting) {
-    let content = request.response;
+    if (sorting != null) {
+        sortBy = sorting
+    }
 
+    let content = request.response;
     let inchtml = ``
 
     if (content.message.rows.length === 0) {

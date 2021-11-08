@@ -217,6 +217,10 @@ body {
     color: var(--trinary-text-color);
 }
 
+.button-last {
+    margin-left: auto;
+}
+
 button {
     color: var(--trinary-text-color);
     background-color: var(--main-bg-color);
