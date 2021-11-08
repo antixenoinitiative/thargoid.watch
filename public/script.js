@@ -112,8 +112,6 @@ function updateInc(sorting) {
             // Faction
             if (system.faction == null) {
                 system.faction = "Unknown"
-            } else {
-                system.faction = JSON.parse(system.faction).Name
             }
 
             system.presenceBlocks = ["status-block-0", "status-block-0", "status-block-0", "status-block-0"]
@@ -129,7 +127,6 @@ function updateInc(sorting) {
 
     inclist.sort(dynamicSort(sorting))
     if (sorting === "population") {inclist.reverse()}
-    console.log(inclist)
 
     for (let system of inclist) {
         inchtml += `
@@ -161,7 +158,6 @@ function updateInc(sorting) {
 }
 
 request.onload = function() {
-    console.log(request.response)
     updateInc("name")
 
     
