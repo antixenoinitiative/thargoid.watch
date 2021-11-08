@@ -1,15 +1,9 @@
 let requestURL = 'https://sentry.antixenoinitiative.com/systems';
-
 let request = new XMLHttpRequest();
 
 request.open('GET', requestURL);
 request.responseType = 'json';
 request.send();
-
-function play() {
-    var audio = document.getElementById("audio");
-    audio.play();
-}
 
 function getPresence(presence) {
     switch (presence) {
@@ -86,10 +80,9 @@ function dynamicSort(property) {
     }
 }
 
-request.onload = function() {
-    const content = request.response;
-    let presence;
-    let region;
+function updateInc(sorting) {
+    let content = request.response;
+
     let inchtml = ``
 
     if (content.message.rows.length === 0) {
@@ -97,30 +90,23 @@ request.onload = function() {
         return;
     }
 
+    let inclist = []
     for (let system of content.message.rows) {
         if (system.status === true) {
+            system.presenceName = getPresence(system.presence)
+
             // Region
             if (system.coords == null) {
-                region = "Pending EDMC Data"
+                system.region = "Pending EDMC Data"
             } else {
-                region = `${getRegion(system.coords)}`
+                system.region = `${getRegion(system.coords)}`
             }
-            system.region = region;
-        }
-    }
-
-    content.message.rows.sort(dynamicSort("name"))
-
-    for (let system of content.message.rows) {
-        if (system.status === true) {
-            console.log(system)
-            presence = getPresence(system.presence)
 
             // Population
             if (system.population == null) {
                 system.population = "Unknown";
             } else {
-                system.population = numberWithCommas(system.population)
+                system.population = parseInt(system.population)
             }
 
             // Faction
@@ -130,37 +116,59 @@ request.onload = function() {
                 system.faction = JSON.parse(system.faction).Name
             }
 
-            let presenceBlocks = ["status-block-0", "status-block-0", "status-block-0", "status-block-0"]
-            if (system.presence >= 1) {presenceBlocks[0] = "status-block-1"}
-            if (system.presence >= 2) {presenceBlocks[1] = "status-block-2"}
-            if (system.presence >= 3) {presenceBlocks[2] = "status-block-3"}
-            if (system.presence >= 4) {presenceBlocks[3] = "status-block-4"}
+            system.presenceBlocks = ["status-block-0", "status-block-0", "status-block-0", "status-block-0"]
+            if (system.presence >= 1) {system.presenceBlocks[0] = "status-block-1"}
+            if (system.presence >= 2) {system.presenceBlocks[1] = "status-block-2"}
+            if (system.presence >= 3) {system.presenceBlocks[2] = "status-block-3"}
+            if (system.presence >= 4) {system.presenceBlocks[3] = "status-block-4"}
+
+            inclist.push(system)
             
-            inchtml += `
-            <div class="subsection">
-                <div class="subsection-start">
-                    <div class="subsection-row">
-                        <h1>${system.name}</h1>
-                        <h2>${system.region}</h2>
-                    </div>
-                    <div class="subsection-row flex-wrap">
-                        <p class="mobile-hide"><span class="axiorange">Faction:</span> ${system.faction}</p>
-                        <p class="mobile-hide"><span class="axiorange">Population:</span> ${system.population}</p>
-                    </div>
-                    
-                    
-                </div>
-                <div class="subsection-end">
-                    <div id="incstatus-title" class="status-${presence}">${capitalizeFirstLetter(presence)}</div>
-                    <div id="incstatus-progress">
-                        <div id="incstatus-progress-block" class="${presenceBlocks[0]} blockheight-1"></div>
-                        <div id="incstatus-progress-block" class="${presenceBlocks[1]} blockheight-2"></div>
-                        <div id="incstatus-progress-block" class="${presenceBlocks[2]} blockheight-3"></div>
-                        <div id="incstatus-progress-block" class="${presenceBlocks[3]} blockheight-4"></div>
-                    </div>
-                </div>   
-            </div>`
         }
     }
+
+    inclist.sort(dynamicSort(sorting))
+    if (sorting === "population") {inclist.reverse()}
+    console.log(inclist)
+
+    for (let system of inclist) {
+        inchtml += `
+        <div class="subsection">
+            <div class="subsection-start">
+                <div class="subsection-row">
+                    <h1>${system.name}</h1>
+                    <h2>${system.region}</h2>
+                </div>
+                <div class="subsection-row flex-wrap">
+                    <p class="mobile-hide"><span class="axiorange">Faction:</span> ${system.faction}</p>
+                    <p class="mobile-hide"><span class="axiorange">Population:</span> ${numberWithCommas(system.population)}</p>
+                </div>
+                
+                
+            </div>
+            <div class="subsection-end">
+                <div id="incstatus-title" class="status-${system.presenceName}">${capitalizeFirstLetter(system.presenceName)}</div>
+                <div id="incstatus-progress">
+                    <div id="incstatus-progress-block" class="${system.presenceBlocks[0]} blockheight-1"></div>
+                    <div id="incstatus-progress-block" class="${system.presenceBlocks[1]} blockheight-2"></div>
+                    <div id="incstatus-progress-block" class="${system.presenceBlocks[2]} blockheight-3"></div>
+                    <div id="incstatus-progress-block" class="${system.presenceBlocks[3]} blockheight-4"></div>
+                </div>
+            </div>   
+        </div>`
+    }
     document.getElementById("incursions").innerHTML = inchtml;
+}
+
+request.onload = function() {
+    updateInc("name")
+
+    
+}
+
+// Action Functions
+
+function play() {
+    var audio = document.getElementById("audio");
+    audio.play();
 }

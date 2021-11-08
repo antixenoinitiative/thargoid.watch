@@ -45,6 +45,15 @@
                 <h1>Incursions</h1>
                 <p>Systems currently under attack by Thargoid Incursion. Data is from the Anti-Xeno Initiative Sentry System and may not update immediately.</p>
             </article>
+            <div class="button-row">
+                <p class="button-row-label">Sort:</p>
+                <button onclick="updateInc('name')">Name</button>
+                <button onclick="updateInc('region')">Region</button>
+                <button onclick="updateInc('faction')">Faction</button>
+                <button onclick="updateInc('presence')">Presence</button>
+                <button onclick="updateInc('population')">Population</button>
+
+            </div>
             <div id="incursions">
             </div>
             <div class="subsection-link-box">
