@@ -1,6 +1,6 @@
 :root {
     --main-bg-color: rgb(19, 19, 19);
-    --secondary-bg-color: rgb(27, 27, 27);
+    --secondary-bg-color: rgb(31, 31, 31);
     --main-border-color: rgb(56, 56, 56);
     --main-border-hover: rgb(78, 78, 78);
     --main-text-color: rgb(224, 224, 224);
@@ -197,7 +197,7 @@ body {
     font-size: 1.2rem;
     text-decoration: none;
     transition: color 250ms, border 250ms, background-color 250ms;
-    padding: 0.4rem;
+    padding: 0.5rem 0.7rem 0.5rem 0.7rem;
 }
 
 .button:hover {
@@ -209,7 +209,7 @@ body {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .button-row-label {
@@ -224,7 +224,7 @@ button {
     border-radius: 0.5rem;
     font-size: 1rem;
     transition: color 250ms, border 250ms;
-    padding: 0.3rem;
+    padding: 0.4rem 0.6rem 0.4rem 0.6rem;
 }
 
 button:hover {
