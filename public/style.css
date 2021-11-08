@@ -206,6 +206,7 @@ body {
 .button-row {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
@@ -261,6 +262,10 @@ button:active {
 
     .mobile-hide {
         display: none;
+    }
+
+    .main {
+        width: 100%;
     }
   }
 
