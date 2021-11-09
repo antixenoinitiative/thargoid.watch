@@ -7,12 +7,14 @@
     --secondary-text-color: rgb(94, 94, 94);
     --trinary-text-color: rgb(165, 165, 165);
     --accent-color: #ff7100;
+    --accent-color-active: #ff9d4d;
     --footer-color: #444444;
     --presence-cleared: #57fc41;
     --presence-marginal: #c4fc41;
     --presence-moderate: #fcef41;
     --presence-significant: #fc8c41;
     --presence-massive: #fc4141;
+    --toast-height: 2rem;
 }
 
 body {
@@ -273,6 +275,20 @@ button:active {
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
+.clipboard {
+    cursor: copy;
+    transition: color 250ms;
+}
+
+.clipboard:hover {
+    color: var(--accent-color);
+}
+
+.clipboard:active {
+    color: var(--accent-color-active);
+}
+
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .content {
@@ -389,4 +405,50 @@ button:active {
     font-size: 0.8rem;
     text-align: right;
     color: var(--footer-color);
+}
+
+#toast {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    color: var(--accent-color);
+    background-color: var(--main-bg-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 0.5rem;
+    text-align: center; /* Centered text */
+    padding: 0.8rem; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: var(--toast-height); /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#toast.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+  
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: var(--toast-height); opacity: 1;}
+}
+  
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: var(--toast-height); opacity: 1;}
+}
+  
+@-webkit-keyframes fadeout {
+    from {bottom: var(--toast-height); opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+  
+@keyframes fadeout {
+    from {bottom: var(--toast-height); opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }

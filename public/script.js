@@ -73,6 +73,23 @@ function toggleOpacity(id, toggle) {
     document.getElementById(id).style.opacity = toggle;
 }
 
+function copyToClipboard(content) {
+    navigator.clipboard.writeText(content);
+    toast(content)
+}
+
+function toast(content) {
+    // Get the snackbar DIV
+    var x = document.getElementById("toast");
+    document.getElementById("toast").innerHTML = `Copied ${content} to clipboard`
+  
+    // Add the "show" class to DIV
+    x.className = "show";
+  
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
 function dynamicSort(property) {
     var sortOrder = 1;
     if(property[0] === "-") {
@@ -162,7 +179,7 @@ function updateInc(sorting) {
         <div class="subsection" onmouseover="toggleOpacity('HoverItem-${system.system_id}',1)" onmouseout="toggleOpacity('HoverItem-${system.system_id}',0)">
             <div class="subsection-start">
                 <div class="subsection-row">
-                    <h1>${system.name}</h1>
+                    <h1 class="clipboard" onclick="copyToClipboard('${system.name}')">${system.name}</h1>
                     <h2>${system.region}</h2>
                 </div>
                 <div class="subsection-row flex-wrap">
