@@ -176,19 +176,19 @@ function updateInc(sorting) {
     // Printing
     for (let system of inclist) {
         inchtml += `
-        <div class="subsection" onmouseover="toggleOpacity('HoverItem-${system.system_id}',1)" onmouseout="toggleOpacity('HoverItem-${system.system_id}',0)">
+        <div class="subsection gap-large round-border" onmouseover="toggleOpacity('HoverItem-${system.system_id}',1)" onmouseout="toggleOpacity('HoverItem-${system.system_id}',0)">
             <div class="subsection-start">
-                <div class="subsection-row">
-                    <h1 class="clipboard" onclick="copyToClipboard('${system.name}')">${system.name}</h1>
+                <div class="subsection-row gap-medium">
+                    <h1 class="clipboard text-large nomargin" onclick="copyToClipboard('${system.name}')">${system.name}</h1>
                     <h2>${system.region}</h2>
                 </div>
-                <div class="subsection-row flex-wrap">
+                <div class="subsection-row gap-medium flex-wrap">
                     <p class="mobile-hide"><span class="axiorange">Faction:</span> ${system.faction}</p>
                     <p class="mobile-hide"><span class="axiorange">Population:</span> ${numberWithCommas(system.population)}</p>
                 </div>
             </div>
-            <div class="subsection-end">
-                <div class="subsection-row-end">
+            <div class="end">
+                <div class="subsection-row-end gap-medium">
                     <div id="HoverItem-${system.system_id}" class="lastUpdated mobile-hide">Last Updated: ${system.timestamp}</div>
                     <div id="incstatus-title" class="status-${system.presenceName} noselect">${capitalizeFirstLetter(system.presenceName)}</div>
                 </div>

@@ -27,6 +27,7 @@ body {
 
 #main {
     margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     width: 120ch;
 }
 
@@ -38,24 +39,89 @@ h1, h2 {
 
 .boxstyle {
     background-color: var(--secondary-bg-color);
-    border: 1px solid var(--main-border-color);
-    border-radius: 0.5rem;
-    transition: border 400ms;
     padding: 1.3rem;
-    margin: 0;
     margin-bottom: 1rem;
 }
 
-.boxstyle:hover {
+.text-small {
+    font-size: 0.8rem;
+}
+
+.text-medium {
+    font-size: 1rem;
+}
+
+.text-large {
+    font-size: 1.3rem;
+}
+
+.text-xlarge {
+    font-size: 1.5rem;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    align-items: center;
+}
+
+.flex-space {
+    justify-content: space-between;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.gap-large {
+    gap: 1rem;
+}
+
+.gap-medium {
+    gap: 0.5rem;
+}
+
+.gap-small {
+    gap: 0.3rem;
+}
+
+.color-primary {
+    color: var(--main-text-color);
+}
+
+.color-secondary {
+    color: var(--secondary-text-color);
+}
+
+.color-trinary {
+    color: var(--trinary-text-color);
+}
+
+.nomargin {
+    margin: 0;
+}
+
+.round-border {
+    border: 1px solid var(--main-border-color);
+    border-radius: 0.5rem;
+    transition: border 400ms;
+}
+
+.round-border:hover {
     border: 1px solid var(--main-border-hover);
 }
 
 .header {
     padding: 1rem 1.3rem 1rem 1.3rem;
     margin-bottom: 1rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     align-content: flex-start;
     align-items: center;
     gap: 0.5rem;
@@ -63,7 +129,6 @@ h1, h2 {
 
 .header-links {
     margin-left: auto;
-    display: flex;
     justify-content: flex-end;
     gap: 0.5rem;
 }
@@ -73,8 +138,6 @@ h1, h2 {
 }
 
 .header h1 {
-    margin-top: 0rem;
-    margin-bottom: 0rem;
     font-weight: normal;
     font-size: 2.5rem;
     transition: color 300ms;
@@ -93,9 +156,6 @@ h1, h2 {
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
     width: auto;
     height: auto;
 }
@@ -118,25 +178,17 @@ h1, h2 {
 
 .subsection {
     background-color: var(--main-bg-color);
-    border: 1px solid var(--main-border-color);
-    border-radius: 0.5rem;
     padding: 1rem;
-    transition: border 400ms;
     overflow: hidden;
     flex-grow: 1;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 1rem;
     flex-wrap: nowrap;
     flex-grow: 1;
 }
 
-.subsection:hover {
-    border: 1px solid var(--main-border-hover);
-}
-
-.subsection-end {
+.end {
     margin-left: auto;
 }
 
@@ -144,24 +196,17 @@ h1, h2 {
     display: flex;
     justify-content: flex-start;
     align-items: baseline;
-    gap: 0.5rem;
 }
 
 .subsection-row-end {
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
-    gap: 0.5rem;
 }
 
 .subsection p {
     margin-top: 0.4rem;
     margin-bottom: 0rem;
-}
-
-.subsection h1 {
-    margin: inherit;
-    font-size: 1.3rem;
 }
 
 .subsection h2 {
@@ -185,7 +230,6 @@ h1, h2 {
     border: 1px solid var(--accent-color);
     border-radius: 0.5rem;
     padding: 0.6rem;
-    font-size: 1.1rem;
     color: var(--accent-color);
     transition: color 400ms, border-color 400ms;
     text-decoration: none;
@@ -199,29 +243,14 @@ h1, h2 {
 .button {
     color: var(--trinary-text-color);
     background-color: var(--main-bg-color);
-    border: 1px solid var(--main-border-color);
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
     text-decoration: none;
-    transition: color 250ms, border 250ms, background-color 250ms;
+    transition: color 250ms, background-color 250ms;
     padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+    white-space: nowrap;
 }
 
 .button:hover {
     color: var(--accent-color);
-    border-color: var(--main-border-hover);
-}
-
-.button-row {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-}
-
-.button-row-label {
-    margin: 0;
-    color: var(--trinary-text-color);
 }
 
 .button-last {
@@ -248,12 +277,15 @@ button:active {
     background-color: var(--main-border-color);
 }
 
-.axiorange {
-    color: var(--accent-color);
+.donate {
+    background-color: var(--secondary-bg-color);
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    text-decoration: none;
+    color: var(--trinary-text-color);
 }
 
-.flex-wrap {
-    flex-wrap: wrap;
+.axiorange {
+    color: var(--accent-color);
 }
 
 .lastUpdated {
@@ -289,6 +321,11 @@ button:active {
     color: var(--accent-color-active);
 }
 
+.footertext {
+    font-size: 0.8rem;
+    color: var(--footer-color);
+}
+
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
@@ -318,12 +355,6 @@ button:active {
   }
 
 /* Specific ID's and content */
-
-#incursions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-}
 
 #incstatus-title {
     font-size: 1.2rem;
@@ -400,12 +431,6 @@ button:active {
 
 .status-massive {
     color: var(--presence-massive);
-}
-
-#footer {
-    font-size: 0.8rem;
-    text-align: right;
-    color: var(--footer-color);
 }
 
 #toast {
