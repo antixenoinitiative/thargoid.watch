@@ -16,8 +16,9 @@ const zmq = require("zeromq");
 const zlib = require("zlib");
 const cors = require('cors');
 
-const PORT = process.env.PORT;
-const MODE = process.env.MODE;
+const PORT = process.env.PORT; // Port to open website on (https://localhost:<PORT>)
+const WEBAPPMODE = process.env.WEBAPPMODE; // Set to DEV to disable HTTPS forwarding
+const LISTENERMODE = process.env.LISTENERMODE; // Set to DEV to disable EDDN Listener
 
 function jsonResponse(data) {
     return (
@@ -35,7 +36,7 @@ function jsonResponse(data) {
 
 // Web Hosting
 function requireHTTPS(req, res, next) {
-    if (req.headers["x-forwarded-proto"] == "http" && MODE != "DEV") {
+    if (req.headers["x-forwarded-proto"] == "http" && WEBAPPMODE != "DEV") {
         return res.redirect(301, "https://" + req.hostname+req.url);
     }
     next();
@@ -65,7 +66,7 @@ app.get('/api', function (req,res) {
     res.sendFile(__dirname + '/public/api.html');
 });
 
-app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
+app.listen(PORT, () => console.log(`[✔️] Web Server listening on port: ${PORT}`));
 
 // EDDN Listener
 const SOURCE_URL = 'tcp://eddn.edcd.io:9500'; //EDDN Data Stream URL
@@ -102,7 +103,7 @@ async function run() {
   
     sock.connect(SOURCE_URL);
     sock.subscribe('');
-    console.log("[✔] EDDN Listener Connected: ", SOURCE_URL);
+    console.log("[✔️] EDDN Listener Connected: ", SOURCE_URL);
   
     for await (const [src] of sock) {
         msg = JSON.parse(zlib.inflateSync(src));
@@ -110,4 +111,5 @@ async function run() {
     }
 }
 
-run();
+// Disable Listener in Dev 
+if (LISTENERMODE != "DEV") { run(); } else { console.warn("[❌] EDDN Listener disabled due to DEV mode") }
