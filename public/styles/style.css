@@ -77,8 +77,16 @@ h1, h2 {
     justify-content: space-between;
 }
 
+.flex-justify-center {
+    justify-content: center;
+}
+
 .flex-wrap {
     flex-wrap: wrap;
+}
+
+.grow {
+    flex-grow: 1;
 }
 
 .gap-large {
@@ -103,10 +111,6 @@ h1, h2 {
 
 .color-trinary {
     color: var(--trinary-text-color);
-}
-
-.nomargin {
-    margin: 0;
 }
 
 .round-border {
@@ -184,7 +188,6 @@ h1, h2 {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    flex-wrap: nowrap;
     flex-grow: 1;
 }
 
@@ -247,6 +250,7 @@ h1, h2 {
     transition: color 250ms, background-color 250ms;
     padding: 0.5rem 0.7rem 0.5rem 0.7rem;
     white-space: nowrap;
+    text-align: center;
 }
 
 .button:hover {
@@ -308,6 +312,14 @@ button:active {
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
+.nomargin {
+    margin: 0;
+}
+
+.cursorpointer {
+    cursor: pointer;
+}
+
 .clipboard {
     cursor: copy;
     transition: color 250ms;
@@ -352,9 +364,40 @@ button:active {
     .main {
         width: 100%;
     }
+
+    button {
+        flex-grow: 1;
+    }
+
+    .header-links {
+        margin: 0;
+        flex-grow: 1;
+    }
+
+    .button {
+        flex-grow: 1;
+    }
+
+    .button-last {
+        margin-left: 0;
+    }
+
+    .header-subtitle {
+        display: none;
+    }
   }
 
 /* Specific ID's and content */
+
+#bmac-img {
+    height: 2.3rem;
+    filter: grayscale(100%) hue-rotate(-40deg);
+    transition: filter 400ms;
+}
+
+#bmac-img:hover {
+    filter: grayscale(0%) hue-rotate(-40deg);
+}
 
 #incstatus-title {
     font-size: 1.2rem;

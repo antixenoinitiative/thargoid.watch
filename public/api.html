@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/images/site.webmanifest">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,100&family=Share+Tech+Mono&display=swap');
@@ -29,11 +29,11 @@
 <body>
     <div id="main">
         <div class="boxstyle round-border header flex-row flex-wrap">
-            <img class="header-item" src="https://www.thargoid.watch/images/AXI_Insignia_Hypen_512.png" alt="">
+            <img class="header-item" src="/images/AXI_Insignia_Hypen_512.png" alt="">
             <h1 class="header-item noselect nomargin" href="./home.html">Thargoid.watch API</h1>
             <p class="header-item header-subtitle noselect">by the Anti-Xeno Initiative</p>
             <div class="header-item header-links flex-row">
-                <a class="header-item button text-medium round-border noselect" href="https://www.thargoid.watch/">Return</a>
+                <a class="header-item button text-medium round-border noselect" href="/">Back</a>
             </div>
         </div>
 
@@ -51,13 +51,13 @@
                 <a class="text-large nomargin color-primary" href="https://www.thargoid.watch/api/incursions">https://www.thargoid.watch/api/incursions</a>
             </div>
             <div class="subsection flex-wrap round-border">
-                <h1 class="text-large nomargin">Systems</h1>
+                <h1 class="text-large nomargin">Presence</h1>
                 <a class="text-large nomargin color-primary" href="https://www.thargoid.watch/api/presence">https://www.thargoid.watch/api/presence</a>
             </div>
         </div>
         <div class="flex-row flex-center flex-space gap-large">
             <p onclick="play()" class="nomargin footertext">Site content copyright © 2021, The Anti-Xeno Initiative. All Rights Reserved. Elite Dangerous and all related marks are trademarks of Frontier Developments Inc.</p>
-            <a class="donate noselect round-border text-small" href="https://www.buymeacoffee.com/mgram">Buy me a coffee ☕</a>
+            <a href="https://www.buymeacoffee.com/mgram"><img id="bmac-img" src="/images/bmc-button.svg" alt=""></a>
         </div>
     </div>
     <audio id="audio" src="https://www.thargoid.watch/quack.mp3"></audio>

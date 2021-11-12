@@ -2,6 +2,8 @@ let requestURL = 'https://www.thargoid.watch/api/systems';
 let request = new XMLHttpRequest();
 let sortToggle = 1
 let lastSort;
+let lastSelection;
+let showAll;
 
 request.open('GET', requestURL);
 request.responseType = 'json';
@@ -105,7 +107,16 @@ function dynamicSort(property) {
     }
 }
 
-function updateInc(sorting) {
+function updateInc(sorting, all) {
+    if (sorting === 0) {
+        sorting = lastSelection
+    }
+    if (all === true) {
+        showAll = true
+        document.getElementById("btn-showall").style.display = "none"
+    }
+
+    lastSelection = sorting
     let content = request.response;
     let inchtml = ``
 
@@ -116,7 +127,7 @@ function updateInc(sorting) {
 
     let inclist = []
     for (let system of content.message.rows) {
-        if (system.status === true) {
+        if (system.status === true || showAll === true) {
             system.presenceName = getPresence(system.presence)
 
             // Region
