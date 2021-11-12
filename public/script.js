@@ -1,4 +1,4 @@
-let requestURL = 'https://sentry.antixenoinitiative.com/systems';
+let requestURL = 'https://www.thargoid.watch/api/systems';
 let request = new XMLHttpRequest();
 let sortToggle = 1
 let lastSort;

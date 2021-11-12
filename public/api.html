@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Thargoid.watch</title>
+    <meta name="description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Thargoid Watch" />
+    <meta property="og:description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative" />
+    <meta property="og:image" content="https://www.thargoid.watch/AXI_Insignia_Hypen_512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,100&family=Share+Tech+Mono&display=swap');
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="boxstyle round-border header flex-row flex-wrap">
+            <img class="header-item" src="https://www.thargoid.watch/AXI_Insignia_Hypen_512.png" alt="">
+            <h1 class="header-item noselect nomargin" href="./home.html">Thargoid.watch API</h1>
+            <p class="header-item header-subtitle noselect">by the Anti-Xeno Initiative</p>
+            <div class="header-item header-links flex-row">
+                <a class="header-item button text-medium round-border noselect" href="https://www.thargoid.watch/">Return</a>
+            </div>
+        </div>
+
+        <div id="api" class="content flex-column gap-medium boxstyle round-border">
+            <article>
+                <h1>Thargoid.Watch API</h1>
+                <p>The Thargoid.watch API (Formerly Sentry.API) is the backend data gathering system for Thargoid.watch. <br> Powered by the EDDN, Thargoid.Watch API monitors reports from commanders directly from the EDDN and identifies any system currently under incursion. This data is then stored in a Database and presented with the following endpoints.</p>
+            </article>
+            <div class="subsection flex-wrap round-border">
+                <h1 class="text-large nomargin">Systems</h1>
+                <a class="text-large nomargin color-primary" href="https://www.thargoid.watch/api/systems">https://www.thargoid.watch/api/systems</a>
+            </div>
+            <div class="subsection flex-wrap round-border">
+                <h1 class="text-large nomargin">Incursions</h1>
+                <a class="text-large nomargin color-primary" href="https://www.thargoid.watch/api/incursions">https://www.thargoid.watch/api/incursions</a>
+            </div>
+            <div class="subsection flex-wrap round-border">
+                <h1 class="text-large nomargin">Systems</h1>
+                <a class="text-large nomargin color-primary" href="https://www.thargoid.watch/api/presence">https://www.thargoid.watch/api/presence</a>
+            </div>
+        </div>
+        <div class="flex-row flex-center flex-space gap-large">
+            <p onclick="play()" class="nomargin footertext">Site content copyright © 2021, The Anti-Xeno Initiative. All Rights Reserved. Elite Dangerous and all related marks are trademarks of Frontier Developments Inc.</p>
+            <a class="donate noselect round-border text-small" href="https://www.buymeacoffee.com/mgram">Buy me a coffee ☕</a>
+        </div>
+    </div>
+    <audio id="audio" src="https://www.thargoid.watch/quack.mp3"></audio>
+    <div id="toast"></div>
+</body>
+</html>
