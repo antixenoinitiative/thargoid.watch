@@ -5,10 +5,18 @@ let lastSort;
 let lastSelection;
 let showAll;
 
-request.open('GET', requestURL);
-request.responseType = 'json';
-request.send();
-
+function fetchJSON() {
+    try {
+        request.open('GET', requestURL);
+        request.responseType = 'json';
+        request.send();
+    } catch (err) {
+        toast("Unable to fetch data")
+    }
+    request.onload = async function() {
+        updateInc("name")
+    }
+}
 
 function getPresence(presence) {
     switch (presence) {
@@ -77,13 +85,13 @@ function toggleOpacity(id, toggle) {
 
 function copyToClipboard(content) {
     navigator.clipboard.writeText(content);
-    toast(content)
+    toast(`Copied ${content} to clipboard`)
 }
 
 function toast(content) {
     // Get the snackbar DIV
     var x = document.getElementById("toast");
-    document.getElementById("toast").innerHTML = `Copied ${content} to clipboard`
+    document.getElementById("toast").innerHTML = content
   
     // Add the "show" class to DIV
     x.className = "show";
@@ -108,6 +116,8 @@ function dynamicSort(property) {
 }
 
 function updateInc(sorting, all) {
+    let content;
+
     if (sorting === 0) {
         sorting = lastSelection
     }
@@ -117,16 +127,24 @@ function updateInc(sorting, all) {
     }
 
     lastSelection = sorting
-    let content = request.response;
+
+    try {
+        content = request.response.message;
+    } catch {
+        console.log(`Invalid data recieved or no data recieved at all`)
+        toast(`Unable to load data, please contact staff`)
+        return 
+    }
+    
     let inchtml = ``
 
-    if (content.message.rows.length === 0) {
+    if (content.rows.length === 0) {
         document.getElementById("incursions-section").innerHTML = `<article><h1>Incursions</h1><p>There are currently no Thargoid Incursions at this time, please check again later. 🙁</p></article>`;
         return;
     }
 
     let inclist = []
-    for (let system of content.message.rows) {
+    for (let system of content.rows) {
         if (system.status === true || showAll === true) {
             system.presenceName = getPresence(system.presence)
 
@@ -216,13 +234,15 @@ function updateInc(sorting, all) {
     sortToggle += 1
 }
 
-request.onload = async function() {
-    updateInc("name")
-}
-
 // Action Functions
 
 function play() {
     var audio = document.getElementById("audio");
     audio.play();
+}
+
+// Onload
+
+window.onload = async function() {
+    await fetchJSON()
 }
