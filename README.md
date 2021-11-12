@@ -4,6 +4,11 @@ Thargoid watch is a website design to display information from the Sentry.api Th
 
 This website's live version can be found at https://www.thargoid.watch/
 
+# Thargoid.Watch API
+
+The Thargoid.watch API (Formerly Sentry.API) is the backend data gathering system for Thargoid.watch.
+Powered by the EDDN, Thargoid.Watch API monitors reports from commanders directly from the EDDN and identifies any system currently under incursion. This data is then stored in a Database and presented with the following endpoints.
+
 # Development
 
 1. Clone the repo
