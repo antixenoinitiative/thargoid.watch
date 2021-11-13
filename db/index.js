@@ -60,7 +60,7 @@ module.exports = {
                 timestamp,
                 name,
             ])
-            console.log(`System Info Updated!`)
+            console.log(`Updated - Name: ${name}`)
         } catch (err) {
             console.log(err)
         }
