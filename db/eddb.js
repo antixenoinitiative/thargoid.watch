@@ -5,9 +5,10 @@ async function getJSON(url) {
     try {
         console.log(`Fetching JSON Data: ${url}`)
         let response = await got(url, { json: true });
+        console.log(response)
         return response.body;
     } catch (error) {
-        console.log(error.response.body);
+        console.log(error.response);
     }
 }
 
