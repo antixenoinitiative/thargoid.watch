@@ -53,6 +53,7 @@ module.exports = {
         let eddbID;
         try {
             let res = await eddb.getEDDBSysData(name)
+            console.log(res)
             eddbID = res.id 
         } catch (err) {
             console.log(err)
