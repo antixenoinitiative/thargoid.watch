@@ -50,23 +50,14 @@ module.exports = {
     updateSysInfo: async (name, msg) => {
         let timestamp = Math.floor(Date.now() / 1000)
         let system = msg.message
-        let eddbID;
-        try {
-            let res = await eddb.getEDDBSysData(name)
-            console.log(res)
-            eddbID = res.id 
-        } catch (err) {
-            console.log(err)
-        }
         
         try {
-            await pool.query(`UPDATE systems SET population = $1, coords = $2, faction = $3, last_updated =$4, eddb_id = $5 WHERE name = $6`,
+            await pool.query(`UPDATE systems SET population = $1, coords = $2, faction = $3, last_updated =$4 WHERE name = $5`,
             [
                 system.Population,
                 system.StarPos,
                 system.SystemFaction.Name,
                 timestamp,
-                eddbID,
                 name,
             ])
             console.log(`System Info Updated!`)
