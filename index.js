@@ -51,7 +51,7 @@ app.get('/', function (req,res) {
 });
 
 app.get('/api/incursions', async function(req, res) {
-    const { rows } = await db.query(`SELECT * FROM systems WHERE status = '1'`);
+    const { rows } = await db.query(`SELECT * FROM incursionv2`);
     res.json(jsonResponse(rows))
   },
 );

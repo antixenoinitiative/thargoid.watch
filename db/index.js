@@ -115,6 +115,7 @@ module.exports = {
     setStatus: async (name,status) => {
         try {
             await pool.query(`UPDATE systems SET status = $1 WHERE name = $2;`, [status, name]);
+            console.log(`Status Changed: ${name} changed to ${status}`)
         } catch (err) {
             console.error(err);
         }
