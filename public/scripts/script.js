@@ -117,6 +117,7 @@ function dynamicSort(property) {
 
 function updateInc(sorting, all) {
     let content;
+    let prioritycontent = ""
 
     if (sorting === 0) {
         sorting = lastSelection
@@ -184,8 +185,17 @@ function updateInc(sorting, all) {
             if (system.presence >= 4) {system.presenceBlocks[3] = "status-block-4"}
 
             inclist.push(system)
-            
         }
+    }
+
+    // Handle Priorities]
+    let priorities = [1,2,3]
+    for (let priority of priorities) {
+        system = inclist.find(element => element.priority === priority)
+        if (system) {
+            prioritycontent += getPriorityHTML(system)
+        }
+        //inclist = inclist.filter(element => element.name != system.name)
     }
 
     // Sorting
@@ -230,8 +240,51 @@ function updateInc(sorting, all) {
             </div>   
         </div>`
     }
+    document.getElementById("priorities").innerHTML = prioritycontent;
     document.getElementById("incursions").innerHTML = inchtml;
     sortToggle += 1
+}
+
+function getPriorityHTML(system) {
+    function getPriorityText(priority) {
+        switch (priority) {
+            case 1:
+                return "1st"
+            case 2:
+                return "2nd"
+            case 3:
+                return "3rd"
+        }
+    }
+    return `
+    <div class="priority-box subsection flex-column gap-medium round-border flex-grow">
+        <div class="flex-row flex-space width-100">
+            <div style="position: relative; width: 0; height: 0">
+                <div style="background-color: var(--priority-${system.priority});" class="priority-number-box noselect round-border flex-center flex-row flex-justify-center">
+                    <div class="priority-number">${getPriorityText(system.priority)} Priority</div>
+                </div>
+            </div>
+            <div class="priority-title-box flex-column">
+                <h1 class="clipboard text-large nomargin" onclick="copyToClipboard('${system.name}')">${system.name}</h1>
+                <h2>${system.region}</h2>
+            </div>
+            <div class="end">
+                <div class="subsection-row-end gap-medium">
+                    <div id="incstatus-title" class="status-${system.presenceName} noselect">${capitalizeFirstLetter(system.presenceName)}</div>
+                </div>
+                <div id="incstatus-progress">
+                    <div id="incstatus-progress-block" class="${system.presenceBlocks[0]} blockheight-1"></div>
+                    <div id="incstatus-progress-block" class="${system.presenceBlocks[1]} blockheight-2"></div>
+                    <div id="incstatus-progress-block" class="${system.presenceBlocks[2]} blockheight-3"></div>
+                    <div id="incstatus-progress-block" class="${system.presenceBlocks[3]} blockheight-4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-column">
+            <p class="mobile-hide"><span class="axiorange">Faction:</span> ${system.faction}</p>
+            <p class="mobile-hide"><span class="axiorange">Population:</span> ${numberWithCommas(system.population)}</p>
+        </div>
+    </div>`
 }
 
 // Action Functions
