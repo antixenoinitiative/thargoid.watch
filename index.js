@@ -57,7 +57,7 @@ app.get('/api/incursions', async function(req, res) {
 );
 
 app.get('/api/systems', async function(req, res) {
-    const { rows } = await db.query(`SELECT system_id, name, status, presence, population, faction, coords, last_updated, eddb_id FROM systems`);
+    const { rows } = await db.query(`SELECT system_id, name, status, presence, population, faction, coords, last_updated, eddb_id, priority FROM systems`);
     res.json(jsonResponse(rows))
   },
 );
