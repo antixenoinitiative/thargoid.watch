@@ -83,7 +83,8 @@ async function processSystem(msg) {
         let id = await db.getSysID(StarSystem);
 
         if (id == "0" && SystemAllegiance == targetAllegiance && SystemGovernment == targetGovernment) {
-            console.log(`Adding System: ${StarSystem} Data: ${msg}`)
+            console.log(`Adding System: ${StarSystem} Data:`)
+            console.log(msg)
             id = await db.addSystem(StarSystem);
         }
   
