@@ -66,6 +66,10 @@ app.get('/api', function (req,res) {
     res.sendFile(__dirname + '/public/api.html');
 });
 
+app.get('/home', function (req,res) {
+    res.sendFile(__dirname + '/public/home.html');
+});
+
 app.listen(PORT, () => console.log(`[✔️] Web Server listening on port: ${PORT}`));
 
 // EDDN Listener
