@@ -74,7 +74,7 @@ module.exports = {
      */
     logIncursion: async (id,time) => {
         let res;
-        console.log(`Processing - id: ${id} time: ${time}`);
+        console.log(`Incursion Logging: id: ${id} time: ${time}`);
         let week;
         try { week = getWeek(time).week } catch { return console.log(`Skipping - id: ${id} time: ${time}`) }
         try {
