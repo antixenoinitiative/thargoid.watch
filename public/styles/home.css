@@ -76,14 +76,16 @@ nav a {
     font-size: 1.2rem;
     color: var(--main-text-color);
     text-decoration: none;
-    transition: color 250ms, background-color 250ms;
-    background-color: var(--secondary-bg-color);
+    transition: color 250ms;
     border-radius: 0.3rem;
+}
+
+.nav-mid a {
+    background-color: var(--main-bg-color);
 }
 
 nav a:hover {
     color: var(--accent-color);
-    background-color: var(--main-bg-color);
 }
 
 .nav-mid {
@@ -175,14 +177,12 @@ article {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    overflow: hidden;
-    height: 5rem;
+    height: 5.5rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
     padding: 0.4rem 0.8rem 0.4rem 0.8rem;
-    border-collapse: separate;
 }
 
 .article-title h3 {
@@ -283,7 +283,7 @@ article {
 
 .about img {
     object-fit: cover;
-    width: 500px;
+    width: 70%;
     height: auto;
 }
 
@@ -296,6 +296,23 @@ article {
 
 .motto-sub {
     margin: 0;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 /* Footer Section */
@@ -345,12 +362,21 @@ article {
         flex-direction: column;
     }
 
+    .title {
+        font-size: 1.5rem;
+    }
+
     header {
         margin-top: 2rem;
     }
 
     header h1 {
-        line-height: 3.5rem;
+        line-height: 2rem;
+        font-size: 2.5rem;
+    }
+
+    header h1 span {
+        font-size: 1.5rem;
     }
 
     .showinmobile {
@@ -362,13 +388,12 @@ article {
     }
 
     nav {
-        grid-template-columns: 1fr 4fr 1fr;
+        grid-template-columns: 1fr 4fr;
     }
 
     nav div {
         justify-content: center;
     }
-
     
     #priorities {
         flex-wrap: wrap;
