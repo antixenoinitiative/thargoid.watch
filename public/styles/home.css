@@ -111,36 +111,6 @@ nav a:hover {
     background-color: var(--main-bg-color);
 }
 
-.linkbox {
-    color: var(--main-text-color);
-    font-size: var(--font-large);
-    padding: 0.6rem 1rem 0.6rem 1rem;
-    background-color: var(--main-bg-color);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0); 
-    transition: box-shadow 250ms, color 250ms, background-color 250ms;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    white-space: nowrap;
-    gap: 7rem;
-}
-
-.linkbox span {
-    font-size: var(--font-xlarge);
-}
-
-.linkbox:hover {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
-    color: var(--accent-color);
-}
-
-.linkbox:active {
-    background-color: black;
-    color: var(--accent-color);
-}
-
 .content {
     display: flex;
     justify-content: center;
@@ -202,6 +172,10 @@ article {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
 }
 
+.sidebar {
+    min-width: 250px;
+}
+
 .article-title {
     background-repeat: no-repeat;
     background-position: center center;
@@ -213,6 +187,7 @@ article {
     justify-content: flex-end;
     align-items: flex-start;
     padding: 0.4rem 0.8rem 0.4rem 0.8rem;
+    border-collapse: separate;
 }
 
 .article-title h3 {
@@ -250,14 +225,13 @@ article {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0); 
     transition: box-shadow 250ms, color 250ms;
     background-color: var(--main-bg-color);
 }
 
 .card span {
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: var(--accent-color);
     margin-bottom: .5rem;
 }
@@ -274,7 +248,6 @@ article {
 
 .card p {
     margin: 0;
-    margin-top: 0.5rem;
 }
 
 .max-width {
