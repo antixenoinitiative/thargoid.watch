@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Anti-Xeno Initiative</title>
+    <meta name="description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Thargoid Watch" />
+    <meta property="og:description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative" />
+    <meta property="og:image" content="https://axicdn.s3.us-east-1.amazonaws.com/images/AXI_Insignia_Hypen_128.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Outfit:wght@400;600&family=Roboto&display=swap');
+        </style>
+    <script src="/scripts/global.js"></script>
+</head>
+<body style="position: relative;">
+    <div class="background"></div>
+    <div class="page">
+        <div style="width: 100%;">
+            <nav>
+                <nav role="navigation" class="showinmobile">
+                    <div id="menuToggle">
+                      <!--
+                      A fake / hidden checkbox is used as click reciever,
+                      so you can use the :checked selector on it.
+                      -->
+                      <input type="checkbox" />
+                      
+                      <!--
+                      Some spans to act as a hamburger.
+                      
+                      They are acting like a real hamburger,
+                      not that McDonalds stuff.
+                      -->
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      
+                      <!--
+                      Too bad the menu has to be inside of the button
+                      but hey, it's pure CSS magic.
+                      -->
+                      <ul id="menu">
+                        <a href="/home"><li>Home</li></a>
+                        <a href="/news"><li>News</li></a>
+                        <a href="https://wiki.antixenoinitiative.com"><li>Wiki</li></a>
+                        <a href="https://www.thargoid.watch"><li>Activity</li></a>
+                        <a href="https://discord.gg/bqmDxdm"><li>Discord</li></a>
+                      </ul>
+                    </div>
+                </nav>
+                <div class="nav-left">
+                    <img src="https://axicdn.s3.us-east-1.amazonaws.com/images/AXI_Insignia_Hypen_128.png" alt="Anti-Xeno Initiative Logo">
+                    <div class="title noselect">Anti-Xeno Initiative</div>
+                </div>
+                <div class="nav-mid hideinmobile">
+                    <a href="/home">Home</a>
+                    <a href="/news">News</a>
+                    <a href="https://wiki.antixenoinitiative.com">Wiki</a>
+                    <a href="https://www.thargoid.watch">Activity</a>
+                </div>
+                <div class="nav-right hideinmobile">
+                    <a class="link" href="https://discord.gg/bqmDxdm">Discord</a>
+                </div>
+            </nav>
+        </div>
+        <div class="content">
+            <div class="flex-column">
+                <header class="">
+                    <h1><span>Welcome to the</span><br>Anti-Xeno Initiative</h1>
+                </header>
+                <div class="flex-row">
+                    <section class="news smallround flex-grow">
+                        <h2>News</h2>
+                        <article class="maxtextwidth">
+                            <h3>This is a news Article!</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                        </article>
+                        <article class="maxtextwidth">
+                            <h3>More News!</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                        </article>
+                    </section>
+                    <section class="sidebar smallround flex-grow">
+                        <h2>Resources</h2>
+                        <div class="resources">
+                            <div class="linkbox noselect smallround" onclick="window.open(`https:\\wiki.antixenoinitiative.com`,'mywindow');">
+                                <div>Anti-Xeno Wiki</div>
+                                <span class="mdi mdi-book-open-variant"></span>
+                            </div>
+                            <div class="linkbox noselect smallround" onclick="window.open(`https:\\www.thargoid.watch`,'mywindow');">
+                                <div>Thargoid Activity</div>
+                                <span class="mdi mdi-alert-outline"></span>                        </div>
+                            <div class="linkbox noselect smallround" onclick="window.open(`https:\\https:\\discord.gg\bqmDxdm`,'mywindow');">
+                                <div>Discord Server</div>
+                                <span class="mdi mdi-discord"></span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

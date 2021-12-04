@@ -78,28 +78,6 @@ function getRegion(coords) {
     }
 }
 
-// Toggle the opacity of an ID
-function toggleOpacity(id, toggle) {
-    document.getElementById(id).style.opacity = toggle;
-}
-
-function copyToClipboard(content) {
-    navigator.clipboard.writeText(content);
-    toast(`Copied ${content} to clipboard`)
-}
-
-function toast(content) {
-    // Get the snackbar DIV
-    var x = document.getElementById("toast");
-    document.getElementById("toast").innerHTML = content
-  
-    // Add the "show" class to DIV
-    x.className = "show";
-  
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-}
-
 function dynamicSort(property) {
     var sortOrder = 1;
     if(property[0] === "-") {
@@ -258,7 +236,7 @@ function getPriorityHTML(system) {
     }
     return `
     <div class="priority-box subsection flex-column gap-medium round-border flex-grow">
-        <div class="flex-row flex-space width-100">
+        <div class="flex-row flex-justify-space width-100">
             <div style="position: relative; width: 0; height: 0">
                 <div style="background-color: var(--priority-${system.priority});" class="priority-number-box noselect round-border flex-center flex-row flex-justify-center">
                     <div class="priority-number">${getPriorityText(system.priority)} Priority</div>
@@ -285,13 +263,6 @@ function getPriorityHTML(system) {
             <p class="mobile-hide"><span class="axiorange">Population:</span> ${numberWithCommas(system.population)}</p>
         </div>
     </div>`
-}
-
-// Action Functions
-
-function play() {
-    var audio = document.getElementById("audio");
-    audio.play();
 }
 
 // Onload

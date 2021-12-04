@@ -14,10 +14,10 @@
     --presence-moderate: #fcef41;
     --presence-significant: #fc8c41;
     --presence-massive: #fc4141;
-    --toast-height: 2rem;
     --priority-3: #60ce51;
     --priority-2: #df9e3b;
     --priority-1: #dd5a5a;
+    --toast-height: 2rem;
 }
 
 body {
@@ -77,7 +77,7 @@ h1, h2 {
     align-items: center;
 }
 
-.flex-space {
+.flex-justify-space {
     justify-content: space-between;
 }
 
@@ -288,13 +288,6 @@ button:active {
     background-color: var(--main-border-color);
 }
 
-.donate {
-    background-color: var(--secondary-bg-color);
-    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-    text-decoration: none;
-    color: var(--trinary-text-color);
-}
-
 .axiorange {
     color: var(--accent-color);
 }
@@ -321,10 +314,6 @@ button:active {
 
 .nomargin {
     margin: 0;
-}
-
-.cursorpointer {
-    cursor: pointer;
 }
 
 .clipboard {

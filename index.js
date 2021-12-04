@@ -44,11 +44,18 @@ function requireHTTPS(req, res, next) {
 
 app.use(cors())
 app.use(requireHTTPS);
-app.use(express.static('public'));
+
 
 app.get('/', function (req,res) {
-    res.sendFile(__dirname + '/public/index.html');
+    console.log(req)
+    if (req.hostname === 'www.thargoid.watch' || req.hostname === 'thargoid.watch' || req.hostname === 'localhost') {
+        res.sendFile(__dirname + '/public/index.html');
+    } else if (req.hostname === 'test.antixenoinitiative.com') {
+        res.sendFile(__dirname + '/public/home.html');
+    }
 });
+
+app.use(express.static('public'));
 
 app.get('/api/incursions', async function(req, res) {
     const { rows } = await db.query(`SELECT * FROM incursionv2`);
@@ -64,6 +71,10 @@ app.get('/api/systems', async function(req, res) {
 
 app.get('/api', function (req,res) {
     res.sendFile(__dirname + '/public/api.html');
+});
+
+app.get('/home', function (req,res) {
+    res.sendFile(__dirname + '/public/home.html');
 });
 
 app.listen(PORT, () => console.log(`[✔️] Web Server listening on port: ${PORT}`));
