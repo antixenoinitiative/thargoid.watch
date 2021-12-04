@@ -322,6 +322,10 @@ button:active {
         margin-left: 0;
     }
 
+    #priorities {
+        flex-wrap: wrap;
+    }
+
     .priority-box {
         max-width: 100%;
         gap: 0;
