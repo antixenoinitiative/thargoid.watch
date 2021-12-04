@@ -42,6 +42,9 @@ function requireHTTPS(req, res, next) {
     next();
 }
 
+app.use(requireHTTPS);
+app.use(cors())
+
 app.get('/', function (req,res) {
     if (req.hostname === 'www.thargoid.watch' || req.hostname === 'thargoid.watch') {
         res.sendFile(__dirname + '/public/watch.html');
@@ -50,9 +53,6 @@ app.get('/', function (req,res) {
     }
 });
 
-
-app.use(cors())
-app.use(requireHTTPS);
 app.use(express.static('public'));
 
 app.get('/api/incursions', async function(req, res) {
