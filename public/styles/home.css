@@ -176,6 +176,16 @@ article {
     min-width: 250px;
 }
 
+.about {
+    text-align: center;
+}
+
+.about img {
+    object-fit: cover;
+    width: 800px;
+    height: auto;
+}
+
 .article-title {
     background-repeat: no-repeat;
     background-position: center center;
