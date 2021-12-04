@@ -71,16 +71,19 @@ nav img {
 }
 
 nav a {
-    padding: 0.5rem;
+    padding: 0.6rem 0.8rem 0.6rem 0.8rem;
     font-family: 'Outfit', sans-serif;
-    font-size: var(--font-medium);
+    font-size: 1.2rem;
     color: var(--main-text-color);
     text-decoration: none;
-    transition: color 250ms;
+    transition: color 250ms, background-color 250ms;
+    background-color: var(--secondary-bg-color);
+    border-radius: 0.3rem;
 }
 
 nav a:hover {
     color: var(--accent-color);
+    background-color: var(--main-bg-color);
 }
 
 .nav-mid {
@@ -248,13 +251,34 @@ article {
     padding: 0.5rem;
 }
 
+.defencebutton {
+    margin-top: 0.4rem;
+    background-color: var(--main-bg-color);
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0); 
+    transition: box-shadow 250ms, color 250ms;
+}
+
+.defencebutton:hover {
+    color: var(--accent-color);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.defencebutton span {
+    color: var(--accent-color);
+}
+
 /* About Section */
 
 .about {
-    display: flex;
-    justify-content: center;
     text-align: center;
-    margin-bottom: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .about img {
@@ -272,6 +296,27 @@ article {
 
 .motto-sub {
     margin: 0;
+}
+
+/* Footer Section */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer img {
+    object-fit: cover;
+    width: 2rem;
+    height: auto;
+    margin-right: 0.5rem;
 }
 
 /* General CSS */
