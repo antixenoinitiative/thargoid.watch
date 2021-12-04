@@ -50,6 +50,9 @@ app.get('/', function (req,res) {
     }
 });
 
+
+app.use(cors())
+app.use(requireHTTPS);
 app.use(express.static('public'));
 
 app.get('/api/incursions', async function(req, res) {
@@ -76,8 +79,7 @@ app.get('/wiki', function (req,res) {
     res.redirect('https://wiki.antixenoinitiative.com');
 });
 
-app.use(cors())
-app.use(requireHTTPS);
+
 
 app.get('*', function(req, res){
     res.sendFile(__dirname + '/public/index.html', 404);
