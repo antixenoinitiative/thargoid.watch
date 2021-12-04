@@ -1,0 +1,214 @@
+body {
+    display: flex;
+    justify-content: center;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+#main {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 120ch;
+}
+
+/* Generic Classes */
+
+h1, h2 {
+    font-family: 'Lexend', sans-serif;
+    margin: 0;
+}
+
+.boxstyle {
+    background-color: var(--secondary-bg-color);
+    padding: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.text-small {
+    font-size: 0.8rem;
+}
+
+.text-medium {
+    font-size: 1rem;
+}
+
+.text-large {
+    font-size: 1.3rem;
+}
+
+.text-xlarge {
+    font-size: 1.5rem;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.color-primary {
+    color: var(--main-text-color);
+}
+
+.color-secondary {
+    color: var(--secondary-text-color);
+}
+
+.color-trinary {
+    color: var(--trinary-text-color);
+}
+
+.header {
+    padding: 1rem 1.3rem 1rem 1.3rem;
+    margin-bottom: 1rem;
+    align-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header-links {
+    margin-left: auto;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.header img {
+    width: 3.3rem;
+}
+
+.header h1 {
+    font-weight: normal;
+    font-size: 2.5rem;
+    transition: color 300ms;
+}
+
+.header h1:hover {
+    color: var(--accent-color);
+    cursor: default;
+}
+
+.header-subtitle {
+    color: var(--secondary-text-color);
+    margin-top: 0rem;
+    margin-bottom: 0.3rem;
+    align-self: flex-end;
+}
+
+.content {
+    width: auto;
+    height: auto;
+}
+
+.content article {
+    width: auto;
+}
+
+.content article p {
+    margin-block-start: 0.7rem;
+    margin-block-end: 0rem;
+    width: auto;
+    line-height: 1.6rem;
+}
+
+.content h1 {
+    font-weight: normal;
+}
+
+.clipboard {
+    cursor: copy;
+    transition: color 250ms;
+}
+
+.clipboard:hover {
+    color: var(--accent-color);
+}
+
+.clipboard:active {
+    color: var(--accent-color-active);
+}
+
+.footertext {
+    font-size: 0.8rem;
+    color: var(--footer-color);
+}
+
+/* Specific ID's and content */
+
+#bmac-img {
+    height: 2.3rem;
+    filter: grayscale(100%) hue-rotate(-40deg);
+    transition: filter 400ms;
+}
+
+#bmac-img:hover {
+    filter: grayscale(0%) hue-rotate(-40deg);
+}
+
+#toast {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    color: var(--accent-color);
+    background-color: var(--main-bg-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 0.5rem;
+    text-align: center; /* Centered text */
+    padding: 0.8rem; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: var(--toast-height); /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#toast.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+  
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: var(--toast-height); opacity: 1;}
+}
+  
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: var(--toast-height); opacity: 1;}
+}
+  
+@-webkit-keyframes fadeout {
+    from {bottom: var(--toast-height); opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+  
+@keyframes fadeout {
+    from {bottom: var(--toast-height); opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .content {
+        padding: 1rem;
+    }
+
+    .mobile-hide {
+        display: none;
+    }
+
+    .main {
+        width: 100%;
+    }
+
+    .header-links {
+        margin: 0;
+        flex-grow: 1;
+    }
+
+    .header-subtitle {
+        display: none;
+    }
+}

@@ -42,16 +42,11 @@ function requireHTTPS(req, res, next) {
     next();
 }
 
-app.use(cors())
-app.use(requireHTTPS);
-
-
 app.get('/', function (req,res) {
-    console.log(req)
-    if (req.hostname === 'www.thargoid.watch' || req.hostname === 'thargoid.watch' || req.hostname === 'localhost') {
+    if (req.hostname === 'www.thargoid.watch' || req.hostname === 'thargoid.watch') {
+        res.sendFile(__dirname + '/public/watch.html');
+    } else {
         res.sendFile(__dirname + '/public/index.html');
-    } else if (req.hostname === 'test.antixenoinitiative.com') {
-        res.sendFile(__dirname + '/public/home.html');
     }
 });
 
@@ -73,8 +68,19 @@ app.get('/api', function (req,res) {
     res.sendFile(__dirname + '/public/api.html');
 });
 
-app.get('/home', function (req,res) {
-    res.sendFile(__dirname + '/public/home.html');
+app.get('/watch', function (req,res) {
+    res.sendFile(__dirname + '/public/watch.html');
+});
+
+app.get('/wiki', function (req,res) {
+    res.redirect('https://wiki.antixenoinitiative.com');
+});
+
+app.use(cors())
+app.use(requireHTTPS);
+
+app.get('*', function(req, res){
+    res.sendFile(__dirname + '/public/index.html', 404);
 });
 
 app.listen(PORT, () => console.log(`[✔️] Web Server listening on port: ${PORT}`));
