@@ -80,10 +80,6 @@ nav a {
     border-radius: 0.3rem;
 }
 
-.nav-mid a {
-    background-color: var(--main-bg-color);
-}
-
 nav a:hover {
     color: var(--accent-color);
 }
@@ -91,6 +87,15 @@ nav a:hover {
 .nav-mid {
     justify-content: center;
     gap: 1.5rem;
+}
+
+.nav-mid a {
+    background-color: var(--secondary-bg-color);
+    transition: background-color 250ms, color 250ms;
+}
+
+.nav-mid a:hover {
+    background-color: var(--main-bg-color);
 }
 
 .nav-right {
