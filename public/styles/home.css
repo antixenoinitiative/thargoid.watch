@@ -98,9 +98,10 @@ nav a:hover {
 }
 
 .link {
-    background-color: var(--main-text-color);
+    font-size: 1.4rem;
+    background-color: var(--secondary-bg-color);
     padding: 0.4rem 0.9rem 0.4rem 0.9rem;
-    border-radius: 5rem;
+    border-radius: 10rem;
     color: var(--main-bg-color);
     transition: color 250ms, background-color 250ms;
 }
