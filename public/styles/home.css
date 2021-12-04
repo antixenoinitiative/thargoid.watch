@@ -214,6 +214,8 @@ article {
 }
 
 .card {
+    color: var(--main-text-color);
+    text-decoration: none!important;
     padding: 1rem;
     border-radius: 0.3rem;
     flex-grow: 1;
@@ -223,6 +225,10 @@ article {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0); 
     transition: box-shadow 250ms, color 250ms;
     background-color: var(--main-bg-color);
+}
+
+.card div {
+    text-decoration: none!important;
 }
 
 .card span {
@@ -239,10 +245,17 @@ article {
 .card h3 {
     margin: 0;
     font-size: var(--font-large);
+    text-decoration: none!important;
 }
 
 .card p {
     margin: 0;
+    text-decoration: none!important;
+}
+
+.noDecoration, a:link, a:visited {
+    text-decoration: none;
+    color: var(--main-text-color);
 }
 
 /* Defence Section */
