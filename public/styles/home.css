@@ -14,16 +14,6 @@
     --font-medium: 1.1rem;
 }
 
-.noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
-}
-
 html, body, #page {
     height:100%;
     width:100%;
@@ -56,6 +46,12 @@ html, body, #page {
     color: var(--main-text-color);
     margin: 0;
     font-weight: normal;
+}
+
+.motto {
+    font-size: 3rem;
+    font-weight: bold;
+    font-style: italic;
 }
 
 .smallround {
@@ -176,7 +172,69 @@ section {
 section h2 {
     margin-top: 0;
     margin-bottom: 1rem;
-    font-size: var(--font-xlarge);
+    font-size: 2rem;
+}
+
+section h2 span {
+    font-size: 1rem;
+    color: var(--accent-color);
+}
+
+section h3 {
+    font-size: 1.5rem;
+} 
+
+section p {
+    line-height: 1.5rem;
+}
+
+article {
+    background-color: var(--main-bg-color);
+    margin-bottom: 1rem;
+}
+
+.news article {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0); 
+    transition: box-shadow 250ms;
+}
+
+.news article:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.article-title {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0.4rem 0.8rem 0.4rem 0.8rem;
+}
+
+.article-title h3 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.article-title div {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+
+.article-content {
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.article-content p {
+    margin: 0;
 }
 
 .resources {
@@ -185,33 +243,70 @@ section h2 {
     gap: 0.8rem;
 }
 
-/* flex Layout Classes */
-
-.flex-column {
-    max-width: 1600px;
+.card {
+    padding: 1rem;
+    border-radius: 0.3rem;
+    flex-grow: 1;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    cursor: pointer;
+    height: 10rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    justify-content: flex-end;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0); 
+    transition: box-shadow 250ms, color 250ms;
 }
 
-.flex-row {
-    display: flex;
-    gap: 1rem;
+.card:hover {
+    color: var(--accent-color);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-.flex-grow {
-    flex-grow: 1;
+.card h3 {
+    margin: 0;
+    font-size: var(--font-large);
+}
+
+.card p {
+    margin: 0;
+    margin-top: 0.5rem;
+}
+
+.borregobg {
+    background-image: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/borrego-small.png);
+}
+
+.phantombg {
+    background-image: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/phantom-small.png);
+}
+
+.hydrabg {
+    background-image: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/hydra-small.png);
+}
+
+.vettebg {
+    background-image: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/vette-small.png);
+}
+
+.max-width {
+    max-width: 1300px;
 }
 
 .showinmobile {
     display: none;
 }
 
+.end {
+    margin-left: auto;
+}
+
 /* Mobile Layout Mode */
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1000px) {
 
-    .flex-row {
+    .adaptive-row {
         flex-direction: column;
     }
 
@@ -227,7 +322,7 @@ section h2 {
         display: block;
     }
 
-    .hideinmobile {
+    .mobile-hide {
         display: none;
     }
 

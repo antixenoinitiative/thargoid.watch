@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Thargoid.watch</title>
+    <meta name="description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Thargoid Watch" />
+    <meta property="og:description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative" />
+    <meta property="og:image" content="https://axicdn.s3.us-east-1.amazonaws.com/images/AXI_Insignia_Hypen_128.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,100&family=Share+Tech+Mono&display=swap');
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+    </style>
+    <script src="/scripts/global.js"></script>
+    <script src="/scripts/incursions.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK4KVBDCS4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-XK4KVBDCS4');
+    </script>
+</head>
+<body>
+    <div id="main">
+        <div class="boxstyle round-border header flex-row flex-wrap">
+            <img class="header-item" src="https://axicdn.s3.us-east-1.amazonaws.com/images/AXI_Insignia_Hypen_128.png" alt="">
+            <h1 class="header-item noselect nomargin">Thargoid.watch</h1>
+            <p class="header-item header-subtitle noselect">by the Anti-Xeno Initiative</p>
+            <div class="header-item header-links flex-row">
+                <a class="header-item button text-medium round-border noselect" href="https://www.antixenoinitiative.com">AXI</a>
+                <a class="header-item button text-medium round-border noselect" href="https://wiki.antixenoinitiative.com">Wiki</a>
+                <a class="header-item button text-medium round-border noselect" href="https://discord.gg/bqmDxdm">Discord</a>
+                <a class="header-item button text-medium round-border noselect" href="/api">API</a>
+            </div>
+        </div>
+        <div id="page-content">  
+            <div id="incursions-section" class="content flex-column gap-medium boxstyle round-border">
+                <article>
+                    <h1>Incursions</h1>
+                    <p>Systems currently under attack by Thargoid Incursion. Data is from the Anti-Xeno Initiative Sentry System and may not update immediately.</p>
+                </article>
+                <div id="priorities" class="flex-row gap-medium flex-wrap">
+                </div>
+                <div class="flex-row flex-center flex-wrap gap-medium">
+                    <p class="text-medium color-trinary nomargin">Sort:</p>
+                    <button onclick="updateInc('name')">Name</button>
+                    <button onclick="updateInc('region')">Region</button>
+                    <button onclick="updateInc('faction')">Faction</button>
+                    <button onclick="updateInc('presence')">Presence</button>
+                    <button onclick="updateInc('population')">Population</button>
+                    <button id="btn-showall" class="button-last" onclick="updateInc(0,true)">Show Cleared</button>
+                </div>
+                <div id="incursions" class="flex-column gap-medium">
+                </div>
+                <div class="subsection-link-box">
+                    <a class="subsection-link text-medium" href="https://wiki.antixenoinitiative.com/en/incursions">Learn more about Thargoid Incursions</a>
+                </div>
+            </div>
+            
+            <div id="nhss" class="content flex-column gap-medium boxstyle round-border">
+                <article>
+                    <h1>Non-Human Signal Sources</h1>
+                    <p>Non-Human Signal Sources (NHSS) are found in the following regions of space. Any system in these regions will spawn NHSS near other bodies within the system. These can be found using the Full Spectrum Scanner or by scanning the Navigation Beacon.</p>
+                </article>
+                <div class="subsection flex-wrap round-border">
+                    <h1 class="text-large nomargin">Pleiades Nebula</h1>
+                    <p>~Within 175 ly of <span class="axiorange">Merope</span></p>
+                </div>
+                <div class="subsection flex-wrap round-border">
+                    <h1 class="text-large nomargin">Witch Head Nebula</h1>
+                    <p>~Within 75 ly of <span class="axiorange">Ronemar</span></p>
+                </div>
+                <div class="subsection flex-wrap round-border">
+                    <h1 class="text-large nomargin">Coalsack Nebula</h1>
+                    <p>~Within 60 ly of <span class="axiorange">Musca Dark Region PJ-P B6-8</span></p>
+                </div>
+                <div class="subsection flex-wrap round-border">
+                    <h1 class="text-large nomargin">California Nebula</h1>
+                    <p>~Within 100 ly of <span class="axiorange">HIP 18390</span></p>
+                </div>
+                <div class="subsection-link-box">
+                    <a class="subsection-link text-medium" href="https://wiki.antixenoinitiative.com/en/nhss">Learn more about Non-Human Signal Sources</a>
+                </div>
+            </div>      
+        </div>
+        <div class="flex-row flex-center flex-justify-space gap-large">
+            <p onclick="play()" class="nomargin footertext">Site content copyright © 2021, The Anti-Xeno Initiative. All Rights Reserved. Elite Dangerous and all related marks are trademarks of Frontier Developments Inc.</p>
+            <a href="https://www.buymeacoffee.com/mgram"><img id="bmac-img" src="/images/bmc-button.svg" alt=""></a>
+        </div>
+    </div>
+    <audio id="audio" src="https://axicdn.s3.us-east-1.amazonaws.com/misc/quack.mp3"></audio>
+    <div id="toast"></div>
+</body>
+</html>

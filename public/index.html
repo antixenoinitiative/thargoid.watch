@@ -1,111 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Thargoid.watch</title>
-    <meta name="description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative"/>
+    <title>Anti-Xeno Initiative</title>
+    <meta name="description" content="The Anti-Xeno Initiative, an Elite:Dangerous player group dedicated to the defense of humanity."/>
     <meta name="theme-color" content="#000000"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Thargoid Watch" />
-    <meta property="og:description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative" />
+    <meta property="og:description" content="The Anti-Xeno Initiative, an Elite:Dangerous player group dedicated to the defense of humanity." />
     <meta property="og:image" content="https://axicdn.s3.us-east-1.amazonaws.com/images/AXI_Insignia_Hypen_128.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/images/site.webmanifest">
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="/styles/home.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,100&family=Share+Tech+Mono&display=swap');
-    </style>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-    </style>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
-    </style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Outfit:wght@400;600&family=Roboto&display=swap');
+        </style>
     <script src="/scripts/global.js"></script>
-    <script src="/scripts/incursions.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK4KVBDCS4"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-XK4KVBDCS4');
-    </script>
 </head>
-<body>
-    <div id="main">
-        <div class="boxstyle round-border header flex-row flex-wrap">
-            <img class="header-item" src="https://axicdn.s3.us-east-1.amazonaws.com/images/AXI_Insignia_Hypen_128.png" alt="">
-            <h1 class="header-item noselect nomargin">Thargoid.watch</h1>
-            <p class="header-item header-subtitle noselect">by the Anti-Xeno Initiative</p>
-            <div class="header-item header-links flex-row">
-                <a class="header-item button text-medium round-border noselect" href="https://www.antixenoinitiative.com">AXI</a>
-                <a class="header-item button text-medium round-border noselect" href="https://wiki.antixenoinitiative.com">Wiki</a>
-                <a class="header-item button text-medium round-border noselect" href="https://discord.gg/bqmDxdm">Discord</a>
-                <a class="header-item button text-medium round-border noselect" href="/api">API</a>
-            </div>
+<body style="position: relative;">
+    <div class="background"></div>
+    <div class="page">
+        <div style="width: 100%;">
+            <nav>
+                <nav role="navigation" class="showinmobile">
+                    <div id="menuToggle">
+                      <!--
+                      A fake / hidden checkbox is used as click reciever,
+                      so you can use the :checked selector on it.
+                      -->
+                      <input type="checkbox" />
+                      
+                      <!--
+                      Some spans to act as a hamburger.
+                      
+                      They are acting like a real hamburger,
+                      not that McDonalds stuff.
+                      -->
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      
+                      <!--
+                      Too bad the menu has to be inside of the button
+                      but hey, it's pure CSS magic.
+                      -->
+                      <ul id="menu">
+                        <a href="/"><li>Home</li></a>
+                        <a href="/news"><li>News</li></a>
+                        <a href="https://wiki.antixenoinitiative.com"><li>Wiki</li></a>
+                        <a href="/watch"><li>Activity</li></a>
+                        <a href="https://discord.gg/bqmDxdm"><li>Discord</li></a>
+                      </ul>
+                    </div>
+                </nav>
+                <div class="nav-left">
+                    <img src="https://axicdn.s3.us-east-1.amazonaws.com/images/AXI_Insignia_Hypen_128.png" alt="Anti-Xeno Initiative Logo">
+                    <div class="title noselect">Anti-Xeno Initiative</div>
+                </div>
+                <div class="nav-mid mobile-hide">
+                    <a href="/home">Home</a>
+                    <a href="/news">News</a>
+                    <a href="https://wiki.antixenoinitiative.com">Wiki</a>
+                    <a href="/watch">Activity</a>
+                </div>
+                <div class="nav-right mobile-hide">
+                    <a class="link" href="https://discord.gg/bqmDxdm">Discord</a>
+                </div>
+            </nav>
         </div>
-        <div id="page-content">  
-            <div id="incursions-section" class="content flex-column gap-medium boxstyle round-border">
-                <article>
-                    <h1>Incursions</h1>
-                    <p>Systems currently under attack by Thargoid Incursion. Data is from the Anti-Xeno Initiative Sentry System and may not update immediately.</p>
-                </article>
-                <div id="priorities" class="flex-row gap-medium flex-wrap">
+        <div class="content">
+            <div class="flex-column max-width gap-large">
+                <header class="">
+                    <h1><span>Welcome to the</span><br>Anti-Xeno Initiative</h1>
+                </header>
+                <div class="flex-row adaptive-row gap-large">
+                    <section class="news smallround grow">
+                        <h2>News</h2>
+                        <article class="smallround">
+                            <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://cdn.discordapp.com/attachments/763535317360705606/916552573249552434/Hydra_Cloud2.jpg);">
+                                <h3>Thargoids Return</h3>
+                                <div>Oct 3307</div>
+                            </div>
+                            <div class="article-content">
+                                <p>The Thargoids have returned in great force pushing large incursions into multiple human-occupied systems. Commanders abroad have been requested to aid with the defence, rescue and logistical efforts.</p>
+                                <p>response to this latest push in Thargoid activity, the Anti-Xeno Initiative has commissioned a new tracking and monitoring system to allow commanders to keep up-to-date with the latest movements and presence statuses of incursion systems.</p>
+                                <p>This new system can be found at www.Thargoid.watch</p>
+                                <p>Glory, to Mankind!</p>
+                            </div>
+                        </article>
+                        <article class="smallround">
+                            <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://cdn.discordapp.com/attachments/765294807752245298/902968688184025138/unknown.png);">
+                                <h3>Frontier Livestream with the AXI</h3>
+                                <div>16 Sept 3307</div>
+                            </div>
+                            <div class="article-content">
+                                <p>CMDR Mechan and CMDR Toyotanos will be on an Odyssey Frontier twitch live stream tomorrow (Thursday) at 18:00 UTC (7pm BST, 2pm US EST, ...) with FDEV Community Managers Bruce and Zac. We will discuss Anti Xeno combat and see if, among other things, we can get Bruce his first (wing) rank (Zac already has it)</p>
+                                <p>Agenda is fluid but we expect to spend some time talking about AX before jumping into combat ... for all multi-goid fans we'll also be bringing meta-alloys to see if we can get an interceptor to invite a friend to the party.</p>
+                                <p>Also, we will do our best to NOT follow in the footprints of our glorious founder, and die on stream to a clops, but there are no guarantees...</p>
+                                <p>Join us tomorrow on Twitch to listen in, participate, and have some AX fun!</p>
+                            </div>
+                        </article>
+                    </section>
+                    <section class="sidebar smallround grow">
+                        <h2>Resources</h2>
+                        <div class="resources">
+                            <div class="linkbox noselect smallround" onclick="window.open(`https:\\wiki.antixenoinitiative.com`,'mywindow');">
+                                <div>Anti-Xeno Wiki</div>
+                                <span class="mdi mdi-book-open-variant"></span>
+                            </div>
+                            <div class="linkbox noselect smallround" onclick="window.open(`https:\\www.thargoid.watch`,'mywindow');">
+                                <div>Thargoid Activity</div>
+                                <span class="mdi mdi-alert-outline"></span>                        </div>
+                            <div class="linkbox noselect smallround" onclick="window.open(`https:\\discord.gg\\bqmDxdm`,'mywindow');">
+                                <div>Discord Server</div>
+                                <span class="mdi mdi-discord"></span>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-                <div class="flex-row flex-center flex-wrap gap-medium">
-                    <p class="text-medium color-trinary nomargin">Sort:</p>
-                    <button onclick="updateInc('name')">Name</button>
-                    <button onclick="updateInc('region')">Region</button>
-                    <button onclick="updateInc('faction')">Faction</button>
-                    <button onclick="updateInc('presence')">Presence</button>
-                    <button onclick="updateInc('population')">Population</button>
-                    <button id="btn-showall" class="button-last" onclick="updateInc(0,true)">Show Cleared</button>
+                <div class="flex-row adaptive-row">
+                    <section class="news smallround grow">
+                        <h2>Learn to Hunt!</h2>
+                        <div class="flex-row adaptive-row gap-large">
+                            <div onclick="window.open(`https:\\discord.gg\\bqmDxdm`,'mywindow');" class="card borregobg">
+                                <h3>Join the AXI</h3>
+                                <p>Join the discord server</p>
+                            </div>
+                            <div onclick="window.open(`https:\\wiki.antixenoinitiative.com\\en\\builds`,'mywindow');" class="card phantombg">
+                                <h3>Build your Ship</h3>
+                                <p>Make the perfect ship</p>
+                            </div>
+                            <div onclick="window.open(`https:\\wiki.antixenoinitiative.com\\en\\basic-combat-guide`,'mywindow');" class="card hydrabg">
+                                <h3>Learn the Fights</h3>
+                                <p>Learn how Thargoids work</p>
+                            </div>
+                            <div onclick="window.open(`https:\\wiki.antixenoinitiative.com\\en\\advanced-combat-guide`,'mywindow');" class="card vettebg">
+                                <h3>Become a Pro</h3>
+                                <p>Take your skills to the next level</p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-                <div id="incursions" class="flex-column gap-medium">
-                </div>
-                <div class="subsection-link-box">
-                    <a class="subsection-link text-medium" href="https://wiki.antixenoinitiative.com/en/incursions">Learn more about Thargoid Incursions</a>
-                </div>
+                <section class="smallround grow">
+                    <h2>About</h2>
+                    <h3>The Anti-Xeno Initiative</h3>
+                    <p>The Anti-Xeno Initiative is an <span class="axiorange">Elite:Dangerous</span> player-group dedicated to protecting humanity from the Thargoid threat. We defend systems targeted by the vile xenos, study their technology and behavior, and perfect our battle tactics. Whether you seek to save the galaxy, kill some aliens, conduct research, or hone your skills, you will find help here.</p>
+                    <div class="flex-column flex-center">
+                        <div class="motto">"Glory, to Mankind"</div>
+                        <p class="axiorange">Motto of the Anti-Xeno Initiative</p>
+                    </div>
+                    <p>The <span class="axiorange">Anti-Xeno Initiative</span> was founded by <span class="axiorange">CMDR Gluttony Fang</span> on 15th of November 3303. We are the largest dedicated AX (Anti-Xeno) player group in Elite:Dangerous and act as a hub for the broader AX Community. We are partnered with <span class="axiorange">Canonn Research</span>, who provide us with the latest findings related to our mission. We also coordinate defense efforts with other player groups to protect as many lives as we can. We constantly strive to get better at what we do and we have some of the best Anti-Xeno experts among us.</p>
+                    <p>The membership in AXI is non-binding, meaning you can also be a part of any other player group you wish. We have people of all walks of life and all matter of allegiance. We ourselves are a completely independent and apolitical - we do not support or oppose any faction, power or group, unless they force our hand. That said, we protect our members. We have a sizable contingent of PvP pilots to repel any attempts at disrupting our primary mission.</p>
+                </section>
             </div>
-            
-            <div id="nhss" class="content flex-column gap-medium boxstyle round-border">
-                <article>
-                    <h1>Non-Human Signal Sources</h1>
-                    <p>Non-Human Signal Sources (NHSS) are found in the following regions of space. Any system in these regions will spawn NHSS near other bodies within the system. These can be found using the Full Spectrum Scanner or by scanning the Navigation Beacon.</p>
-                </article>
-                <div class="subsection flex-wrap round-border">
-                    <h1 class="text-large nomargin">Pleiades Nebula</h1>
-                    <p>~Within 175 ly of <span class="axiorange">Merope</span></p>
-                </div>
-                <div class="subsection flex-wrap round-border">
-                    <h1 class="text-large nomargin">Witch Head Nebula</h1>
-                    <p>~Within 75 ly of <span class="axiorange">Ronemar</span></p>
-                </div>
-                <div class="subsection flex-wrap round-border">
-                    <h1 class="text-large nomargin">Coalsack Nebula</h1>
-                    <p>~Within 60 ly of <span class="axiorange">Musca Dark Region PJ-P B6-8</span></p>
-                </div>
-                <div class="subsection flex-wrap round-border">
-                    <h1 class="text-large nomargin">California Nebula</h1>
-                    <p>~Within 100 ly of <span class="axiorange">HIP 18390</span></p>
-                </div>
-                <div class="subsection-link-box">
-                    <a class="subsection-link text-medium" href="https://wiki.antixenoinitiative.com/en/nhss">Learn more about Non-Human Signal Sources</a>
-                </div>
-            </div>      
-        </div>
-        <div class="flex-row flex-center flex-justify-space gap-large">
-            <p onclick="play()" class="nomargin footertext">Site content copyright © 2021, The Anti-Xeno Initiative. All Rights Reserved. Elite Dangerous and all related marks are trademarks of Frontier Developments Inc.</p>
-            <a href="https://www.buymeacoffee.com/mgram"><img id="bmac-img" src="/images/bmc-button.svg" alt=""></a>
         </div>
     </div>
-    <audio id="audio" src="https://axicdn.s3.us-east-1.amazonaws.com/misc/quack.mp3"></audio>
-    <div id="toast"></div>
 </body>
 </html>
