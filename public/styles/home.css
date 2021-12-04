@@ -247,16 +247,19 @@ article {
     padding: 1rem;
     border-radius: 0.3rem;
     flex-grow: 1;
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
     cursor: pointer;
-    height: 10rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0); 
     transition: box-shadow 250ms, color 250ms;
+    background-color: var(--main-bg-color);
+}
+
+.card span {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: .5rem;
 }
 
 .card:hover {
@@ -272,22 +275,6 @@ article {
 .card p {
     margin: 0;
     margin-top: 0.5rem;
-}
-
-.borregobg {
-    background-image: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/borrego-small.png);
-}
-
-.phantombg {
-    background-image: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/phantom-small.png);
-}
-
-.hydrabg {
-    background-image: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/hydra-small.png);
-}
-
-.vettebg {
-    background-image: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/vette-small.png);
 }
 
 .max-width {
