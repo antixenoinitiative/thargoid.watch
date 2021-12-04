@@ -22,6 +22,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Outfit:wght@400;600&family=Roboto&display=swap');
         </style>
     <script src="/scripts/global.js"></script>
+    <script src="/scripts/incursions.js"></script>
 </head>
 <body style="position: relative;">
     <div class="background"></div>
@@ -89,7 +90,7 @@
                             </div>
                             <div class="article-content">
                                 <p>The Thargoids have returned in great force pushing large incursions into multiple human-occupied systems. Commanders abroad have been requested to aid with the defence, rescue and logistical efforts.</p>
-                                <p>response to this latest push in Thargoid activity, the Anti-Xeno Initiative has commissioned a new tracking and monitoring system to allow commanders to keep up-to-date with the latest movements and presence statuses of incursion systems.</p>
+                                <p>response to this latest push in Thargoid activity, the <span class="axiorange">Anti-Xeno Initiative</span> has commissioned a new tracking and monitoring system to allow commanders to keep up-to-date with the latest movements and presence statuses of incursion systems.</p>
                                 <p>This new system can be found at www.Thargoid.watch</p>
                                 <p>Glory, to Mankind!</p>
                             </div>
@@ -100,10 +101,22 @@
                                 <div>16 Sept 3307</div>
                             </div>
                             <div class="article-content">
-                                <p>CMDR Mechan and CMDR Toyotanos will be on an Odyssey Frontier twitch live stream tomorrow (Thursday) at 18:00 UTC (7pm BST, 2pm US EST, ...) with FDEV Community Managers Bruce and Zac. We will discuss Anti Xeno combat and see if, among other things, we can get Bruce his first (wing) rank (Zac already has it)</p>
+                                <p><span class="axiorange">CMDR Mechan</span> and <span class="axiorange">CMDR Toyotanos</span> will be on an Odyssey Frontier twitch live stream tomorrow (Thursday) at <span class="axiorange">18:00 UTC</span> (7pm BST, 2pm US EST, ...) with FDEV Community Managers Bruce and Zac. We will discuss Anti Xeno combat and see if, among other things, we can get Bruce his first (wing) rank (Zac already has it)</p>
                                 <p>Agenda is fluid but we expect to spend some time talking about AX before jumping into combat ... for all multi-goid fans we'll also be bringing meta-alloys to see if we can get an interceptor to invite a friend to the party.</p>
                                 <p>Also, we will do our best to NOT follow in the footprints of our glorious founder, and die on stream to a clops, but there are no guarantees...</p>
                                 <p>Join us tomorrow on Twitch to listen in, participate, and have some AX fun!</p>
+                            </div>
+                        </article>
+                        <article class="smallround">
+                            <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://cdn.discordapp.com/attachments/763535317360705606/916576773901254687/Quacken_II.jpg);">
+                                <h3>10,000 Members Celebration</h3>
+                                <div>19 Jun 3307</div>
+                            </div>
+                            <div class="article-content">
+                                <p>The <span class="axiorange">Anti-Xeno Initiative</span> was established on the 15th of November 3303 (2017), back then the Thargoids were still shrouded in mystery. Over the years we have made leaps and bounds to uncover their secrets, understand their technology and ultimately master their destruction. Today marks a tremendous landmark in the history of the AXI, we are proud to announce that we have officially reached <span class="axiorange">10,000 members</span> in the Anti-Xeno Initiative Discord.</p>
+                                <p>The AXI has seen colossal growth and development over the past 3 years, we have written the books on Thargoid combat, taken on the most challenging achievements in AX imaginable and defended countless systems from incursions and infestations over the years.</p>
+                                <p>In celebration of this milestone, the AXI will be hosting several exciting events over the coming weeks.</p>
+                                <p>Thank you CMDRs!<br>AXI Staff</p>
                             </div>
                         </article>
                     </section>
@@ -122,26 +135,40 @@
                                 </div>
                                 <div onclick="window.open(`https:\\wiki.antixenoinitiative.com\\en\\basic-combat-guide`,'mywindow');" class="card">
                                     <span class="mdi mdi-school-outline"></span>
-                                    <h3>Learn the Fights</h3>
-                                    <p>Learn how Thargoids work</p>
+                                    <h3>Learn the Fight</h3>
+                                    <p>Thargoid Combat Tutorials</p>
                                 </div>
                                 <div onclick="window.open(`https:\\wiki.antixenoinitiative.com\\en\\advanced-combat-guide`,'mywindow');" class="card">
                                     <span class="mdi mdi-lightbulb-on-outline"></span>
                                     <h3>Become a Specialist</h3>
                                     <p>Take your skills to the next level</p>
                                 </div>
+                                <div onclick="window.open(`\watch`,'mywindow');" class="card">
+                                    <span class="mdi mdi-sword-cross"></span>
+                                    <h3>View current activity</h3>
+                                    <p>Active Incursions</p>
+                                </div>
                             </div>
                         </section>
                 </div>
-                <section class="about smallround grow">
-                    <img src="https://axicdn.s3.us-east-1.amazonaws.com/images/banner.png" alt="The Anti-Xeno Initiative">
-                    <p>The Anti-Xeno Initiative is an <span class="axiorange">Elite:Dangerous</span> player-group dedicated to protecting humanity from the Thargoid threat. We defend systems targeted by the vile xenos, study their technology and behavior, and perfect our battle tactics. Whether you seek to save the galaxy, kill some aliens, conduct research, or hone your skills, you will find help here.</p>
-                    <div class="flex-column flex-center">
-                        <div class="motto">"Glory, to Mankind"</div>
-                        <p class="axiorange">Motto of the Anti-Xeno Initiative</p>
+                <section class="smallround grow">
+                    <h2>Defence Priorities</h2>
+                    <div class="defence">
+                        <div id="priorities" class="flex-row gap-medium">
+                        </div>
                     </div>
-                    <p>The <span class="axiorange">Anti-Xeno Initiative</span> was founded by <span class="axiorange">CMDR Gluttony Fang</span> on 15th of November 3303. We are the largest dedicated AX (Anti-Xeno) player group in Elite:Dangerous and act as a hub for the broader AX Community. We are partnered with <span class="axiorange">Canonn Research</span>, who provide us with the latest findings related to our mission. We also coordinate defense efforts with other player groups to protect as many lives as we can. We constantly strive to get better at what we do and we have some of the best Anti-Xeno experts among us.</p>
-                    <p>The membership in AXI is non-binding, meaning you can also be a part of any other player group you wish. We have people of all walks of life and all matter of allegiance. We ourselves are a completely independent and apolitical - we do not support or oppose any faction, power or group, unless they force our hand. That said, we protect our members. We have a sizable contingent of PvP pilots to repel any attempts at disrupting our primary mission.</p>
+                </section>
+                <section class="about smallround grow">
+                    <div class="max-text">
+                        <img src="https://axicdn.s3.us-east-1.amazonaws.com/images/banner.png" alt="The Anti-Xeno Initiative">
+                        <p>The Anti-Xeno Initiative is an <span class="axiorange">Elite:Dangerous</span> player-group dedicated to protecting humanity from the Thargoid threat. We defend systems targeted by the vile xenos, study their technology and behavior, and perfect our battle tactics. Whether you seek to save the galaxy, kill some aliens, conduct research, or hone your skills, you will find help here.</p>
+                        <div class="flex-column flex-center">
+                            <div class="motto">"Glory, to Mankind"</div>
+                            <p class="axiorange motto-sub">Motto of the Anti-Xeno Initiative</p>
+                        </div>
+                        <p>The <span class="axiorange">Anti-Xeno Initiative</span> was founded by <span class="axiorange">CMDR Gluttony Fang</span> on 15th of November 3303. We are the largest dedicated AX (Anti-Xeno) player group in Elite:Dangerous and act as a hub for the broader AX Community. We are partnered with <span class="axiorange">Canonn Research</span>, who provide us with the latest findings related to our mission. We also coordinate defense efforts with other player groups to protect as many lives as we can. We constantly strive to get better at what we do and we have some of the best Anti-Xeno experts among us.</p>
+                        <p>The membership in AXI is non-binding, meaning you can also be a part of any other player group you wish. We have people of all walks of life and all matter of allegiance. We ourselves are a completely independent and apolitical - we do not support or oppose any faction, power or group, unless they force our hand. That said, we protect our members. We have a sizable contingent of PvP pilots to repel any attempts at disrupting our primary mission.</p>
+                    </div>
                 </section>
             </div>
         </div>

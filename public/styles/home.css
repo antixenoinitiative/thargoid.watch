@@ -48,12 +48,6 @@ html, body, #page {
     font-weight: normal;
 }
 
-.motto {
-    font-size: 3rem;
-    font-weight: bold;
-    font-style: italic;
-}
-
 .smallround {
     border-radius: 0.3rem;
 }
@@ -163,6 +157,8 @@ article {
     margin-bottom: 1rem;
 }
 
+/* News Section */
+
 .news article {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0); 
     transition: box-shadow 250ms;
@@ -170,20 +166,6 @@ article {
 
 .news article:hover {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
-}
-
-.sidebar {
-    min-width: 250px;
-}
-
-.about {
-    text-align: center;
-}
-
-.about img {
-    object-fit: cover;
-    width: 800px;
-    height: auto;
 }
 
 .article-title {
@@ -222,10 +204,10 @@ article {
     margin: 0;
 }
 
-.resources {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+/* Sidebar Section */
+
+.sidebar {
+    min-width: 250px;
 }
 
 .card {
@@ -260,8 +242,46 @@ article {
     margin: 0;
 }
 
+/* Defence Section */
+
+.defence {
+    padding: 0.5rem;
+}
+
+/* About Section */
+
+.about {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20rem;
+}
+
+.about img {
+    object-fit: cover;
+    width: 500px;
+    height: auto;
+}
+
+.motto {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.motto-sub {
+    margin: 0;
+}
+
+/* General CSS */
+
 .max-width {
     max-width: 1300px;
+}
+
+.max-text {
+    max-width: 75ch;
 }
 
 .showinmobile {
