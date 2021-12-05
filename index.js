@@ -43,9 +43,12 @@ function requireHTTPS(req, res, next) {
     next();
 }
 
+app.use(requireHTTPS);
+app.use(cors())
+
 app.get('/', function (req,res) {
     if (req.hostname === 'www.thargoid.watch' || req.hostname === 'thargoid.watch') {
-        res.sendFile(__dirname + '/public/watch.html');
+        res.redirect('https://www.antixenoinitiative.com/watch');
     } else {
         res.sendFile(__dirname + '/public/index.html');
     }

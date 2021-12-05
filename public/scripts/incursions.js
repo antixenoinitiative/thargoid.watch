@@ -218,8 +218,16 @@ function updateInc(sorting, all) {
             </div>   
         </div>`
     }
-    document.getElementById("priorities").innerHTML = prioritycontent;
-    document.getElementById("incursions").innerHTML = inchtml;
+    try {
+        document.getElementById("priorities").innerHTML = prioritycontent;
+    } catch {
+        console.log("Skipping Priority ID")
+    }
+    try {
+        document.getElementById("incursions").innerHTML = inchtml;
+    } catch {
+        console.log("Skipping incursions ID")
+    }
     sortToggle += 1
 }
 
