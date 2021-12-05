@@ -54,8 +54,6 @@ app.get('/', function (req,res) {
     }
 });
 
-app.use(cors())
-app.use(requireHTTPS);
 app.use(express.static('public'));
 
 app.get('/watch', function (req,res) {
