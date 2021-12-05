@@ -4,6 +4,7 @@ const weeks = require("./weeks/weeks.json");
 const eddb = require('../db/eddb');
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } }) //credentials from Heroku
+const pool2 = new Pool({ connectionString: process.env.HEROKU_POSTGRESQL_PUCE, ssl: { rejectUnauthorized: false } }) //credentials from Heroku
 
 /**
      * Returns Week Object for given Timestamp (UTC)
@@ -28,6 +29,14 @@ module.exports = {
     query: async (text, params, callback) => {
         try {
             let res = pool.query(text, params, callback);
+            return res;
+        } catch {
+            return "Failed";
+        }
+    },
+    queryWarden: async (text, params, callback) => {
+        try {
+            let res = pool2.query(text, params, callback);
             return res;
         } catch {
             return "Failed";

@@ -3,6 +3,15 @@ function toggleOpacity(id, toggle) {
     document.getElementById(id).style.opacity = toggle;
 }
 
+function toggleCollapsible(id) {
+    let coll = document.getElementById(id);
+    if (coll.style.display == 'none') {
+        coll.style.display = 'block';
+    } else {
+        coll.style.display = 'none'
+    }
+}
+
 function copyToClipboard(content) {
     navigator.clipboard.writeText(content);
     toast(`Copied ${content} to clipboard`)

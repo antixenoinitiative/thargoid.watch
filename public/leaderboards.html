@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Thargoid Watch</title>
-    <meta name="description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative"/>
+    <title>Leaderboards</title>
+    <meta name="description" content="The Anti-Xeno Initiative, an Elite:Dangerous player group dedicated to the defense of humanity."/>
     <meta name="theme-color" content="#000000"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Thargoid Watch" />
-    <meta property="og:description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative" />
+    <meta property="og:title" content="Leaderboards" />
+    <meta property="og:description" content="The Anti-Xeno Initiative, an Elite:Dangerous player group dedicated to the defense of humanity." />
     <meta property="og:image" content="https://axicdn.s3.us-east-1.amazonaws.com/images/AXI_Insignia_Hypen_128.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -16,13 +16,13 @@
     <link rel="manifest" href="/images/site.webmanifest">
     <link rel="stylesheet" href="/styles/common.css">
     <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/leaderboards.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Outfit:wght@400;600&family=Roboto&display=swap');
         </style>
     <script src="/scripts/global.js"></script>
-    <script src="/scripts/incursions.js"></script>
 </head>
 <body style="position: relative;">
     <div class="background"></div>
@@ -63,26 +63,50 @@
                 </div>
             </nav>
         </div>
-        <div class="content">
+        <div id="content" class="content">
             <div class="flex-column max-width gap-large">
                 <header class="">
-                    <h1><span>Anti-Xeno Initiative</span><br>Thargoid Watch</h1>
+                    <h1><span>Anti-Xeno Initiative</span><br>Leaderboards</h1>
                 </header>
-                <section class="news smallround grow flex-column gap-medium">
-                    <h2 class="nomargin">Incursions</h2>
-                    <p class="nomargin">Systems currently under attack by Thargoid Incursion. Data is from the Anti-Xeno Initiative Sentry System and may not update immediately.</p>
-                    <div id="priorities" class="flex-row gap-medium">
-                    </div>
-                    <div class="flex-row flex-center flex-wrap gap-medium">
-                        <p class="text-medium color-trinary nomargin">Sort:</p>
-                        <button onclick="updateInc('name')">Name</button>
-                        <button onclick="updateInc('region')">Region</button>
-                        <button onclick="updateInc('faction')">Faction</button>
-                        <button onclick="updateInc('presence')">Presence</button>
-                        <button onclick="updateInc('population')">Population</button>
-                        <button id="btn-showall" class="button-last" onclick="updateInc(0,true)">Show Cleared</button>
-                    </div>
-                    <div id="incursions" class="flex-column gap-medium">
+                <section class="ace smallround grow">
+                    <h2>Ace</h2>
+                    <p>This rank is a true test of a pilot's abilities, based on a composite ammo usage, total damage taken, and time taken scale. Use a Chieftain and any combination of Gauss cannons to defeat a Medusa.</p>
+                    <p>Score your fight using the /ace bot command in the Anti-Xeno Initiative Discord Server. The top 10 CMDRs will hold the <span style="color: #1eff00; font-weight: bold;">@Ace</span> rank. This is a competitive system and you can lose this rank should someone push you out of the Top 10.</p>
+                    <div id="acelb">
+                        <div class="aceentry lbrow smallround" onclick="toggleCollapsible('lbid-1')">
+                            <div class="lbgrid">
+                                <div class="lbnum">#1</div>
+                                <h3 class="lbtitle">[PC] CMDR Mgram</h3>
+                                <div class="lbscore">73.49 pts</div>
+                            </div>
+                            <div id="lbid-1" style="display: none;" class="lbcollapsible">
+                                <div class="lbgrid">
+                                    <div class="lbdetails">
+                                        <p>Date:</p>
+                                        <p class="grid-end">12 Oct 3307</p>
+                                        <p>Time Taken:</p>
+                                        <p class="grid-end">12:23</p>
+                                        <p>Ship:</p>
+                                        <p class="grid-end">Cheiftain</p>
+                                        <p>Hull Lost:</p>
+                                        <p class="grid-end">10%</p>
+                                        <p>Medium Gauss:</p>
+                                        <p class="grid-end">3</p>
+                                        <p>Medium Shots Fired:</p>
+                                        <p class="grid-end">180</p>
+                                        <p>Small Gauss:</p>
+                                        <p class="grid-end">1</p>
+                                        <p>Small Shots Fired:</p>
+                                        <p class="grid-end">150</p>
+                                    </div>
+                                    <div class="video-container">
+                                        <iframe class="video" src="https://www.youtube.com/embed/Qonn-8GMApQ" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
                     </div>
                 </section>
                 <section class="footer smallround grow">

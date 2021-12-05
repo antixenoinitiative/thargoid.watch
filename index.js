@@ -34,7 +34,8 @@ function jsonResponse(data) {
     })
 }
 
-// Web Hosting
+// Web Routing
+
 function requireHTTPS(req, res, next) {
     if (req.headers["x-forwarded-proto"] == "http" && WEBAPPMODE != "DEV") {
         return res.redirect(301, "https://" + req.hostname+req.url);
@@ -50,10 +51,27 @@ app.get('/', function (req,res) {
     }
 });
 
-
 app.use(cors())
 app.use(requireHTTPS);
 app.use(express.static('public'));
+
+app.get('/watch', function (req,res) {
+    res.sendFile(__dirname + '/public/watch.html');
+});
+
+app.get('/news', function (req,res) {
+    res.sendFile(__dirname + '/public/news.html');
+});
+
+app.get('/wiki', function (req,res) {
+    res.redirect('https://wiki.antixenoinitiative.com');
+});
+
+app.get('/leaderboards', function (req,res) {
+    res.sendFile(__dirname + '/public/leaderboards.html');
+});
+
+// API Endpoints
 
 app.get('/api/incursions', async function(req, res) {
     const { rows } = await db.query(`SELECT * FROM incursionv2`);
@@ -67,19 +85,15 @@ app.get('/api/systems', async function(req, res) {
   },
 );
 
+app.get('/api/ace', async function(req, res) {
+    const { rows } = await db.queryWarden(`SELECT * FROM ace`);
+    res.json(jsonResponse(rows))
+  },
+);
+
 app.get('/api', function (req,res) {
     res.sendFile(__dirname + '/public/api.html');
 });
-
-app.get('/watch', function (req,res) {
-    res.sendFile(__dirname + '/public/watch.html');
-});
-
-app.get('/wiki', function (req,res) {
-    res.redirect('https://wiki.antixenoinitiative.com');
-});
-
-
 
 app.get('*', function(req, res){
     res.sendFile(__dirname + '/public/index.html', 404);

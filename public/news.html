@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Thargoid Watch</title>
-    <meta name="description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative"/>
+    <title>News</title>
+    <meta name="description" content="The Anti-Xeno Initiative, an Elite:Dangerous player group dedicated to the defense of humanity."/>
     <meta name="theme-color" content="#000000"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Thargoid Watch" />
-    <meta property="og:description" content="Thargoid Incursion and Activity Information from the Anti-Xeno Initiative" />
+    <meta property="og:title" content="News" />
+    <meta property="og:description" content="The Anti-Xeno Initiative, an Elite:Dangerous player group dedicated to the defense of humanity." />
     <meta property="og:image" content="https://axicdn.s3.us-east-1.amazonaws.com/images/AXI_Insignia_Hypen_128.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -22,7 +22,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Outfit:wght@400;600&family=Roboto&display=swap');
         </style>
     <script src="/scripts/global.js"></script>
-    <script src="/scripts/incursions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/public-google-sheets-parser@1.0.9/src/index.min.js"></script>
+    <script src="/scripts/sheets.js" defer></script>
 </head>
 <body style="position: relative;">
     <div class="background"></div>
@@ -66,25 +67,15 @@
         <div class="content">
             <div class="flex-column max-width gap-large">
                 <header class="">
-                    <h1><span>Anti-Xeno Initiative</span><br>Thargoid Watch</h1>
+                    <h1><span>Anti-Xeno Initiative</span><br>News and Events</h1>
                 </header>
-                <section class="news smallround grow flex-column gap-medium">
-                    <h2 class="nomargin">Incursions</h2>
-                    <p class="nomargin">Systems currently under attack by Thargoid Incursion. Data is from the Anti-Xeno Initiative Sentry System and may not update immediately.</p>
-                    <div id="priorities" class="flex-row gap-medium">
-                    </div>
-                    <div class="flex-row flex-center flex-wrap gap-medium">
-                        <p class="text-medium color-trinary nomargin">Sort:</p>
-                        <button onclick="updateInc('name')">Name</button>
-                        <button onclick="updateInc('region')">Region</button>
-                        <button onclick="updateInc('faction')">Faction</button>
-                        <button onclick="updateInc('presence')">Presence</button>
-                        <button onclick="updateInc('population')">Population</button>
-                        <button id="btn-showall" class="button-last" onclick="updateInc(0,true)">Show Cleared</button>
-                    </div>
-                    <div id="incursions" class="flex-column gap-medium">
-                    </div>
-                </section>
+                <div class="flex-row adaptive-row gap-large">
+                    <section class="news smallround grow">
+                        <h2>News</h2>
+                        <div id="newsarticles">
+                        </div>
+                    </section>
+                </div>
                 <section class="footer smallround grow">
                     <img src="https://axicdn.s3.us-east-1.amazonaws.com/images/AXI_Insignia_Hypen_128.png" alt="">
                     <p>Site content copyright © 2021, The Anti-Xeno Initiative. All Rights Reserved. Elite Dangerous and all related marks are trademarks of Frontier Developments Inc.</p>

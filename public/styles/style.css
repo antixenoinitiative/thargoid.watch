@@ -355,6 +355,59 @@ article {
     margin-right: 0.5rem;
 }
 
+/* Leaderboards */
+
+.lbgrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-auto-rows: min-content;
+    gap: 1rem;
+}
+
+.lbrow {
+    background-color: var(--main-bg-color);
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.lbcollapsible {
+    margin-top: 1rem;
+    display: none;
+}
+
+.lbnum {
+    display: inline;
+}
+
+.lbtitle {
+    display: inline;
+    margin: 0;
+    grid-column-start: 1;
+}
+
+.lbscore {
+    font-size: 1.5rem;
+    grid-column-start: 3;
+    justify-self: end;
+}
+
+.lbdetails {
+    align-self: start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.lbdetails p {
+    font-size: 1.2rem;
+    margin: 0;
+    margin-top: 0.3rem;
+    color: var(--secondary-text-color);
+}
+
+.lbvideo iframe {
+    width: 500;
+}
+
 /* General CSS */
 
 .max-width {
@@ -367,6 +420,10 @@ article {
 
 .showinmobile {
     display: none;
+}
+
+.grid-end {
+    justify-self: end;
 }
 
 .end {

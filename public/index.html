@@ -15,7 +15,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/images/site.webmanifest">
     <link rel="stylesheet" href="/styles/common.css">
-    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
     <style>
@@ -24,6 +24,8 @@
     <script src="/scripts/global.js"></script>
     <script src="/scripts/incursions.js"></script>
     <script>history.pushState('Home', 'Anti-Xeno Initiative', '/');</script>
+    <script src="https://cdn.jsdelivr.net/npm/public-google-sheets-parser@1.0.9/src/index.min.js"></script>
+    <script src="/scripts/sheets.js" defer></script>
 </head>
 <body style="position: relative;">
     <div class="background"></div>
@@ -32,30 +34,15 @@
             <nav>
                 <nav role="navigation" class="showinmobile">
                     <div id="menuToggle">
-                      <!--
-                      A fake / hidden checkbox is used as click reciever,
-                      so you can use the :checked selector on it.
-                      -->
                       <input type="checkbox" />
-                      
-                      <!--
-                      Some spans to act as a hamburger.
-                      
-                      They are acting like a real hamburger,
-                      not that McDonalds stuff.
-                      -->
                       <span></span>
                       <span></span>
                       <span></span>
-                      
-                      <!--
-                      Too bad the menu has to be inside of the button
-                      but hey, it's pure CSS magic.
-                      -->
                       <ul id="menu">
                         <a href="/"><li>Home</li></a>
-                        <!--<a href="/news"><li>News</li></a>-->
+                        <a href="/news"><li>News</li></a>
                         <a href="/watch"><li>Activity</li></a>
+                        <a href="/leaderboards"><li>Leaderboards</li></a>
                         <a href="https://wiki.antixenoinitiative.com"><li>Wiki</li></a>
                         <a href="https://store.antixenoinitiative.com/"><li>Merch</li></a>
                         <a href="https://discord.gg/bqmDxdm"><li>Discord</li></a>
@@ -68,8 +55,9 @@
                 </div>
                 <div class="nav-mid mobile-hide">
                     <a href="/">Home</a>
-                    <!--<a href="/news">News</a>-->
+                    <a href="/news">News</a>
                     <a href="/watch">Activity</a>
+                    <a href="/leaderboards">Leaderboards</a>
                     <a href="https://wiki.antixenoinitiative.com">Wiki</a>
                     <a href="https://store.antixenoinitiative.com/">Merch</a>
                 </div>
@@ -78,7 +66,7 @@
                 </div>
             </nav>
         </div>
-        <div class="content">
+        <div id="content" class="content">
             <div class="flex-column max-width gap-large">
                 <header class="">
                     <h1><span>Welcome to the</span><br>Anti-Xeno Initiative</h1>
@@ -86,42 +74,8 @@
                 <div class="flex-row adaptive-row gap-large">
                     <section class="news smallround grow">
                         <h2>News</h2>
-                        <article class="smallround">
-                            <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://cdn.discordapp.com/attachments/763535317360705606/916552573249552434/Hydra_Cloud2.jpg);">
-                                <h3>Thargoids Return</h3>
-                                <div>Oct 3307</div>
-                            </div>
-                            <div class="article-content">
-                                <p>The Thargoids have returned in great force pushing large incursions into multiple human-occupied systems. Commanders abroad have been requested to aid with the defence, rescue and logistical efforts.</p>
-                                <p>response to this latest push in Thargoid activity, the <span class="axiorange">Anti-Xeno Initiative</span> has commissioned a new tracking and monitoring system to allow commanders to keep up-to-date with the latest movements and presence statuses of incursion systems.</p>
-                                <p>This new system can be found at www.Thargoid.watch</p>
-                                <p>Glory, to Mankind!</p>
-                            </div>
-                        </article>
-                        <article class="smallround">
-                            <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://cdn.discordapp.com/attachments/765294807752245298/902968688184025138/unknown.png);">
-                                <h3>Frontier Livestream with the AXI</h3>
-                                <div>16 Sept 3307</div>
-                            </div>
-                            <div class="article-content">
-                                <p><span class="axiorange">CMDR Mechan</span> and <span class="axiorange">CMDR Toyotanos</span> will be on an Odyssey Frontier twitch live stream tomorrow (Thursday) at <span class="axiorange">18:00 UTC</span> (7pm BST, 2pm US EST, ...) with FDEV Community Managers Bruce and Zac. We will discuss Anti Xeno combat and see if, among other things, we can get Bruce his first (wing) rank (Zac already has it)</p>
-                                <p>Agenda is fluid but we expect to spend some time talking about AX before jumping into combat ... for all multi-goid fans we'll also be bringing meta-alloys to see if we can get an interceptor to invite a friend to the party.</p>
-                                <p>Also, we will do our best to NOT follow in the footprints of our glorious founder, and die on stream to a clops, but there are no guarantees...</p>
-                                <p>Join us tomorrow on Twitch to listen in, participate, and have some AX fun!</p>
-                            </div>
-                        </article>
-                        <article class="smallround">
-                            <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://cdn.discordapp.com/attachments/763535317360705606/916576773901254687/Quacken_II.jpg);">
-                                <h3>10,000 Members Celebration</h3>
-                                <div>19 Jun 3307</div>
-                            </div>
-                            <div class="article-content">
-                                <p>The <span class="axiorange">Anti-Xeno Initiative</span> was established on the 15th of November 3303 (2017), back then the Thargoids were still shrouded in mystery. Over the years we have made leaps and bounds to uncover their secrets, understand their technology and ultimately master their destruction. Today marks a tremendous landmark in the history of the AXI, we are proud to announce that we have officially reached <span class="axiorange">10,000 members</span> in the Anti-Xeno Initiative Discord.</p>
-                                <p>The AXI has seen colossal growth and development over the past 3 years, we have written the books on Thargoid combat, taken on the most challenging achievements in AX imaginable and defended countless systems from incursions and infestations over the years.</p>
-                                <p>In celebration of this milestone, the AXI will be hosting several exciting events over the coming weeks.</p>
-                                <p>Thank you CMDRs!<br>AXI Staff</p>
-                            </div>
-                        </article>
+                        <div id="newsarticlestop3">
+                        </div>
                     </section>
                         <section class="sidebar smallround grow">
                             <h2>Learn to Hunt</h2>
@@ -143,7 +97,7 @@
                                 <a class="noDecoration" href="https:\\wiki.antixenoinitiative.com\en\basic-combat-guide">
                                     <div class="card">
                                         <span class="mdi mdi-school-outline"></span>
-                                        <h3>Learn the Fight</h3>
+                                        <h3>Learn to Fight</h3>
                                         <p>Thargoid Combat Tutorials</p>
                                     </div>
                                 </a>
