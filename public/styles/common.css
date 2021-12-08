@@ -292,6 +292,11 @@ button:active {
     transition: opacity 250ms;
 }
 
+.ref-url:hover{
+    color: rgb(0, 195, 255);
+    transition: color 400ms;
+}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .content {
