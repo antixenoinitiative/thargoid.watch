@@ -181,6 +181,11 @@
     gap: 0.3rem;
 }
 
+.priority-title-box a {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
 #incstatus-title {
     font-size: 1.2rem;
     text-align: right;
