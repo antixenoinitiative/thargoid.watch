@@ -18,6 +18,10 @@ function fetchJSON() {
     }
 }
 
+function getSystemUrl(systemName){
+    return `https://eddb.io/system/name/${encodeURI(systemName)}`
+}
+
 function getPresence(presence) {
     switch (presence) {
         case 0:
@@ -196,7 +200,7 @@ function updateInc(sorting, all) {
         <div class="subsection gap-large round-border" onmouseover="toggleOpacity('HoverItem-${system.system_id}',1)" onmouseout="toggleOpacity('HoverItem-${system.system_id}',0)">
             <div class="subsection-start">
                 <div class="subsection-row gap-medium">
-                    <h1 class="clipboard text-large nomargin" onclick="copyToClipboard('${system.name}')">${system.name}</h1>
+                    <a class="clipboard text-large nomargin ref-url" onclick="copyToClipboard('${system.name}')" href="${getSystemUrl(system.name)}">${system.name}</a>
                     <h2>${system.region}</h2>
                 </div>
                 <div class="subsection-row gap-medium flex-wrap">
@@ -251,7 +255,7 @@ function getPriorityHTML(system) {
                 </div>
             </div>
             <div class="priority-title-box flex-column">
-                <h1 class="clipboard text-large nomargin" onclick="copyToClipboard('${system.name}')">${system.name}</h1>
+                <a class="clipboard text-large nomargin ref-url" onclick="copyToClipboard('${system.name}')" href="${getSystemUrl(system.name)}">${system.name}</a>
                 <h2>${system.region}</h2>
             </div>
             <div class="end">

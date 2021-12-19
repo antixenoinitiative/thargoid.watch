@@ -103,6 +103,11 @@
     align-items: baseline;
 }
 
+.subsection-row a {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
 .subsection-row-end {
     display: flex;
     justify-content: flex-end;
@@ -179,6 +184,11 @@
 
 .priority-title-box {
     gap: 0.3rem;
+}
+
+.priority-title-box a {
+    font-size: 1.4rem;
+    font-weight: bold;
 }
 
 #incstatus-title {
@@ -290,6 +300,11 @@ button:active {
     font-family: 'Lexend', sans-serif;
     opacity: 0;
     transition: opacity 250ms;
+}
+
+.ref-url:hover{
+    color: rgb(0, 195, 255);
+    transition: color 400ms;
 }
 
 @media only screen and (max-width: 768px) {
