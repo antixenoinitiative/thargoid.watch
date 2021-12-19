@@ -103,6 +103,11 @@
     align-items: baseline;
 }
 
+.subsection-row a {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
 .subsection-row-end {
     display: flex;
     justify-content: flex-end;
