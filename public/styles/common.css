@@ -295,6 +295,8 @@ button:active {
 .ref-url:hover{
     color: rgb(0, 195, 255);
     transition: color 400ms;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 768px) {
