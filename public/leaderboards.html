@@ -23,6 +23,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Outfit:wght@400;600&family=Roboto&display=swap');
         </style>
     <script src="/scripts/global.js"></script>
+    <script src="/scripts/leaderboards.js"></script>
 </head>
 <body style="position: relative;">
     <div class="background"></div>
@@ -68,44 +69,79 @@
                 <header class="">
                     <h1><span>Anti-Xeno Initiative</span><br>Leaderboards</h1>
                 </header>
-                <section class="ace smallround grow">
+                <section class="speedrun smallround grow">
                     <h2>Ace</h2>
                     <p>This rank is a true test of a pilot's abilities, based on a composite ammo usage, total damage taken, and time taken scale. Use a Chieftain and any combination of Gauss cannons to defeat a Medusa.</p>
                     <p>Score your fight using the /ace bot command in the Anti-Xeno Initiative Discord Server. The top 10 CMDRs will hold the <span style="color: #1eff00; font-weight: bold;">@Ace</span> rank. This is a competitive system and you can lose this rank should someone push you out of the Top 10.</p>
-                    <div id="acelb">
-                        <div class="aceentry lbrow smallround" onclick="toggleCollapsible('lbid-1')">
-                            <div class="lbgrid">
-                                <div class="lbnum">#1</div>
-                                <h3 class="lbtitle">[PC] CMDR Mgram</h3>
-                                <div class="lbscore">73.49 pts</div>
+                    <div id="acelb" class="lbgrid">
+                    </div>
+                </section>
+                <section class="speedrun smallround grow">
+                    <h2>Speedruns</h2>
+                    <div id="speedlb" class="lbgrid">
+                        <div class="lbclass smallround hovershadow">
+                            <div class="lbheader bgcyclops">
+                                <h3 class="nomargin">Cyclops</h3>
                             </div>
-                            <div id="lbid-1" style="display: none;" class="lbcollapsible">
-                                <div class="lbgrid">
-                                    <div class="lbdetails">
-                                        <p>Date:</p>
-                                        <p class="grid-end">12 Oct 3307</p>
-                                        <p>Time Taken:</p>
-                                        <p class="grid-end">12:23</p>
-                                        <p>Ship:</p>
-                                        <p class="grid-end">Cheiftain</p>
-                                        <p>Hull Lost:</p>
-                                        <p class="grid-end">10%</p>
-                                        <p>Medium Gauss:</p>
-                                        <p class="grid-end">3</p>
-                                        <p>Medium Shots Fired:</p>
-                                        <p class="grid-end">180</p>
-                                        <p>Small Gauss:</p>
-                                        <p class="grid-end">1</p>
-                                        <p>Small Shots Fired:</p>
-                                        <p class="grid-end">150</p>
-                                    </div>
-                                    <div class="video-container">
-                                        <iframe class="video" src="https://www.youtube.com/embed/Qonn-8GMApQ" allowfullscreen></iframe>
-                                    </div>
+                            <div class="lbcontainer">
+                                <div class="lbentry hovershadow">
+                                    <p>CMDR Mgram</p>
+                                    <p>18:23</p>
+                                </div>
+                                <div class="lbentry hovershadow">
+                                    <p>CMDR Aranionros</p>
+                                    <p>20:23</p>
+                                </div>
+                                <div class="lbentry hovershadow">
+                                    <p>CMDR Test</p>
+                                    <p>23:12</p>
                                 </div>
                             </div>
-                            
-                            
+                        </div>
+                        <div class="lbclass smallround hovershadow">
+                            <div class="lbheader bgbasilisk">
+                                <h3 class="nomargin">Basilisk</h3>
+                            </div>
+                            <div class="lbcontainer">
+                                <div class="lbentry hovershadow">
+                                    <p>CMDR Mgram</p>
+                                    <p>18:23</p>
+                                </div>
+                                <div class="lbentry hovershadow">
+                                    <p>CMDR Aranionros</p>
+                                    <p>20:23</p>
+                                </div>
+                                <div class="lbentry hovershadow">
+                                    <p>CMDR Test</p>
+                                    <p>23:12</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lbclass smallround hovershadow">
+                            <div class="lbheader bgmedusa">
+                                <h3 class="nomargin">Medusa</h3>
+                            </div>
+                            <div class="lbcontainer">
+                            </div>
+                        </div>
+                        <div class="lbclass smallround hovershadow">
+                            <div class="lbheader bghydra">
+                                <h3 class="nomargin">Hydra</h3>
+                            </div>
+                            <div class="lbcontainer">
+                                <div class="lbentry hovershadow">
+                                    <p>CMDR Mgram</p>
+                                    <p>18:23</p>
+                                </div>
+                                <div class="lbentry hovershadow">
+                                    <p>CMDR Aranionros</p>
+                                    <p>20:23</p>
+                                </div>
+                                <div class="lbentry hovershadow">
+                                    <p>CMDR Test</p>
+                                    <p>23:12</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

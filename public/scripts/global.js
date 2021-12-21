@@ -35,3 +35,23 @@ function play() {
     var audio = document.getElementById("audio");
     audio.play();
 }
+
+function modal(id, show) {
+    let modal = document.getElementById(id);
+    console.log(id)
+    if (show === true) {
+        modal.style.display = "block";
+    }
+
+    if (show === false) {
+        console.log("false")
+        modal.style.display = "none";
+    }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}

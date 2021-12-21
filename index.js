@@ -92,6 +92,12 @@ app.get('/api/ace', async function(req, res) {
   },
 );
 
+app.get('/api/speedrun', async function(req, res) {
+    const { rows } = await db.queryWarden(`SELECT * FROM speedrun`);
+    res.json(jsonResponse(rows))
+  },
+);
+
 app.get('/api', function (req,res) {
     res.sendFile(__dirname + '/public/api.html');
 });
