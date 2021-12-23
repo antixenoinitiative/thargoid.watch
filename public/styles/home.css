@@ -386,7 +386,7 @@ article {
 .copy-icon:active{
     color: grey;
     cursor: pointer;
-    transition: 400ms;
+    transition: 200ms;
     transform: scale(0.8);
 }
 
