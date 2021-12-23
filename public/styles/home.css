@@ -375,6 +375,7 @@ article {
 
 .copy-icon{
     width: fit-content;
+    font-size: 1.2rem;
 }
 
 .copy-icon:hover{
