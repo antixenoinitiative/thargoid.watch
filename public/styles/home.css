@@ -373,6 +373,23 @@ article {
     margin-left: auto;
 }
 
+.copy-icon{
+    width: fit-content;
+}
+
+.copy-icon:hover{
+    color: rgb(0, 195, 255);
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.copy-icon:active{
+    color: grey;
+    cursor: pointer;
+    transition: 400ms;
+    transform: scale(0.8);
+}
+
 /* Mobile Layout Mode */
 
 @media only screen and (max-width: 1000px) {
