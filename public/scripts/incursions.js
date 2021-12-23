@@ -200,7 +200,8 @@ function updateInc(sorting, all) {
         <div class="subsection gap-large round-border" onmouseover="toggleOpacity('HoverItem-${system.system_id}',1)" onmouseout="toggleOpacity('HoverItem-${system.system_id}',0)">
             <div class="subsection-start">
                 <div class="subsection-row gap-medium">
-                    <a class="clipboard text-large nomargin ref-url" onclick="copyToClipboard('${system.name}')" href="${getSystemUrl(system.name)}">${system.name}</a>
+                    <a class="clipboard text-large nomargin ref-url" href="${getSystemUrl(system.name)}">${system.name}</a>
+                    <span class="material-icons copy-icon" onclick="copyToClipboard('${system.name}')">content_copy</span>
                     <h2>${system.region}</h2>
                 </div>
                 <div class="subsection-row gap-medium flex-wrap">
@@ -255,7 +256,8 @@ function getPriorityHTML(system) {
                 </div>
             </div>
             <div class="priority-title-box flex-column">
-                <a class="clipboard text-large nomargin ref-url" onclick="copyToClipboard('${system.name}')" href="${getSystemUrl(system.name)}">${system.name}</a>
+                <a class="clipboard text-large nomargin ref-url" href="${getSystemUrl(system.name)}">${system.name}</a>
+                <span class="material-icons copy-icon" onclick="copyToClipboard('${system.name}')">content_copy</span>
                 <h2>${system.region}</h2>
             </div>
             <div class="end">
