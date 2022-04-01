@@ -80,7 +80,7 @@ app.get('/wiki', function (req,res) {
 });
 
 app.get('/news/col-70', function (req,res) {
-    res.redirect('https://youtu.be/dQw4w9WgXcQ');
+    res.redirect('https://www.youtube.com/watch?v=xvFZjo5PgG0');
 });
 
 app.get('*', function(req, res){
