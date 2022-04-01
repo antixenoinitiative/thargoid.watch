@@ -79,7 +79,9 @@ app.get('/wiki', function (req,res) {
     res.redirect('https://wiki.antixenoinitiative.com');
 });
 
-
+app.get('/news/col-70', function (req,res) {
+    res.redirect('https://youtu.be/dQw4w9WgXcQ');
+});
 
 app.get('*', function(req, res){
     res.sendFile(__dirname + '/public/index.html', 404);
