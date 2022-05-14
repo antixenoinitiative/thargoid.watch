@@ -74,7 +74,7 @@ app.get('/api/ace', async function(req, res) {
 );
 
 app.get('/api/speedrun', async function(req, res) {
-    const { rows } = await db.queryWarden(`SELECT * from ace WHERE approval = true`);
+    const { rows } = await db.queryWarden(`SELECT * from speedrun WHERE approval = true`);
     res.json(jsonResponse(rows))
   },
 );

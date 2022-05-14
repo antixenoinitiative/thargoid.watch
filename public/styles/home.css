@@ -355,6 +355,7 @@ article {
     background-color: var(--primary-bg-color);
     border-radius: 0.3rem;
     transition: background-color 100ms;
+    cursor: pointer;
 }
 
 .ace-row:hover {

@@ -1,9 +1,6 @@
-let requestURL = 'https://www.thargoid.watch/api/ace';
+let requestURL = 'https://antixenoinitiative.com/api/ace';
 let request = new XMLHttpRequest();
-let sortToggle = 1
-let lastSort;
-let lastSelection;
-let showAll;
+let ships = ['chieftain', 'challenger', 'kraitmk2', 'fdl']
 
 function fetchJSON() {
     try {
@@ -14,25 +11,16 @@ function fetchJSON() {
         toast("Unable to fetch data")
     }
     request.onload = async function() {
-        updateInc("name")
+        updateLeaderboard()
     }
-}
-
-function numberWithCommas(x) {
-    return x.toLocaleString("en-US");
 }
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function indexOfSmallest(a) {
-    return a.indexOf(Math.min.apply(Math, a));
-}
-
-
 function dynamicSort(property) {
-    var sortOrder = 1;
+    let sortOrder = 1;
     if(property[0] === "-") {
         sortOrder = -1;
         property = property.substr(1);
@@ -41,24 +29,46 @@ function dynamicSort(property) {
         /* next line works with strings and numbers, 
          * and you may want to customize it to your needs
          */
-        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
     }
 }
 
-function updateInc(sorting, all) {
+function timeConverter(UNIX_timestamp){
+    UNIX_timestamp = UNIX_timestamp.substring(0, UNIX_timestamp.length-3)
+    let a = new Date(UNIX_timestamp * 1000);
+    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    let year = a.getFullYear();
+    let month = months[a.getMonth()];
+    let date = a.getDate();
+    let hour = a.getHours();
+    let min = a.getMinutes();
+    let sec = a.getSeconds();
+    let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    return time;
+}
+
+function fancyTimeFormat(duration)
+{   
+    // Hours, minutes and seconds
+    let hrs = ~~(duration / 3600);
+    let mins = ~~((duration % 3600) / 60);
+    let secs = ~~duration % 60;
+
+    // Output like "1:01" or "4:03:59" or "123:03:59"
+    let ret = "";
+
+    if (hrs > 0) {
+        ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+    }
+
+    ret += "" + mins + ":" + (secs < 10 ? "0" : "");
+    ret += "" + secs;
+    return ret;
+}
+
+function updateLeaderboard() {
     let content;
-    let prioritycontent = ""
-
-    if (sorting === 0) {
-        sorting = lastSelection
-    }
-    if (all === true) {
-        showAll = true
-        document.getElementById("btn-showall").style.display = "none"
-    }
-
-    lastSelection = sorting
 
     try {
         content = request.response.message;
@@ -70,165 +80,67 @@ function updateInc(sorting, all) {
     
     let inchtml = ``
 
-    if (content.rows.length === 0) {
-        document.getElementById("incursions-section").innerHTML = `<article><h1>Incursions</h1><p>There are currently no Thargoid Incursions at this time, please check again later. 🙁</p></article>`;
-        return;
-    }
-
-    let inclist = []
-    for (let system of content.rows) {
-        if (system.status === true || showAll === true) {
-            system.presenceName = getPresence(system.presence)
-
-            // Region
-            if (system.coords == null) {
-                system.region = "Pending EDMC Data"
-            } else {
-                system.region = `${getRegion(system.coords)}`
-            }
-
-            // Population
-            if (system.population == null) {
-                system.population = "Unknown";
-            } else {
-                system.population = parseInt(system.population)
-            }
-
-            // Faction
-            if (system.faction == null) {
-                system.faction = "Unknown"
-            }
-
-            // Timestamp
-            if (system.last_updated == null) {
-                system.timestamp = "No Data"
-            } else {
-                system.timestamp = new Date(system.last_updated * 1000).toISOString().slice(0, 16).replace('T', ' ')
-                let year = parseInt(system.timestamp.substring(0,4))
-                year += 1286
-                system.timestamp = year + system.timestamp.slice(4)
-            }
-
-            system.presenceBlocks = ["status-block-0", "status-block-0", "status-block-0", "status-block-0"]
-            if (system.presence >= 1) {system.presenceBlocks[0] = "status-block-1"}
-            if (system.presence >= 2) {system.presenceBlocks[1] = "status-block-2"}
-            if (system.presence >= 3) {system.presenceBlocks[2] = "status-block-3"}
-            if (system.presence >= 4) {system.presenceBlocks[3] = "status-block-4"}
-
-            inclist.push(system)
+    for (let ship of ships) {
+        let realName
+        switch (ship) {
+            case "chieftain":
+                realName = 'Chieftain'
+            break;
+            case "challenger":
+                realName = 'Challenger'
+            break;
+            case "kraitmk2":
+                realName = 'Krait Mk.II'
+            break;
+            case "fdl":
+                realName = 'Fer-De-Lance'
+            break;
         }
-    }
-
-    // Handle Priorities]
-    let priorities = [1,2,3]
-    for (let priority of priorities) {
-        system = inclist.find(element => element.priority === priority)
-        if (system) {
-            prioritycontent += getPriorityHTML(system)
-        }
-        //inclist = inclist.filter(element => element.name != system.name)
-    }
-
-    // Sorting
-    if (lastSort != sorting) {
-        sortToggle = 1
-    }
-    lastSort = sorting
-    inclist.sort(dynamicSort(sorting))
-
-    if (sortToggle%2 == 0) {
-        inclist.reverse()
-    }
-    if (sorting == "population") {
-        inclist.reverse()
-    }
-
-    // Printing
-    for (let system of inclist) {
-        inchtml += `
-        <div class="subsection gap-large round-border" onmouseover="toggleOpacity('HoverItem-${system.system_id}',1)" onmouseout="toggleOpacity('HoverItem-${system.system_id}',0)">
-            <div class="subsection-start">
-                <div class="subsection-row gap-medium">
-                    <a class="clipboard text-large nomargin ref-url" href="${getSystemUrl(system.name)}">${system.name}</a>
-                    <span class="material-icons copy-icon" onclick="copyToClipboard('${system.name}')">content_copy</span>
-                    <h2>${system.region}</h2>
-                </div>
-                <div class="subsection-row gap-medium flex-wrap">
-                    <p class="mobile-hide"><span class="axiorange">Faction:</span> ${system.faction}</p>
-                    <p class="mobile-hide"><span class="axiorange">Population:</span> ${numberWithCommas(system.population)}</p>
-                </div>
-            </div>
-            <div class="end">
-                <div class="subsection-row-end gap-medium">
-                    <div id="HoverItem-${system.system_id}" class="lastUpdated mobile-hide">Last Updated: ${system.timestamp}</div>
-                    <div id="incstatus-title" class="status-${system.presenceName} noselect">${capitalizeFirstLetter(system.presenceName)}</div>
-                </div>
-                <div id="incstatus-progress">
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[0]} blockheight-1"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[1]} blockheight-2"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[2]} blockheight-3"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[3]} blockheight-4"></div>
-                </div>
-            </div>   
-        </div>`
-    }
-    try {
-        document.getElementById("priorities").innerHTML = prioritycontent;
-    } catch {
-        console.log("Skipping Priority ID")
-    }
-    try {
-        document.getElementById("incursions").innerHTML = inchtml;
-    } catch {
-        console.log("Skipping incursions ID")
-    }
-    sortToggle += 1
-}
-
-function getPriorityHTML(system) {
-    function getPriorityText(priority) {
-        switch (priority) {
-            case 1:
-                return "1st"
-            case 2:
-                return "2nd"
-            case 3:
-                return "3rd"
-        }
-    }
-    return `
-    <div class="priority-box subsection flex-column gap-medium round-border flex-grow">
-        <div class="flex-row flex-justify-space width-100">
-            <div style="position: relative; width: 0; height: 0">
-                <div style="background-color: var(--priority-${system.priority});" class="priority-number-box noselect round-border flex-center flex-row flex-justify-center">
-                    <div class="priority-number">${getPriorityText(system.priority)} Priority</div>
-                </div>
-            </div>
-            <div class="priority-title-box flex-column">
-                <a class="clipboard text-large nomargin ref-url" href="${getSystemUrl(system.name)}">${system.name}</a>
-                <span class="material-icons copy-icon" onclick="copyToClipboard('${system.name}')">content_copy</span>
-                <h2>${system.region}</h2>
-            </div>
-            <div class="end">
-                <div class="subsection-row-end gap-medium">
-                    <div id="incstatus-title" class="status-${system.presenceName} noselect">${capitalizeFirstLetter(system.presenceName)}</div>
-                </div>
-                <div id="incstatus-progress">
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[0]} blockheight-1"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[1]} blockheight-2"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[2]} blockheight-3"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[3]} blockheight-4"></div>
-                </div>
-            </div>
+        let results = content.rows.filter(entry => entry.shiptype == ship)
+        results.sort(dynamicSort("score"))
+        results.reverse()
+        results = results.slice(0,10)
+        let shiphtml = `<article class="smallround">
+        <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/${ship}-wide.png);">
+            <h3>${realName}</h3>
+            <div>Ace Leaderboard</div>
         </div>
-        <div class="flex-column">
-            <p class="mobile-hide"><span class="axiorange">Faction:</span> ${system.faction}</p>
-            <p class="mobile-hide"><span class="axiorange">Population:</span> ${numberWithCommas(system.population)}</p>
-        </div>
-    </div>`
+        <div class="article-content">
+            <table class="ace-table">
+                <tr>
+                    <th>Score</th>
+                    <th>Time</th>
+                    <th>CMDR</th>
+                    <th>Date</th>
+                </tr>`
+
+        for (let result of results) {
+            shiphtml += `<tr class="ace-row" onclick="window.location='${result.link}';"'>
+            <td>${result.score}</td>
+            <td>${fancyTimeFormat(result.timetaken)}</td>
+            <td>${result.name}</td>
+            <td>${timeConverter(result.date)}</td>
+        </tr>`
+        }
+        shiphtml += `</table>`
+        if (results.length == 0) {
+            shiphtml += `<div>Sorry, there are currently no results for ${realName}, you can be the first by submitting a kill in the AXI Discord.</div>`
+        }
+        shiphtml += `</div></article>`
+        console.log(results)
+        inchtml += shiphtml
+    }
+
+    try {
+        document.getElementById("Ace-Leaderboards").innerHTML = inchtml;
+    } catch {
+        console.log("Skipping Ace Leaderboard")
+    }
 }
 
 // Onload
+
+
 
 window.onload = async function() {
     await fetchJSON()
