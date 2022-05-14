@@ -103,7 +103,7 @@ function updateLeaderboard() {
         let shiphtml = `<article class="smallround">
         <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/${ship}-wide.png);">
             <h3>${realName}</h3>
-            <div>Ace Leaderboard</div>
+            <div>Top 10</div>
         </div>
         <div class="article-content">
             <table class="ace-table">
