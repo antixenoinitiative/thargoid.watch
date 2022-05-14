@@ -183,6 +183,10 @@ article {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
 }
 
+.news-subheading {
+    margin-bottom: 1rem;
+}
+
 .article-title {
     background-repeat: no-repeat;
     background-position: center center;
