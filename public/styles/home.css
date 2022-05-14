@@ -334,6 +334,33 @@ article {
     border: 0;
 }
 
+/* Leaderboards */
+
+.ace-table {
+    border-collapse: collapse;
+    text-align: left
+}
+
+.ace-table th {
+    color: var(--accent-color);
+    padding: 0.4rem;
+    font-size: var(--font-medium);
+}
+
+.ace-table td {
+    padding: 0.4rem;
+}
+
+.ace-row {
+    background-color: var(--primary-bg-color);
+    border-radius: 0.3rem;
+    transition: background-color 100ms;
+}
+
+.ace-row:hover {
+    background-color: var(--secondary-bg-color);
+}
+
 /* Footer Section */
 
 .footer {
