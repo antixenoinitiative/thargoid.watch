@@ -111,6 +111,9 @@ function updateLeaderboard() {
                     <th>Score</th>
                     <th>Time</th>
                     <th>CMDR</th>
+                    <th>S Gauss (fired)</th>
+                    <th>M Gauss (fired)</th>
+                    <th>Hull Damage %</th>
                     <th>Date</th>
                 </tr>`
 
@@ -119,6 +122,9 @@ function updateLeaderboard() {
             <td>${result.score}</td>
             <td>${fancyTimeFormat(result.timetaken)}</td>
             <td>${result.name}</td>
+            <td style="text-align: center;">${result.sgauss} (${result.sgaussfired})</td>
+            <td style="text-align: center;">${result.mgauss} (${result.mgaussfired})</td>
+            <td style="text-align: center;">${result.percenthulllost}%</td>
             <td>${timeConverter(result.date)}</td>
         </tr>`
         }

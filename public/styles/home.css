@@ -52,6 +52,10 @@ html, body, #page {
     border-radius: 0.3rem;
 }
 
+.accented {
+    color: var(--accent-color);
+}
+
 nav {
     padding: 1rem;
     display: grid;
