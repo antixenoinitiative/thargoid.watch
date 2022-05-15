@@ -2,6 +2,10 @@ let requestURL = 'https://antixenoinitiative.com/api/ace';
 let request = new XMLHttpRequest();
 let ships = ['chieftain', 'challenger', 'kraitmk2', 'fdl']
 
+let requestURL2 = 'https://antixenoinitiative.com/api/speedrun';
+let request2 = new XMLHttpRequest();
+let variants = ['cyclops', 'basilisk', 'medusa', 'hydra']
+
 function fetchJSON() {
     try {
         request.open('GET', requestURL);
@@ -11,7 +15,20 @@ function fetchJSON() {
         toast("Unable to fetch data")
     }
     request.onload = async function() {
-        updateLeaderboard()
+        updateLeaderboardAce()
+    }
+}
+
+function fetchJSON2() {
+    try {
+        request2.open('GET', requestURL2);
+        request2.responseType = 'json';
+        request2.send();
+    } catch (err) {
+        toast("Unable to fetch data")
+    }
+    request2.onload = async function() {
+        updateLeaderboardSpeedrun()
     }
 }
 
@@ -67,7 +84,72 @@ function fancyTimeFormat(duration)
     return ret;
 }
 
-function updateLeaderboard() {
+function updateLeaderboardSpeedrun() {
+    let content;
+
+    try {
+        content = request2.response.message;
+    } catch {
+        console.log(`Invalid data recieved or no data recieved at all`)
+        toast(`Unable to load data, please contact staff`)
+        return 
+    }
+    
+    let inchtml = ``
+
+    for (let variant of variants) {
+
+        let entries = content.rows.filter(entry => entry.variant == variant)
+        entries.sort(dynamicSort("time"))
+        //entries = entries.slice(0,10)
+        let shiphtml = `<article class="smallround">
+                        <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/${variant}.png);">
+                            <h3>${capitalizeFirstLetter(variant)}</h3>
+                            <div>Top 10 per division</div>
+                        </div>`
+        let sizes = ['small', 'medium', 'large']
+        for (let size of sizes) {
+            shiphtml+= `<div class="article-content">
+                        <div>
+                            <h4>${capitalizeFirstLetter(size)} Division</h4>
+                            <div class="line-orange-fade"></div>
+                        </div>
+                        <table class="lb-table">
+                            <tr>
+                                <th>Time</th>
+                                <th>CMDR</th>
+                                <th>Ship</th>
+                                <th>Date</th>
+                            </tr>`
+
+            let count = 0
+            for (let entry of entries) {
+                if (entry.class == size) {
+                    if (entry.name != null && count < 10) {
+                        shiphtml+= `<tr class="lb-row" onclick="window.location='${entry.link}';"'>
+                        <td>${fancyTimeFormat(entry.time)}</td>
+                        <td>${entry.name}</td>
+                        <td>${entry.ship}</td>
+                        <td>${timeConverter(entry.date)}</td>
+                        </tr>`
+                    }
+                    count++;
+                }
+            }
+            shiphtml+= `</table></div>`
+        }
+        shiphtml+= `</article>`
+        inchtml += shiphtml
+    }
+
+    try {
+        document.getElementById("Speedrun-Leaderboards").innerHTML = inchtml;
+    } catch {
+        console.log("Skipping Speedrun Leaderboard")
+    }
+}
+
+function updateLeaderboardAce() {
     let content;
 
     try {
@@ -106,19 +188,19 @@ function updateLeaderboard() {
             <div>Top 10</div>
         </div>
         <div class="article-content">
-            <table class="ace-table">
+            <table class="lb-table">
                 <tr>
                     <th>Score</th>
                     <th>Time</th>
                     <th>CMDR</th>
-                    <th>S Gauss (fired)</th>
-                    <th>M Gauss (fired)</th>
-                    <th>Hull Damage %</th>
+                    <th style="text-align: center;">S Gauss (fired)</th>
+                    <th style="text-align: center;">M Gauss (fired)</th>
+                    <th style="text-align: center;">Hull Damage %</th>
                     <th>Date</th>
                 </tr>`
 
         for (let result of results) {
-            shiphtml += `<tr class="ace-row" onclick="window.location='${result.link}';"'>
+            shiphtml += `<tr class="lb-row" onclick="window.location='${result.link}';"'>
             <td>${result.score}</td>
             <td>${fancyTimeFormat(result.timetaken)}</td>
             <td>${result.name}</td>
@@ -133,7 +215,6 @@ function updateLeaderboard() {
             shiphtml += `<div>Sorry, there are currently no results for ${realName}, you can be the first by submitting a kill in the AXI Discord.</div>`
         }
         shiphtml += `</div></article>`
-        console.log(results)
         inchtml += shiphtml
     }
 
@@ -146,8 +227,7 @@ function updateLeaderboard() {
 
 // Onload
 
-
-
 window.onload = async function() {
+    await fetchJSON2()
     await fetchJSON()
 }
