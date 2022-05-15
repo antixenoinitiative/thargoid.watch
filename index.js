@@ -79,6 +79,12 @@ app.get('/api/speedrun', async function(req, res) {
   },
 );
 
+app.get('/api/club10', async function(req, res) {
+    const { rows } = await db.queryWarden(`SELECT * from club10`);
+    res.json(jsonResponse(rows))
+  },
+);
+
 app.get('/api', function (req,res) {
     res.sendFile(__dirname + '/public/api.html');
 });
