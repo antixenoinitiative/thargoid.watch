@@ -495,6 +495,7 @@ article {
     header h1 {
         line-height: 2rem;
         font-size: 2.5rem;
+        padding-left: 1rem;
     }
 
     header h1 span {
@@ -521,6 +522,23 @@ article {
         flex-wrap: wrap;
     }
 
+    .content {
+        padding: 0rem;
+    }
+
+    section {
+        padding: 0.5rem;
+    }
+
+    section h2 {
+        padding-left: 0.3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .article-alt-content h3 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
 }
 
 #menuToggle
