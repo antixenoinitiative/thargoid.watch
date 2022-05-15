@@ -61,7 +61,7 @@ function timeConverter(UNIX_timestamp){
     let hour = a.getHours();
     let min = a.getMinutes();
     let sec = a.getSeconds();
-    let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    let time = date + ' ' + month + ' ' + year;
     return time;
 }
 
@@ -111,7 +111,7 @@ function updateLeaderboardSpeedrun() {
         for (let size of sizes) {
             shiphtml+= `<div class="article-content">
                         <div>
-                            <h4>${capitalizeFirstLetter(size)} Division</h4>
+                            <h4 class="lb-table-title">${capitalizeFirstLetter(size)} Division</h4>
                             <div class="line-orange-fade"></div>
                         </div>
                         <table class="lb-table">
@@ -119,7 +119,7 @@ function updateLeaderboardSpeedrun() {
                                 <th>Time</th>
                                 <th>CMDR</th>
                                 <th>Ship</th>
-                                <th>Date</th>
+                                <th class="mobile-hide">Date</th>
                             </tr>`
 
             let count = 0
@@ -131,7 +131,7 @@ function updateLeaderboardSpeedrun() {
                         <td>${fancyTimeFormat(entry.time)}</td>
                         <td>${entry.name}</td>
                         <td>${entry.ship}</td>
-                        <td>${timeConverter(entry.date)}</td>
+                        <td class="mobile-hide">${timeConverter(entry.date)}</td>
                         </tr>`
                     }
                     count++;
@@ -195,10 +195,10 @@ function updateLeaderboardAce() {
                     <th>Score</th>
                     <th>Time</th>
                     <th>CMDR</th>
-                    <th style="text-align: center;">S Gauss (fired)</th>
-                    <th style="text-align: center;">M Gauss (fired)</th>
-                    <th style="text-align: center;">Hull Damage %</th>
-                    <th>Date</th>
+                    <th class="mobile-hide" style="text-align: center;">S Gauss (fired)</th>
+                    <th class="mobile-hide" style="text-align: center;">M Gauss (fired)</th>
+                    <th class="mobile-hide" style="text-align: center;">Hull Damage %</th>
+                    <th style="text-align: center;">Date</th>
                 </tr>`
 
         for (let result of results) {
@@ -206,10 +206,10 @@ function updateLeaderboardAce() {
             <td>${result.score}</td>
             <td>${fancyTimeFormat(result.timetaken)}</td>
             <td>${result.name}</td>
-            <td style="text-align: center;">${result.sgauss} (${result.sgaussfired})</td>
-            <td style="text-align: center;">${result.mgauss} (${result.mgaussfired})</td>
-            <td style="text-align: center;">${result.percenthulllost}%</td>
-            <td>${timeConverter(result.date)}</td>
+            <td class="mobile-hide" style="text-align: center;">${result.sgauss} (${result.sgaussfired})</td>
+            <td class="mobile-hide" style="text-align: center;">${result.mgauss} (${result.mgaussfired})</td>
+            <td class="mobile-hide" style="text-align: center;">${result.percenthulllost}%</td>
+            <td style="text-align: center;">${timeConverter(result.date)}</td>
         </tr>`
         }
         shiphtml += `</table>`

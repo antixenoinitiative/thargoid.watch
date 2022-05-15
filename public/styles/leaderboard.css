@@ -1,0 +1,46 @@
+/* Leaderboards */
+
+.lb-table-title {
+    margin: 0rem;
+    font-size: var(--font-large);
+}
+
+.lb-table {
+    border-collapse: collapse;
+    text-align: left
+}
+
+.lb-table th {
+    color: var(--accent-color);
+    padding: 0.4rem;
+    font-size: var(--font-medium);
+}
+
+.lb-table td {
+    padding: 0.4rem;
+}
+
+.lb-row {
+    background-color: var(--primary-bg-color);
+    border-radius: 0.3rem;
+    transition: background-color 100ms;
+    cursor: pointer;
+}
+
+.lb-row:hover {
+    background-color: var(--secondary-bg-color);
+}
+
+/* Mobile Layout Mode */
+
+@media only screen and (max-width: 1000px) {
+    .lb-table td {
+        padding: 0.3rem 0.1rem 0.3rem 0.1rem;
+        font-size: 0.8rem;
+    }
+
+    .lb-table th {
+        padding: 0.3rem;
+        font-size: 1rem;
+    }
+}
