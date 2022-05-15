@@ -123,9 +123,10 @@ function updateLeaderboardSpeedrun() {
                             </tr>`
 
             let count = 0
+            let IDsAlreadyDone = []
             for (let entry of entries) {
                 if (entry.class == size) {
-                    if (entry.name != null && count < 10) {
+                    if (entry.name != null && count < 10 && !IDsAlreadyDone.includes(entry.user_id)) {
                         shiphtml+= `<tr class="lb-row" onclick="window.location='${entry.link}';"'>
                         <td>${fancyTimeFormat(entry.time)}</td>
                         <td>${entry.name}</td>
@@ -134,6 +135,7 @@ function updateLeaderboardSpeedrun() {
                         </tr>`
                     }
                     count++;
+                    IDsAlreadyDone.push(entry.user_id)
                 }
             }
             shiphtml+= `</table></div>`
