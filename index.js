@@ -101,6 +101,10 @@ app.get('/club10', function (req,res) {
     res.sendFile(__dirname + '/public/club10.html');
 });
 
+app.get('/ranks', function (req,res) {
+    res.sendFile(__dirname + '/public/ranks.html');
+});
+
 app.get('/wiki', function (req,res) {
     res.redirect('https://wiki.antixenoinitiative.com');
 });

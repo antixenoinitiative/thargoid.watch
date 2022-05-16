@@ -1,0 +1,82 @@
+.article-title-ranks {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 3.7rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.4rem 0.8rem 0.4rem 0.8rem;
+}
+
+.ranks-subtitle {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+
+.article-title-ranks h3 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.collapsible {
+    background-color: rgb(19, 19, 19);
+    color: #ff7100;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.3rem;
+    font-family: 'Outfit', sans-serif;
+    animation: background-color 250ms;
+}
+  
+.active, .collapsible:hover {
+    background-color: rgb(15,15,15);
+    color: white;
+}
+  
+.terms {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+}
+
+.ranks-expand {
+    margin-top: 1rem;
+    display: none;
+    overflow: hidden;
+}
+
+.roleicon {
+    object-fit: cover;
+    width: 3rem;
+    height: auto;
+    align-self: center;
+}
+
+.roleicon-small {
+    object-fit: cover;
+    width: 2.5rem;
+    height: auto;
+    image-rendering: crisp-edges;
+}
+
+.ranks-title-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+}
+
+.ranks-title {
+    margin-bottom: 0rem;
+    margin-right: 0.2rem;
+}
