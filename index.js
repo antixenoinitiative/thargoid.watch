@@ -109,6 +109,10 @@ app.get('/wiki', function (req,res) {
     res.redirect('https://wiki.antixenoinitiative.com');
 });
 
+app.get('/healthcheckstatus', function (req,res) {
+    res.status(200).send('This website is running! 😊');
+});
+
 app.get('*', function(req, res){
     res.sendFile(__dirname + '/public/index.html', 404);
 });
