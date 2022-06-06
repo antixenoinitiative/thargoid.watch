@@ -96,6 +96,7 @@ nav a:hover {
 .nav-mid {
     justify-content: center;
     gap: 1.5rem;
+    white-space: nowrap;
 }
 
 .nav-mid a {
