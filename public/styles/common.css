@@ -82,6 +82,12 @@
     padding-left: 0.5rem;
 }
 
+.redborder {
+    border-color: var(--presence-massive);
+    border-style: solid;
+    border-width: 1px;
+}
+
 .axiorange {
     color: var(--accent-color);
 }
