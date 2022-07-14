@@ -121,8 +121,10 @@ function updateInc(sorting, all) {
     
     let inchtml = ``
 
-    if (content.rows.length === 0) {
-        document.getElementById("incursions-section").innerHTML = `<article><h1>Incursions</h1><p>There are currently no Thargoid Incursions at this time, please check again later. 🙁</p></article>`;
+    let activeTotal = content.rows.filter(entry => entry.status === true)
+
+    if (activeTotal.length === 0 && all != true) {
+        document.getElementById("incursions").innerHTML = `<p style="text-align: center; font-size: 1.5rem;">No active incursions found, please check again later. 🙁</p>`;
         return;
     }
 
