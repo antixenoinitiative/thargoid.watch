@@ -43,7 +43,6 @@ html, body, #page {
 .title {
     font-size: var(--font-xlarge);
     font-family: 'Outfit', sans-serif;
-    color: var(--main-text-color);
     margin: 0;
     font-weight: normal;
 }
@@ -680,4 +679,45 @@ article {
 #menuToggle input:checked ~ ul
 {
   transform: none;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --main-bg-color: rgb(255, 255, 255);
+        --secondary-bg-color: rgb(233, 233, 233);
+        --main-border-color: rgb(194, 194, 194);
+        --main-border-hover: rgb(141, 141, 141);
+        --main-text-color: rgb(51, 51, 51);
+        --secondary-text-color: rgb(94, 94, 94);
+        --trinary-text-color: rgb(165, 165, 165);
+        --accent-color: #ff7100;
+        --accent-color-active: #ff9d4d;
+        --footer-color: #444444;
+        --font-xlarge: 1.8rem;
+        --font-large: 1.3rem;
+        --font-medium: 1.1rem;
+    }
+
+    .article-title h3 {
+        color: white;
+    }
+
+    header h1 {
+        color: white;
+    }
+
+    .title {
+        color: white;
+    }
+
+    .background {
+        position: absolute;
+        z-index: 1;
+        background-image: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.2) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/hydra.jpg);
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+        height: 50%;
+        width: 100%; 
+    }
 }
