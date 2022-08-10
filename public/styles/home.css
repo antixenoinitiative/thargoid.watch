@@ -47,6 +47,13 @@ html, body, #page {
     font-weight: normal;
 }
 
+.code {
+    padding: 0.5rem;
+    background-color: var(--secondary-bg-color);
+    font-size: 0.9rem;
+    font-family: 'Roboto Mono', monospace;
+}
+
 .smallround {
     border-radius: 0.3rem;
 }
