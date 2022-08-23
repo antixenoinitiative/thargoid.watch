@@ -716,6 +716,10 @@ article {
     .title {
         color: white;
     }
+    
+    .article-alt-content h3 {
+        color: white;
+    }
 
     .background {
         position: absolute;
