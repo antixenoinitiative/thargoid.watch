@@ -1,4 +1,4 @@
-# Thargoid.Watch Website
+# AXI Website
 
 Thargoid watch is a website design to display information from the Sentry.api Thargoid Tracking system.
 
