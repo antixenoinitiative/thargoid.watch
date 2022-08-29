@@ -1,6 +1,6 @@
 # AXI Website
 
-Thargoid Watch is the webserver and sebsite of the Anti-Xeno Initiative.
+Thargoid Watch is the webserver and website of the Anti-Xeno Initiative.
 
 This website's live version can be found at https://www.antixenoinitiative.com/
 
