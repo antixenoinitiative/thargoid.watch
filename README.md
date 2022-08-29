@@ -1,8 +1,8 @@
 # AXI Website
 
-Thargoid watch is a website design to display information from the Sentry.api Thargoid Tracking system.
+Thargoid Watch is the webserver and sebsite of the Anti-Xeno Initiative.
 
-This website's live version can be found at https://www.thargoid.watch/
+This website's live version can be found at https://www.antixenoinitiative.com/
 
 # Thargoid.Watch API
 
