@@ -27,7 +27,7 @@ html, body, #page {
 .background {
     position: absolute;
     z-index: 1;
-    background-image: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0.2) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/hydra.jpg);
+    background-image: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0.2) 100%), url(https://ingcloud.blob.core.windows.net/public/images/hydra.jpg);
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
@@ -724,7 +724,7 @@ article {
     .background {
         position: absolute;
         z-index: 1;
-        background-image: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.2) 100%), url(https://axicdn.s3.us-east-1.amazonaws.com/images/hydra.jpg);
+        background-image: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.2) 100%), url(https://ingcloud.blob.core.windows.net/public/images/hydra.jpg);
         background-repeat: no-repeat;
         background-position: center top;
         background-size: cover;
