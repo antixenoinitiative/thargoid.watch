@@ -84,9 +84,11 @@ function fancyTimeFormat(duration)
     return ret;
 }
 
+// Generate HTML for Speedrun leaderboards
 function updateLeaderboardSpeedrun() {
     let content;
 
+    // Formats content and error checking
     try {
         content = request2.response.message;
     } catch {
@@ -133,9 +135,9 @@ function updateLeaderboardSpeedrun() {
                         <td>${entry.ship}</td>
                         <td class="mobile-hide">${timeConverter(entry.date)}</td>
                         </tr>`
+                        count++;
+                        IDsAlreadyDone.push(entry.user_id)
                     }
-                    count++;
-                    IDsAlreadyDone.push(entry.user_id)
                 }
             }
             shiphtml+= `</table></div>`
