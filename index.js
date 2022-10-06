@@ -68,19 +68,19 @@ app.get('/api/systems', async function(req, res) {
 );
 
 app.get('/api/ace', async function(req, res) {
-    const { rows } = await db.queryWarden(`SELECT * from ace WHERE approval = true`);
+    const { rows } = await db.query(`SELECT * from ace WHERE approval = true`);
     res.json(jsonResponse(rows))
   },
 );
 
 app.get('/api/speedrun', async function(req, res) {
-    const { rows } = await db.queryWarden(`SELECT * from speedrun WHERE approval = true`);
+    const { rows } = await db.query(`SELECT * from speedrun WHERE approval = true`);
     res.json(jsonResponse(rows))
   },
 );
 
 app.get('/api/club10', async function(req, res) {
-    const { rows } = await db.queryWarden(`SELECT * from club10`);
+    const { rows } = await db.query(`SELECT * from club10`);
     res.json(jsonResponse(rows))
   },
 );
