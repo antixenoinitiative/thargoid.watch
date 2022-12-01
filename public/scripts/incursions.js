@@ -1,6 +1,6 @@
 let requestURL = 'https://antixenoinitiative.com/api/systems';
 let request = new XMLHttpRequest();
-let sortToggle = 1
+let sortToggle = 0
 let lastSort;
 let lastSelection;
 let showAll;
