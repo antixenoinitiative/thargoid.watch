@@ -258,23 +258,23 @@
     height: 16px;
 }
 
-.status-cleared {
+.status-safe {
     color: var(--presence-safe);
 }
 
-.status-marginal {
+.status-alert {
     color: var(--presence-alert);
 }
 
-.status-moderate {
+.status-invasion {
     color: var(--presence-invasion);
 }
 
-.status-significant {
+.status-controlled {
     color: var(--presence-controlled);
 }
 
-.status-massive {
+.status-maelstrom {
     color: var(--presence-maelstrom);
 }
 
