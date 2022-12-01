@@ -1,6 +1,6 @@
 let requestURL = 'https://antixenoinitiative.com/api/systems';
 let request = new XMLHttpRequest();
-let sortToggle = 0
+let sortToggle = 1
 let lastSort;
 let lastSelection;
 let showAll;
@@ -193,6 +193,9 @@ function updateInc(sorting, all) {
         inclist.reverse()
     }
     if (sorting == "population") {
+        inclist.reverse()
+    }
+    if (sorting == "presence") {
         inclist.reverse()
     }
 
