@@ -1,9 +1,9 @@
 :root {
-    --presence-cleared: #57fc41;
-    --presence-marginal: #c4fc41;
-    --presence-moderate: #fcef41;
-    --presence-significant: #fc8c41;
-    --presence-massive: #fc4141;
+    --presence-safe: #57fc41;
+    --presence-alert: #c4fc41;
+    --presence-invasion: #fcef41;
+    --presence-controlled: #fc8c41;
+    --presence-maelstrom: #fc4141;
     --priority-3: #60ce51;
     --priority-2: #df9e3b;
     --priority-1: #dd5a5a;
