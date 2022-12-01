@@ -134,9 +134,10 @@ async function processSystem(msg) {
         let id = await db.getSysID(StarSystem);
 
         if (id == "0" && SystemAllegiance == targetAllegiance && SystemGovernment == targetGovernment) {
-            console.log(`Adding System: ${StarSystem} Data:`)
-            console.log(msg)
-            id = await db.addSystem(StarSystem);
+            // Disabled due to new incursion system causing issues, manual updates only via bot at this time
+            //console.log(`Adding System: ${StarSystem} Data:`)
+            //console.log(msg)
+            //id = await db.addSystem(StarSystem);
         }
   
         if (id != "0") {
