@@ -227,19 +227,19 @@
 }
 
 .status-block-1 {
-    background-color: var(--presence-marginal);
+    background-color: var(--presence-alert);
 }
 
 .status-block-2 {
-    background-color: var(--presence-moderate);
+    background-color: var(--presence-invasion);
 }
 
 .status-block-3 {
-    background-color: var(--presence-significant);
+    background-color: var(--presence-controlled);
 }
 
 .status-block-4 {
-    background-color: var(--presence-massive);
+    background-color: var(--presence-maelstrom);
 }
 
 .blockheight-1 {
@@ -259,23 +259,23 @@
 }
 
 .status-cleared {
-    color: var(--presence-cleared);
+    color: var(--presence-safe);
 }
 
 .status-marginal {
-    color: var(--presence-marginal);
+    color: var(--presence-alert);
 }
 
 .status-moderate {
-    color: var(--presence-moderate);
+    color: var(--presence-invasion);
 }
 
 .status-significant {
-    color: var(--presence-significant);
+    color: var(--presence-controlled);
 }
 
 .status-massive {
-    color: var(--presence-massive);
+    color: var(--presence-maelstrom);
 }
 
 button {
