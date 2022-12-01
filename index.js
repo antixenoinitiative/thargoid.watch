@@ -142,10 +142,11 @@ async function processSystem(msg) {
         if (id != "0") {
             await db.updateSysInfo(StarSystem, msg);
             if (SystemAllegiance == targetAllegiance && SystemGovernment == targetGovernment) {
-                db.setStatus(StarSystem, 1);
-                db.logIncursion(id, time);
+                // Disabled due to new incursion system causing issues, manual updates only via bot at this time
+                //db.setStatus(StarSystem, 1);
+                //db.logIncursion(id, time);
             } else {
-                db.setStatus(StarSystem, 0);
+                //db.setStatus(StarSystem, 0);
             }
         }  
     }
