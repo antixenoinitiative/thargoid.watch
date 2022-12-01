@@ -14,7 +14,7 @@ function fetchJSON() {
         toast("Unable to fetch data")
     }
     request.onload = async function() {
-        updateInc("name")
+        updateInc("presence")
     }
 }
 
