@@ -14,7 +14,7 @@ function fetchJSON() {
         toast("Unable to fetch data")
     }
     request.onload = async function() {
-        updateInc("name")
+        updateInc("presence")
     }
 }
 
@@ -25,15 +25,15 @@ function getSystemUrl(systemName){
 function getPresence(presence) {
     switch (presence) {
         case 0:
-            return "cleared"
+            return "safe" //cleared
         case 1:
-            return "marginal"
+            return "alert" //marginal
         case 2:
-            return "moderate"
+            return "invasion" //moderate
         case 3:
-            return "significant"
+            return "controlled" //significant
         case 4:
-            return "massive"
+            return "maelstrom" //massive
     }
 }
 
@@ -193,6 +193,9 @@ function updateInc(sorting, all) {
         inclist.reverse()
     }
     if (sorting == "population") {
+        inclist.reverse()
+    }
+    if (sorting == "presence") {
         inclist.reverse()
     }
 

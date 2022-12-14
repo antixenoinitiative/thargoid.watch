@@ -68,19 +68,19 @@ app.get('/api/systems', async function(req, res) {
 );
 
 app.get('/api/ace', async function(req, res) {
-    const { rows } = await db.queryWarden(`SELECT * from ace WHERE approval = true`);
+    const { rows } = await db.query(`SELECT * from ace WHERE approval = true`);
     res.json(jsonResponse(rows))
   },
 );
 
 app.get('/api/speedrun', async function(req, res) {
-    const { rows } = await db.queryWarden(`SELECT * from speedrun WHERE approval = true`);
+    const { rows } = await db.query(`SELECT * from speedrun WHERE approval = true`);
     res.json(jsonResponse(rows))
   },
 );
 
 app.get('/api/club10', async function(req, res) {
-    const { rows } = await db.queryWarden(`SELECT * from club10`);
+    const { rows } = await db.query(`SELECT * from club10`);
     res.json(jsonResponse(rows))
   },
 );
@@ -134,18 +134,20 @@ async function processSystem(msg) {
         let id = await db.getSysID(StarSystem);
 
         if (id == "0" && SystemAllegiance == targetAllegiance && SystemGovernment == targetGovernment) {
-            console.log(`Adding System: ${StarSystem} Data:`)
-            console.log(msg)
-            id = await db.addSystem(StarSystem);
+            // Disabled due to new incursion system causing issues, manual updates only via bot at this time
+            //console.log(`Adding System: ${StarSystem} Data:`)
+            //console.log(msg)
+            //id = await db.addSystem(StarSystem);
         }
   
         if (id != "0") {
             await db.updateSysInfo(StarSystem, msg);
             if (SystemAllegiance == targetAllegiance && SystemGovernment == targetGovernment) {
-                db.setStatus(StarSystem, 1);
-                db.logIncursion(id, time);
+                // Disabled due to new incursion system causing issues, manual updates only via bot at this time
+                //db.setStatus(StarSystem, 1);
+                //db.logIncursion(id, time);
             } else {
-                db.setStatus(StarSystem, 0);
+                //db.setStatus(StarSystem, 0);
             }
         }  
     }

@@ -84,9 +84,11 @@ function fancyTimeFormat(duration)
     return ret;
 }
 
+// Generate HTML for Speedrun leaderboards
 function updateLeaderboardSpeedrun() {
     let content;
 
+    // Formats content and error checking
     try {
         content = request2.response.message;
     } catch {
@@ -103,7 +105,7 @@ function updateLeaderboardSpeedrun() {
         entries.sort(dynamicSort("time"))
         //entries = entries.slice(0,10)
         let shiphtml = `<article class="smallround">
-                        <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://ingcloud.blob.core.windows.net/public/images/${variant}.png);">
+                        <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicloud.blob.core.windows.net/public/images/${variant}.png);">
                             <h3>${capitalizeFirstLetter(variant)}</h3>
                             <div>Top 10 per division</div>
                         </div>`
@@ -133,9 +135,9 @@ function updateLeaderboardSpeedrun() {
                         <td>${entry.ship}</td>
                         <td class="mobile-hide">${timeConverter(entry.date)}</td>
                         </tr>`
+                        count++;
+                        IDsAlreadyDone.push(entry.user_id)
                     }
-                    count++;
-                    IDsAlreadyDone.push(entry.user_id)
                 }
             }
             shiphtml+= `</table></div>`
@@ -185,7 +187,7 @@ function updateLeaderboardAce() {
         results.reverse()
         results = results.slice(0,10)
         let shiphtml = `<article class="smallround">
-        <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://ingcloud.blob.core.windows.net/public/images/${ship}-wide.png);">
+        <div class="article-title" style="background-image: linear-gradient(90deg, rgba(19,19,19,1) 0%, rgba(19,19,19,0) 100%), url(https://axicloud.blob.core.windows.net/public/images/${ship}-wide.png);">
             <h3>${realName}</h3>
             <div>Top 10</div>
         </div>
