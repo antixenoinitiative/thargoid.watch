@@ -1,7 +1,13 @@
 th {
-    background-color: var(--main-bg-color);
+    background-color: var(--secondary-bg-color);
     padding: 0.5rem;
-    border-radius: 0.2rem;
+    border-radius: 0.3rem;
+}
+
+table {
+    background-color: var(--main-bg-color);
+    padding: 0.4rem;
+    border-radius: 0.3rem;
 }
 
 td {

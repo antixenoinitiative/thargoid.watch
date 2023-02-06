@@ -195,12 +195,6 @@ function updateInc(order) {
     let data = Object.keys(systems[0]);
     generateTableHead(table, data);
     generateTable(table, systems)
-
-    try {
-        document.getElementById("incursions").innerHTML = inchtml;
-    } catch {
-        console.log("Skipping incursions ID")
-    }
 }
 
 
