@@ -1,9 +1,6 @@
-let requestURL = 'https://antixenoinitiative.com/api/systems';
+let requestURL = 'https://dcoh.watch/api/v1/overwatch/systems?ngsw-bypass=true';
 let request = new XMLHttpRequest();
-let sortToggle = 1
-let lastSort;
-let lastSelection;
-let showAll;
+let systemData;
 
 function fetchJSON() {
     try {
@@ -14,7 +11,7 @@ function fetchJSON() {
         toast("Unable to fetch data")
     }
     request.onload = async function() {
-        updateInc("presence")
+        updateInc('progressPercent')
     }
 }
 
@@ -37,10 +34,6 @@ function getPresence(presence) {
     }
 }
 
-function numberWithCommas(x) {
-    return x.toLocaleString("en-US");
-}
-
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -59,9 +52,9 @@ function getRegion(coords) {
         [0,0,0] // Sol
     ]
     for (let region of regions) {
-        let a = region[0] - coords[0];
-        let b = region[1] - coords[1];
-        let c = region[2] - coords[2];
+        let a = region[0] - coords.x;
+        let b = region[1] - coords.y;
+        let c = region[2] - coords.z;
 
         let distance = Math.sqrt(a * a + b * b + c * c);
         regionDistances.push(distance)
@@ -97,192 +90,119 @@ function dynamicSort(property) {
     }
 }
 
-function updateInc(sorting, all) {
-    let content;
-    let prioritycontent = ""
-
-    if (sorting === 0) {
-        sorting = lastSelection
+function generateTimeRemaining(stateExpiration) {
+    let timeRemaining = ""
+    if (stateExpiration != null) {
+        let expiryDate = Date.parse(stateExpiration.stateExpires)
+        let date = new Date()
+        hoursTotal = Math.abs(date - expiryDate) / 36e5
+        let Days=Math.floor(hoursTotal/24);
+        let Remainder=hoursTotal % 24;
+        let Hours=Math.floor(Remainder);
+        timeRemaining = `${Days} Day(s) ${Hours} Hour(s)`
     }
-    if (all === true) {
-        showAll = true
-        document.getElementById("btn-showall").style.display = "none"
+    return timeRemaining
+  }
+
+function generateProgressBar(percent) {
+    let barColor = 'var(--accent-color)'
+    if (percent < 0.25 && percent > 0) {
+        barColor = 'var(--presence-maelstrom)'
+    } else if (percent <= 0.50 && percent > 0.25) {
+        barColor = 'var(--presence-controlled)'
+    } else if (percent <= 0.75 && percent > 0.50) {
+        barColor = 'var(--presence-invasion)'
+    } else if (percent < 1 && percent > 0.75) {
+        barColor = 'var(--presence-alert)'
+    } else {
+        barColor = 'var(--presence-safe)'
     }
+    let outerBar = document.createElement("div")
+    let innerBar = document.createElement("div")
+    outerBar.style.cssText = 'border-radius: 5px'
+    outerBar.style.backgroundColor = '#373737'
+    innerBar.style.cssText = 'border-radius: 5px'
+    innerBar.style.backgroundColor = barColor
+    innerBar.style.height = '8px'
+    innerBar.style.width = (percent * 100 + "%")
+    outerBar.appendChild(innerBar)
+    return outerBar
+}
 
-    lastSelection = sorting
-
-    try {
-        content = request.response.message;
-    } catch {
-        console.log(`Invalid data recieved or no data recieved at all`)
-        toast(`Unable to load data, please contact staff`)
-        return 
-    }
-    
-    let inchtml = ``
-
-    let activeTotal = content.rows.filter(entry => entry.status === true)
-
-    if (activeTotal.length === 0 && all != true) {
-        document.getElementById("incursions").innerHTML = `<p style="text-align: center; font-size: 1.5rem;">No active incursions found, please check again later. 🙁</p>`;
-        return;
-    }
-
-    let inclist = []
-    for (let system of content.rows) {
-        if (system.status === true || showAll === true) {
-            system.presenceName = getPresence(system.presence)
-
-            // Region
-            if (system.coords == null) {
-                system.region = "Pending EDMC Data"
-            } else {
-                system.region = `${getRegion(system.coords)}`
-            }
-
-            // Population
-            if (system.population == null) {
-                system.population = "Unknown";
-            } else {
-                system.population = parseInt(system.population)
-            }
-
-            // Faction
-            if (system.faction == null) {
-                system.faction = "Unknown"
-            }
-
-            // Timestamp
-            if (system.last_updated == null) {
-                system.timestamp = "No Data"
-            } else {
-                system.timestamp = new Date(system.last_updated * 1000).toISOString().slice(0, 16).replace('T', ' ')
-                let year = parseInt(system.timestamp.substring(0,4))
-                year += 1286
-                system.timestamp = year + system.timestamp.slice(4)
-            }
-
-            system.presenceBlocks = ["status-block-0", "status-block-0", "status-block-0", "status-block-0"]
-            if (system.presence >= 1) {system.presenceBlocks[0] = "status-block-1"}
-            if (system.presence >= 2) {system.presenceBlocks[1] = "status-block-2"}
-            if (system.presence >= 3) {system.presenceBlocks[2] = "status-block-3"}
-            if (system.presence >= 4) {system.presenceBlocks[3] = "status-block-4"}
-
-            inclist.push(system)
+function generateOperations(operations) {
+    if (operations.length != 0) {
+        let opsBox = document.createElement('div')
+        opsBox.style.height = '2rem'
+        for (let op of operations) {
+            let img = new Image();
+            img.src = `https://dcoh.watch/assets/badges/${op.tag}.png`
+            img.style.cssText = `max-height: 100%; max-width: 100%; padding: 0rem 0.2rem 0rem 0.2rem`
+            img.value = op.tag
+            opsBox.appendChild(img)
         }
+        return opsBox
+    } else {
+        return document.createTextNode('')
+    }
+}
+
+function generateTableHead(table) {
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+
+    function generateHeader(input) {
+        let th = document.createElement("th");
+        let text = document.createTextNode(input);
+        th.appendChild(text);
+        row.appendChild(th);
     }
 
-    // Handle Priorities]
-    let priorities = [1,2,3]
-    for (let priority of priorities) {
-        system = inclist.find(element => element.priority === priority)
-        if (system) {
-            prioritycontent += getPriorityHTML(system)
-        }
-        //inclist = inclist.filter(element => element.name != system.name)
-    }
+    generateHeader('Name')
+    generateHeader('State')
+    generateHeader('Population')
+    generateHeader('Maelstrom')
+    generateHeader('Progress')
+    generateHeader('Operations')
+    generateHeader('Time Remaining')
+}
 
-    // Sorting
-    if (lastSort != sorting) {
-        sortToggle = 1
-    }
-    lastSort = sorting
-    inclist.sort(dynamicSort(sorting))
+function generateTable(table, data) {
+    for (let system of data) {
+      let row = table.insertRow();
 
-    if (sortToggle%2 == 0) {
-        inclist.reverse()
-    }
-    if (sorting == "population") {
-        inclist.reverse()
-    }
-    if (sorting == "presence") {
-        inclist.reverse()
-    }
+      function generateCell(content) {
+        let cell = row.insertCell();
+        cell.appendChild(content);
+      }
 
-    // Printing
-    for (let system of inclist) {
-        inchtml += `
-        <div class="subsection gap-large round-border" onmouseover="toggleOpacity('HoverItem-${system.system_id}',1)" onmouseout="toggleOpacity('HoverItem-${system.system_id}',0)">
-            <div class="subsection-start">
-                <div class="subsection-row gap-medium">
-                    <a class="clipboard text-large nomargin ref-url" href="${getSystemUrl(system.name)}">${system.name}</a>
-                    <span class="material-icons copy-icon" onclick="copyToClipboard('${system.name}')">content_copy</span>
-                    <h2>${system.region}</h2>
-                </div>
-                <div class="subsection-row gap-medium flex-wrap">
-                    <p class="mobile-hide"><span class="axiorange">Faction:</span> ${system.faction}</p>
-                    <p class="mobile-hide"><span class="axiorange">Population:</span> ${numberWithCommas(system.population)}</p>
-                </div>
-            </div>
-            <div class="end">
-                <div class="subsection-row-end gap-medium">
-                    <div id="HoverItem-${system.system_id}" class="lastUpdated mobile-hide">Last Updated: ${system.timestamp}</div>
-                    <div id="incstatus-title" class="status-${system.presenceName} noselect">${capitalizeFirstLetter(system.presenceName)}</div>
-                </div>
-                <div id="incstatus-progress">
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[0]} blockheight-1"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[1]} blockheight-2"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[2]} blockheight-3"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[3]} blockheight-4"></div>
-                </div>
-            </div>   
-        </div>`
+      generateCell(document.createTextNode(system.name))
+      generateCell(document.createTextNode(system.thargoidLevel.name))
+      generateCell(document.createTextNode(system.population.toLocaleString()))
+      generateCell(document.createTextNode(system.maelstrom.name))
+      generateCell(generateProgressBar(system.progressPercent))
+      generateCell(generateOperations(system.specialFactionOperations))
+      generateCell(document.createTextNode(generateTimeRemaining(system.stateExpiration)))
+
     }
-    try {
-        document.getElementById("priorities").innerHTML = prioritycontent;
-    } catch {
-        console.log("Skipping Priority ID")
-    }
+  }
+
+function updateInc(order) {
+    console.log(request.response)
+    let systems = request.response.systems
+    systems.sort(dynamicSort(order))
+    systems.reverse()
+    let table = document.querySelector('table')
+    let data = Object.keys(systems[0]);
+    generateTableHead(table, data);
+    generateTable(table, systems)
+
     try {
         document.getElementById("incursions").innerHTML = inchtml;
     } catch {
         console.log("Skipping incursions ID")
     }
-    sortToggle += 1
 }
 
-function getPriorityHTML(system) {
-    function getPriorityText(priority) {
-        switch (priority) {
-            case 1:
-                return "1st"
-            case 2:
-                return "2nd"
-            case 3:
-                return "3rd"
-        }
-    }
-    return `
-    <div class="priority-box subsection flex-column gap-medium round-border flex-grow">
-        <div class="flex-row flex-justify-space width-100">
-            <div style="position: relative; width: 0; height: 0">
-                <div style="background-color: var(--priority-${system.priority});" class="priority-number-box noselect round-border flex-center flex-row flex-justify-center">
-                    <div class="priority-number">${getPriorityText(system.priority)} Priority</div>
-                </div>
-            </div>
-            <div class="priority-title-box flex-column">
-                <a class="clipboard text-large nomargin ref-url" href="${getSystemUrl(system.name)}">${system.name}</a>
-                <span class="material-icons copy-icon" onclick="copyToClipboard('${system.name}')">content_copy</span>
-                <h2>${system.region}</h2>
-            </div>
-            <div class="end">
-                <div class="subsection-row-end gap-medium">
-                    <div id="incstatus-title" class="status-${system.presenceName} noselect">${capitalizeFirstLetter(system.presenceName)}</div>
-                </div>
-                <div id="incstatus-progress">
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[0]} blockheight-1"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[1]} blockheight-2"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[2]} blockheight-3"></div>
-                    <div id="incstatus-progress-block" class="${system.presenceBlocks[3]} blockheight-4"></div>
-                </div>
-            </div>
-        </div>
-        <div class="flex-column">
-            <p class="mobile-hide"><span class="axiorange">Faction:</span> ${system.faction}</p>
-            <p class="mobile-hide"><span class="axiorange">Population:</span> ${numberWithCommas(system.population)}</p>
-        </div>
-    </div>`
-}
 
 // Onload
 

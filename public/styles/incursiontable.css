@@ -1,0 +1,10 @@
+th {
+    background-color: var(--main-bg-color);
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+}
+
+td {
+    height: 2rem;
+    padding: 0rem 0.2rem 0rem 0.2rem;
+}

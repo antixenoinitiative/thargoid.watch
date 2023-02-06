@@ -16,6 +16,7 @@
     <link rel="manifest" href="/images/site.webmanifest">
     <link rel="stylesheet" href="/styles/common.css">
     <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="/styles/incursiontable.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
     <style>
@@ -89,26 +90,20 @@
                 </header>
                 <section class="news smallround grow flex-column gap-medium redborder">
                     <h2 class="nomargin"><span style="color: var(--presence-massive)" class="mdi mdi-alert-decagram-outline mdilarge"> </span>Notice</h2>
-                    <p class="nomargin">Major Thargoid invasions are currently underway, we have updated our systems to aid in tracking and prioritizing these attacks but we still have much to learn about these new invasions and we will be updating this over time.</p>
+                    <p class="nomargin">Major Thargoid invasions are currently underway, we are working closely with the Defence Council of Humanity to provide up-to-date information on the Activity of Thargoids and current Invasions.</p>
                     <p class="nomargin">We ask all available pilots to continue aiding in the defense of human stations and starports.</p>
                     <p class="nomargin">Glory, to Mankind!</p>
                 </section>
                 <section class="news smallround grow flex-column gap-medium">
                     <h2 class="nomargin">Invasions</h2>
-                    <p class="nomargin">Systems currently under attack by Thargoids. Data is from the Anti-Xeno Initiative and updated manually, talk to us in the AXI Discord if you have any questions.</p>
-                    <div id="priorities" class="flex-row gap-medium">
-                    </div>
-                    <div class="flex-row flex-center flex-wrap gap-medium">
-                        <p class="text-medium color-trinary nomargin">Sort:</p>
-                        <button onclick="updateInc('name')">Name</button>
-                        <button onclick="updateInc('region')">Region</button>
-                        <button onclick="updateInc('faction')">Faction</button>
-                        <button onclick="updateInc('presence')">Presence</button>
-                        <button onclick="updateInc('population')">Population</button>
-                        <button id="btn-showall" class="button-last" onclick="updateInc(0,true)">Show Cleared</button>
-                    </div>
-                    <div id="incursions" class="flex-column gap-medium">
-                    </div>
+                    <p class="nomargin">Thargoid Invasion information for systems currently under invasion or recovering from recent attacks. Data is provided by our friends at <a style="color: var(--accent-color)" href="https://dcoh.watch/">DCoH</a> (Defence Council of Humanity).</p>
+                    <a class="noDecoration" href="https://dcoh.watch/">
+                        <div class="defencebutton">
+                            <div><span class="mdi mdi-sword-cross"> </span>View more info at the DCoH Website</div>
+                        </div>
+                    </a>
+                    <table>
+                    </table>
                 </section>
                 <section class="footer smallround grow">
                     <img src="https://axicloud.blob.core.windows.net/public/images/AXI_Insignia_Hypen_128.png" alt="">
