@@ -109,6 +109,10 @@ app.get('/wiki', function (req,res) {
     res.redirect('https://wiki.antixenoinitiative.com');
 });
 
+app.get('/news/ea-buys-frontier-ip', function (req,res) {
+    res.redirect('https://youtu.be/xvFZjo5PgG0');
+});
+
 app.get('/healthcheckstatus', function (req,res) {
     res.status(200).send('This website is running! 😊');
 });
