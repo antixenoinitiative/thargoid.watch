@@ -1,7 +1,7 @@
 /**
- * This is the webserver code for the Thargoid.Watch website. Live website can be found at https://www.thargoid.watch
+ * This is the webserver code for the Anti-Xeno Initiative website. Live website can be found at https://antixenoinitiative.com/watch
  * 
- * IMPORTANT: If you are running this locally, ensure you create a .env file and include the following two variables.
+ * IMPORTANT: If you are running this locally, ensure you create a .env file and include the following three variables.
  * 
  * PORT=<port number>
  * WEBAPPMODE=DEV
@@ -47,11 +47,7 @@ app.use(requireHTTPS);
 app.use(cors())
 
 app.get('/', function (req,res) {
-    if (req.hostname === 'www.thargoid.watch' || req.hostname === 'thargoid.watch') {
-        res.redirect('https://www.antixenoinitiative.com/watch');
-    } else {
-        res.sendFile(__dirname + '/public/index.html');
-    }
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 app.use(express.static('public'));
