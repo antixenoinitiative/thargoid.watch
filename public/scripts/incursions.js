@@ -16,7 +16,7 @@ function fetchJSON() {
 }
 
 function getSystemUrl(systemName){
-    return `https://eddb.io/system/name/${encodeURI(systemName)}`
+    return `https://inara.cz/elite/starsystem/?search=${encodeURI(systemName)}`
 }
 
 function getPresence(presence) {
