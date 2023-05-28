@@ -13,7 +13,7 @@ Powered by the EDDN, Thargoid.Watch API monitors reports from commanders directl
 
 1. Clone the repo
 2. Create a .env file in the root directory
-3. Create the following two variables in the file (PORT=8080 and MODE=DEV)
+3. Create the following three variables in the file (PORT=8080, WEBAPPMODE=DEV, and LISTENERMODE=DEV)
 4. Open terminal in root directory
 5. Run `npm i`
 6. Start the server with `npm start`

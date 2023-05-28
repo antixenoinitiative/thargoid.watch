@@ -4,7 +4,8 @@
  * IMPORTANT: If you are running this locally, ensure you create a .env file and include the following two variables.
  * 
  * PORT=<port number>
- * MODE=DEV
+ * WEBAPPMODE=DEV
+ * LISTENERMODE=DEV
  * 
  */
 

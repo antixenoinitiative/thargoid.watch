@@ -1,5 +1,5 @@
 require("dotenv").config();
-const got = require('got');
+const got = import('got');
 
 async function getJSON(url) {
     try {
