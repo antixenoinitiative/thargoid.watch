@@ -16,6 +16,8 @@ const db = require('./db/index');
 const zmq = require("zeromq");
 const zlib = require("zlib");
 const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
 
 const PORT = process.env.PORT; // Port to open website on (https://localhost:<PORT>)
 const WEBAPPMODE = process.env.WEBAPPMODE; // Set to DEV to disable HTTPS forwarding
@@ -44,10 +46,11 @@ function requireHTTPS(req, res, next) {
 }
 
 app.use(requireHTTPS);
-app.use(cors())
+app.use(cors());
+const pageDirectory = path.join(__dirname, 'public');
 
 app.get('/', function (req,res) {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(path.join(pageDirectory, 'index.html'));
 });
 
 app.use(express.static('public'));
@@ -83,23 +86,23 @@ app.get('/api/club10', async function(req, res) {
 );
 
 app.get('/api', function (req,res) {
-    res.sendFile(__dirname + '/public/api.html');
+    res.sendFile(path.join(pageDirectory, 'api.html'));
 });
 
 app.get('/watch', function (req,res) {
-    res.sendFile(__dirname + '/public/watch.html');
+    res.sendFile(path.join(pageDirectory, 'watch.html'));
 });
 
 app.get('/leaderboards', function (req,res) {
-    res.sendFile(__dirname + '/public/leaderboards.html');
+    res.sendFile(path.join(pageDirectory, 'leaderboards.html'));
 });
 
 app.get('/club10', function (req,res) {
-    res.sendFile(__dirname + '/public/club10.html');
+    res.sendFile(path.join(pageDirectory, 'club10.html'));
 });
 
 app.get('/ranks', function (req,res) {
-    res.sendFile(__dirname + '/public/ranks.html');
+    res.sendFile(path.join(pageDirectory, 'ranks.html'));
 });
 
 app.get('/wiki', function (req,res) {
@@ -112,6 +115,17 @@ app.get('/news/ea-buys-frontier-ip', function (req,res) {
 
 app.get('/healthcheckstatus', function (req,res) {
     res.status(200).send('This website is running! 😊');
+});
+
+app.get('/frontlinedebrief/:filename', (req, res) => {
+  const { filename } = req.params;
+  const filePath = path.join(pageDirectory, 'frontlinedebrief', filename + '.html');
+
+  if (fs.existsSync(filePath)) {
+    res.sendFile(filePath);
+  } else {
+    res.sendFile(path.join(pageDirectory, 'index.html'), 404);
+  }
 });
 
 app.get('*', function(req, res){
