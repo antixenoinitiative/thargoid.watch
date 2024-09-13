@@ -1,4 +1,4 @@
-let requestURL = 'https://antixenoinitiative.com/api/club10';
+let requestURL = 'https://thargoid-watch.onrender.com/api/club10';
 let request = new XMLHttpRequest();
 
 function fetchJSON() {
