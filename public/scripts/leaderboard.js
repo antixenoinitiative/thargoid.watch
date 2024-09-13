@@ -1,8 +1,8 @@
-let requestURL = 'https://antixenoinitiative.com/api/ace';
+let requestURL = 'https://thargoid-watch.onrender.com/api/ace';
 let request = new XMLHttpRequest();
 let ships = ['chieftain', 'challenger', 'kraitmk2', 'fdl']
 
-let requestURL2 = 'https://antixenoinitiative.com/api/speedrun';
+let requestURL2 = 'https://thargoid-watch.onrender.com/api/speedrun';
 let request2 = new XMLHttpRequest();
 let variants = ['cyclops', 'basilisk', 'medusa', 'hydra']
 
